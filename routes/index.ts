@@ -1,0 +1,8 @@
+export * as categorieRoutes from './categories'
+export * as categoryTreeRoutes from './category-trees'
+export * as clientRoutes from './clients'
+export * as configVariableRoutes from './config-variables'
+export * as emailTemplateRoutes from './email-templates'
+export * as languageRoutes from './languages'
+export * as roleRoutes from './roles'
+export * as userRoutes from './users'
