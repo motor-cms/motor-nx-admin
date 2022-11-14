@@ -1,7 +1,7 @@
 {
   "roles": "Roles",
   "role": "Role",
-  "new": "Create role",
+  "create": "Create role",
   "edit": "Edit role",
   "save": "Save role",
   "created": "Role created",

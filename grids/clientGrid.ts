@@ -7,7 +7,7 @@ export default function clientGrid() {
 
   const { rows, meta, refreshRecords, handleCellEvent } = baseGrid(
     repository,
-    'motor-backend.clients'
+    'motor-admin.clients'
   )
 
   return { rows, meta, refreshRecords, handleCellEvent }

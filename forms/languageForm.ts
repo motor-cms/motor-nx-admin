@@ -34,8 +34,8 @@ export default function languageForm() {
   }
 
   const { getData, onSubmit } = baseForm(
-    'motor-backend.languages',
-    'admin.motor-backend.languages',
+    'motor-admin.languages',
+    'admin.motor-admin.languages',
     modelRepository(axios),
     model,
     schema,

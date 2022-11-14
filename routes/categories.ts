@@ -6,27 +6,27 @@ const routes: Array<RouteRecordRaw> = [
    * Categories
    */
   {
-    path: '/admin/motor-backend/category-trees/:category_tree/categories',
-    name: 'admin.motor-backend.categories',
+    path: '/admin/motor-admin/category-trees/:category_tree/categories',
+    name: 'admin.motor-admin.categories',
     meta: {
       layout: 'AdminLayout', // we add new meta layout here to use it later
-      title: 'motor-backend.categories.categories',
+      title: 'motor-admin.categories.categories',
     },
     beforeEnter: checkAuth,
     component: () => import('../views/admin/categories/index.vue'),
   },
   {
-    path: '/admin/motor-backend/category-trees/:category_tree/categories/create',
-    name: 'admin.motor-backend.categories.create',
+    path: '/admin/motor-admin/category-trees/:category_tree/categories/create',
+    name: 'admin.motor-admin.categories.create',
     meta: {
-      title: 'motor-backend.categories.categories',
+      title: 'motor-admin.categories.categories',
       breadcrumbs: [
         {
-          route: 'admin.motor-backend.categories',
-          name: 'motor-backend.categories.categories',
+          route: 'admin.motor-admin.categories',
+          name: 'motor-admin.categories.categories',
         },
         {
-          name: 'motor-backend.categories.new',
+          name: 'motor-admin.categories.create',
         },
       ],
     },
@@ -34,17 +34,17 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/admin/categories/edit.vue'),
   },
   {
-    path: '/admin/motor-backend/category-trees/:category_tree/categories/edit/:id',
-    name: 'admin.motor-backend.categories.edit',
+    path: '/admin/motor-admin/category-trees/:category_tree/categories/edit/:id',
+    name: 'admin.motor-admin.categories.edit',
     meta: {
-      title: 'motor-backend.categories.categories',
+      title: 'motor-admin.categories.categories',
       breadcrumbs: [
         {
-          route: 'admin.motor-backend.categories',
-          name: 'motor-backend.categories.categories',
+          route: 'admin.motor-admin.categories',
+          name: 'motor-admin.categories.categories',
         },
         {
-          name: 'motor-backend.categories.edit',
+          name: 'motor-admin.categories.edit',
         },
       ],
     },

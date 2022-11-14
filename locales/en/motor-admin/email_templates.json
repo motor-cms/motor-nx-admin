@@ -1,7 +1,7 @@
 {
   "email_templates": "Email templates",
   "email_template": "Email template",
-  "new": "Create email template",
+  "create": "Create email template",
   "edit": "Edit email template",
   "save": "Save email template",
   "created": "Email template created",

@@ -1,7 +1,7 @@
 {
   "clients": "Clients",
   "client": "Client",
-  "new": "Create client",
+  "create": "Create client",
   "edit": "Edit client",
   "save": "Save client",
   "created": "Client created",

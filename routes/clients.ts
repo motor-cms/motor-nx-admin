@@ -6,27 +6,27 @@ const routes: Array<RouteRecordRaw> = [
    * Clients
    */
   {
-    path: '/admin/motor-backend/clients',
-    name: 'admin.motor-backend.clients',
+    path: '/admin/motor-admin/clients',
+    name: 'admin.motor-admin.clients',
     meta: {
       layout: 'AdminLayout', // we add new meta layout here to use it later
-      title: 'motor-backend.clients.clients',
+      title: 'motor-admin.clients.clients',
     },
     beforeEnter: checkAuth,
     component: () => import('../views/admin/clients/index.vue'),
   },
   {
-    path: '/admin/motor-backend/clients/create',
-    name: 'admin.motor-backend.clients.create',
+    path: '/admin/motor-admin/clients/create',
+    name: 'admin.motor-admin.clients.create',
     meta: {
-      title: 'motor-backend.clients.clients',
+      title: 'motor-admin.clients.clients',
       breadcrumbs: [
         {
-          route: 'admin.motor-backend.clients',
-          name: 'motor-backend.clients.clients',
+          route: 'admin.motor-admin.clients',
+          name: 'motor-admin.clients.clients',
         },
         {
-          name: 'motor-backend.clients.new',
+          name: 'motor-admin.clients.create',
         },
       ],
     },
@@ -34,17 +34,17 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/admin/clients/edit.vue'),
   },
   {
-    path: '/admin/motor-backend/clients/edit/:id',
-    name: 'admin.motor-backend.clients.edit',
+    path: '/admin/motor-admin/clients/edit/:id',
+    name: 'admin.motor-admin.clients.edit',
     meta: {
-      title: 'motor-backend.clients.clients',
+      title: 'motor-admin.clients.clients',
       breadcrumbs: [
         {
-          route: 'admin.motor-backend.clients',
-          name: 'motor-backend.clients.clients',
+          route: 'admin.motor-admin.clients',
+          name: 'motor-admin.clients.clients',
         },
         {
-          name: 'motor-backend.clients.edit',
+          name: 'motor-admin.clients.edit',
         },
       ],
     },

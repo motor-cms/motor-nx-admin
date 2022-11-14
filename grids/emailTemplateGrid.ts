@@ -7,7 +7,7 @@ export default function emailTemplateGrid() {
 
   const { rows, meta, refreshRecords, handleCellEvent } = baseGrid(
     repository,
-    'motor-backend.email_templates'
+    'motor-admin.email_templates'
   )
 
   return { rows, meta, refreshRecords, handleCellEvent }

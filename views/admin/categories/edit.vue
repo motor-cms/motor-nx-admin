@@ -1,6 +1,6 @@
 <template>
   <AdminCommonForm
-    back-route="admin.motor-backend.categories"
+    back-route="admin.motor-admin.categories"
     :title="title"
     @submit="onSubmit"
   >
@@ -13,7 +13,7 @@
           type="text"
           name="name"
           id="name"
-          :label="$t('motor-backend.categories.name')"
+          :label="$t('motor-admin.categories.name')"
           :value="model.name"
           @change="changed"
         ></FormsInputField>
@@ -33,10 +33,10 @@ import NestedTree from 'motor-core/components/admin/common/NestedTree.vue'
 
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import form from 'motor-backend/forms/categoryForm'
+import form from 'motor-admin/forms/categoryForm'
 
 export default defineComponent({
-  name: 'admin-motor-backend-categories-create',
+  name: 'admin-motor-admin-categories-create',
   components: {
     AdminCommonForm,
     FormsInputField,
@@ -54,12 +54,12 @@ export default defineComponent({
     const { model, getData, onSubmit, treeData, replaceCategoryName } = form()
 
     // Set default action title
-    const title = ref(t('motor-backend.categories.new'))
+    const title = ref(t('motor-admin.categories.create'))
 
     // Get id from route and load record
     const id: string = router.currentRoute.value.params.id as string
     if (id) {
-      title.value = t('motor-backend.categories.edit')
+      title.value = t('motor-admin.categories.edit')
       getData(id)
     }
 

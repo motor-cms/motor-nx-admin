@@ -1,8 +1,8 @@
 <template>
   <AdminCommonGrid
-    :name="$t('motor-backend.email_templates.email_templates')"
-    create-route="admin.motor-backend.email-templates.create"
-    :create-label="$t('motor-backend.email_templates.new')"
+    :name="$t('motor-admin.email_templates.email_templates')"
+    create-route="admin.motor-admin.email-templates.create"
+    :create-label="$t('motor-admin.email_templates.create')"
     :rows="rows"
     :columns="columns"
     :meta="meta"
@@ -20,10 +20,10 @@ import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import EditButton from 'motor-core/components/admin/cell/EditButton.vue'
 import DeleteButton from 'motor-core/components/admin/cell/DeleteButton.vue'
-import grid from 'motor-backend/grids/emailTemplateGrid'
+import grid from 'motor-admin/grids/emailTemplateGrid'
 
 export default defineComponent({
-  name: 'admin-motor-backend.email-templates',
+  name: 'admin-motor-admin.email-templates',
   components: {
     AdminCommonGrid,
   },
@@ -34,15 +34,15 @@ export default defineComponent({
     // Define columns for grid
     const columns = ref([
       {
-        name: t('motor-backend.clients.client'),
+        name: t('motor-admin.clients.client'),
         prop: 'client.name',
       },
       {
-        name: t('motor-backend.languages.language'),
+        name: t('motor-admin.languages.language'),
         prop: 'language.english_name',
       },
       {
-        name: t('motor-backend.global.name'),
+        name: t('motor-admin.global.name'),
         prop: 'name',
       },
       {
@@ -54,7 +54,7 @@ export default defineComponent({
           {
             name: 'EditButton',
             options: {
-              route: 'admin.motor-backend.email-templates.edit',
+              route: 'admin.motor-admin.email-templates.edit',
               name: t('global.edit'),
             },
           },

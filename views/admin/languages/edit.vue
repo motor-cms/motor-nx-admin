@@ -1,6 +1,6 @@
 <template>
   <AdminCommonForm
-    back-route="admin.motor-backend.languages"
+    back-route="admin.motor-admin.languages"
     :title="title"
     @submit="onSubmit"
   >
@@ -13,7 +13,7 @@
           type="text"
           name="native_name"
           id="native_name"
-          :label="$t('motor-backend.languages.native_name')"
+          :label="$t('motor-admin.languages.native_name')"
           :value="model.native_name"
         ></FormsInputField>
       </div>
@@ -22,7 +22,7 @@
           type="text"
           name="english_name"
           id="english_name"
-          :label="$t('motor-backend.languages.english_name')"
+          :label="$t('motor-admin.languages.english_name')"
           :value="model.english_name"
         ></FormsInputField>
       </div>
@@ -31,7 +31,7 @@
           type="text"
           name="iso_639_1"
           id="iso_639_1"
-          :label="$t('motor-backend.languages.iso_639_1')"
+          :label="$t('motor-admin.languages.iso_639_1')"
           :value="model.iso_639_1"
           :options="languageOptions"
         ></FormsSelect2Field>
@@ -46,10 +46,10 @@ import FormsInputField from 'motor-core/components/forms/InputField.vue'
 import FormsSelect2Field from 'motor-core/components/forms/Select2Field.vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import form from 'motor-backend/forms/languageForm'
+import form from 'motor-admin/forms/languageForm'
 
 export default defineComponent({
-  name: 'admin-motor-backend-languages-create',
+  name: 'admin-motor-admin-languages-create',
   components: {
     AdminCommonForm,
     FormsInputField,
@@ -66,12 +66,12 @@ export default defineComponent({
     const { model, getData, onSubmit, languageOptions } = form()
 
     // Set default action title
-    const title = ref(t('motor-backend.languages.new'))
+    const title = ref(t('motor-admin.languages.create'))
 
     // Get id from route and load record
     const id: string = router.currentRoute.value.params.id as string
     if (id) {
-      title.value = t('motor-backend.languages.edit')
+      title.value = t('motor-admin.languages.edit')
       getData(id)
     }
 

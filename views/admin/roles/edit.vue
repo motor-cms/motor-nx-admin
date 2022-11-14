@@ -1,6 +1,6 @@
 <template>
   <AdminCommonForm
-    back-route="admin.motor-backend.roles"
+    back-route="admin.motor-admin.roles"
     :title="title"
     @submit="onSubmit"
   >
@@ -13,7 +13,7 @@
           type="text"
           name="name"
           id="name"
-          :label="$t('motor-backend.roles.name')"
+          :label="$t('motor-admin.roles.name')"
           :value="model.name"
         ></FormsInputField>
       </div>
@@ -22,7 +22,7 @@
           type="text"
           name="guard_name"
           id="guard_name"
-          :label="$t('motor-backend.roles.guard_name')"
+          :label="$t('motor-admin.roles.guard_name')"
           :value="model.guard_name"
         ></FormsInputField>
       </div>
@@ -32,7 +32,7 @@
         <FormsCheckboxArrayField
           name="permissions"
           id="permissions"
-          :label="$t('motor-backend.permissions.permissions')"
+          :label="$t('motor-admin.permissions.permissions')"
           :value="model.permissions"
           :options="permissions"
         ></FormsCheckboxArrayField>
@@ -47,10 +47,10 @@ import FormsInputField from 'motor-core/components/forms/InputField.vue'
 import FormsCheckboxArrayField from 'motor-core/components/forms/CheckboxArrayField.vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import form from 'motor-backend/forms/roleForm'
+import form from 'motor-admin/forms/roleForm'
 
 export default defineComponent({
-  name: 'admin-motor-backend-roles-create',
+  name: 'admin-motor-admin-roles-create',
   components: {
     AdminCommonForm,
     FormsInputField,
@@ -67,12 +67,12 @@ export default defineComponent({
     const { model, getData, onSubmit, permissions } = form()
 
     // Set default action title
-    const title = ref(t('motor-backend.roles.new'))
+    const title = ref(t('motor-admin.roles.create'))
 
     // Get id from route and load record
     const id: string = router.currentRoute.value.params.id as string
     if (id) {
-      title.value = t('motor-backend.roles.edit')
+      title.value = t('motor-admin.roles.edit')
       getData(id)
     }
 

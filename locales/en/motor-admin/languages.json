@@ -1,7 +1,7 @@
 {
   "languages": "Languages",
   "language": "Language",
-  "new": "Create language",
+  "create": "Create language",
   "edit": "Edit language",
   "save": "Save language",
   "created": "Language created",

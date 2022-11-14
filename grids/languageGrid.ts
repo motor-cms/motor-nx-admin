@@ -7,7 +7,7 @@ export default function languageGrid() {
 
   const { rows, meta, refreshRecords, handleCellEvent } = baseGrid(
     repository,
-    'motor-backend.languages'
+    'motor-admin.languages'
   )
 
   return { rows, meta, refreshRecords, handleCellEvent }

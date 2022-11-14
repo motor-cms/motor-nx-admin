@@ -7,7 +7,7 @@ export default function configVariableGrid() {
 
   const { rows, meta, refreshRecords, handleCellEvent } = baseGrid(
     repository,
-    'motor-backend.config_variables'
+    'motor-admin.config_variables'
   )
 
   return { rows, meta, refreshRecords, handleCellEvent }

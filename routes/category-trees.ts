@@ -6,27 +6,27 @@ const routes: Array<RouteRecordRaw> = [
    * Category trees
    */
   {
-    path: '/admin/motor-backend/category-trees',
-    name: 'admin.motor-backend.category-trees',
+    path: '/admin/motor-admin/category-trees',
+    name: 'admin.motor-admin.category-trees',
     meta: {
       layout: 'AdminLayout', // we add new meta layout here to use it later
-      title: 'motor-backend.category_trees.category_trees',
+      title: 'motor-admin.category_trees.category_trees',
     },
     beforeEnter: checkAuth,
     component: () => import('../views/admin/category-trees/index.vue'),
   },
   {
-    path: '/admin/motor-backend/category-trees/create',
-    name: 'admin.motor-backend.category-trees.create',
+    path: '/admin/motor-admin/category-trees/create',
+    name: 'admin.motor-admin.category-trees.create',
     meta: {
-      title: 'motor-backend.category_trees.category_trees',
+      title: 'motor-admin.category_trees.category_trees',
       breadcrumbs: [
         {
-          route: 'admin.motor-backend.category-trees',
-          name: 'motor-backend.category_trees.category_trees',
+          route: 'admin.motor-admin.category-trees',
+          name: 'motor-admin.category_trees.category_trees',
         },
         {
-          name: 'motor-backend.category_trees.new',
+          name: 'motor-admin.category_trees.create',
         },
       ],
     },
@@ -34,17 +34,17 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/admin/category-trees/edit.vue'),
   },
   {
-    path: '/admin/motor-backend/category-trees/edit/:id',
-    name: 'admin.motor-backend.category-trees.edit',
+    path: '/admin/motor-admin/category-trees/edit/:id',
+    name: 'admin.motor-admin.category-trees.edit',
     meta: {
-      title: 'motor-backend.category_trees.category_trees',
+      title: 'motor-admin.category_trees.category_trees',
       breadcrumbs: [
         {
-          route: 'admin.motor-backend.category-trees',
-          name: 'motor-backend.category_trees.category_trees',
+          route: 'admin.motor-admin.category-trees',
+          name: 'motor-admin.category_trees.category_trees',
         },
         {
-          name: 'motor-backend.category_trees.edit',
+          name: 'motor-admin.category_trees.edit',
         },
       ],
     },

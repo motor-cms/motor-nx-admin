@@ -43,7 +43,7 @@ export default function categoryGrid() {
         // Delete the record
         await repository.delete(params.componentParams.record)
 
-        toast.success(t('motor-backend.category_trees.deleted'))
+        toast.success(t('motor-admin.category_trees.deleted'))
 
         await refreshRecords(params.filterValues)
         break

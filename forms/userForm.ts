@@ -56,7 +56,7 @@ export default function userForm() {
   const clientRepo: Repository = clientRepository(axios)
   clientRepo.index({}).then((response) => {
     const options = []
-    options.push({ name: t('motor-backend.clients.all'), value: null })
+    options.push({ name: t('motor-admin.clients.all'), value: null })
     for (let i = 0; i < response.data.data.length; i++) {
       options.push({
         name: response.data.data[i].name,
@@ -77,8 +77,8 @@ export default function userForm() {
   }
 
   const { getData, onSubmit } = baseForm(
-    'motor-backend.users',
-    'admin.motor-backend.users',
+    'motor-admin.users',
+    'admin.motor-admin.users',
     modelRepository(axios),
     model,
     schema,

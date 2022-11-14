@@ -1,7 +1,7 @@
 {
   "users": "Users",
   "user": "User",
-  "new": "Create user",
+  "create": "Create user",
   "edit": "Edit user",
   "save": "Save user",
   "created": "User created",

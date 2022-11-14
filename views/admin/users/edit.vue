@@ -1,6 +1,6 @@
 <template>
   <AdminCommonForm
-    back-route="admin.motor-backend.users"
+    back-route="admin.motor-admin.users"
     :title="title"
     @submit="onSubmit"
   >
@@ -12,7 +12,7 @@
         <FormsSelectField
           name="client_id"
           id="client_id"
-          :label="$t('motor-backend.clients.client')"
+          :label="$t('motor-admin.clients.client')"
           :options="clients"
           :value="model.client_id"
         ></FormsSelectField>
@@ -20,19 +20,19 @@
           type="text"
           name="name"
           id="name"
-          :label="$t('motor-backend.users.name')"
+          :label="$t('motor-admin.users.name')"
           :value="model.name"
         ></FormsInputField>
         <FormsFileField
           name="avatar"
           id="avatar"
-          :label="$t('motor-backend.users.avatar')"
+          :label="$t('motor-admin.users.avatar')"
           :value="model.avatar"
         ></FormsFileField>
         <FormsCheckboxArrayField
           name="roles"
           id="roles"
-          :label="$t('motor-backend.roles.roles')"
+          :label="$t('motor-admin.roles.roles')"
           :value="model.roles"
           :options="roles"
         ></FormsCheckboxArrayField>
@@ -49,10 +49,10 @@ import FormsFileField from 'motor-core/components/forms/FileField.vue'
 import FormsCheckboxArrayField from 'motor-core/components/forms/CheckboxArrayField.vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import form from 'motor-backend/forms/userForm'
+import form from 'motor-admin/forms/userForm'
 
 export default defineComponent({
-  name: 'admin-motor-backend-users-create',
+  name: 'admin-motor-admin-users-create',
   components: {
     AdminCommonForm,
     FormsInputField,
@@ -71,12 +71,12 @@ export default defineComponent({
     const { model, getData, onSubmit, clients, roles } = form()
 
     // Set default action title
-    const title = ref(t('motor-backend.users.new'))
+    const title = ref(t('motor-admin.users.create'))
 
     // Get id from route and load record
     const id: string = router.currentRoute.value.params.id as string
     if (id) {
-      title.value = t('motor-backend.users.edit')
+      title.value = t('motor-admin.users.edit')
       getData(id)
     }
 

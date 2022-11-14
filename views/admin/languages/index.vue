@@ -1,8 +1,8 @@
 <template>
   <AdminCommonGrid
-    :name="$t('motor-backend.languages.languages')"
-    create-route="admin.motor-backend.languages.create"
-    :create-label="$t('motor-backend.languages.new')"
+    :name="$t('motor-admin.languages.languages')"
+    create-route="admin.motor-admin.languages.create"
+    :create-label="$t('motor-admin.languages.create')"
     :rows="rows"
     :columns="columns"
     :meta="meta"
@@ -20,10 +20,10 @@ import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import EditButton from 'motor-core/components/admin/cell/EditButton.vue'
 import DeleteButton from 'motor-core/components/admin/cell/DeleteButton.vue'
-import grid from 'motor-backend/grids/languageGrid'
+import grid from 'motor-admin/grids/languageGrid'
 
 export default defineComponent({
-  name: 'admin-motor-backend.languages',
+  name: 'admin-motor-admin.languages',
   components: {
     AdminCommonGrid,
   },
@@ -34,15 +34,15 @@ export default defineComponent({
     // Define columns for grid
     const columns = ref([
       {
-        name: t('motor-backend.languages.native_name'),
+        name: t('motor-admin.languages.native_name'),
         prop: 'native_name',
       },
       {
-        name: t('motor-backend.languages.english_name'),
+        name: t('motor-admin.languages.english_name'),
         prop: 'english_name',
       },
       {
-        name: t('motor-backend.languages.iso_639_1'),
+        name: t('motor-admin.languages.iso_639_1'),
         prop: 'iso_639_1',
       },
       {
@@ -54,7 +54,7 @@ export default defineComponent({
           {
             name: 'EditButton',
             options: {
-              route: 'admin.motor-backend.languages.edit',
+              route: 'admin.motor-admin.languages.edit',
               name: t('global.edit'),
             },
           },

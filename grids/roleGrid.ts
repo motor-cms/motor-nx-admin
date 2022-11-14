@@ -7,7 +7,7 @@ export default function roleGrid() {
 
   const { rows, meta, refreshRecords, handleCellEvent } = baseGrid(
     repository,
-    'motor-backend.roles'
+    'motor-admin.roles'
   )
 
   return { rows, meta, refreshRecords, handleCellEvent }

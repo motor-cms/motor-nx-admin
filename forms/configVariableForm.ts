@@ -29,8 +29,8 @@ export default function configVariableForm() {
   const sanitizer = () => {}
 
   const { getData, onSubmit } = baseForm(
-    'motor-backend.config_variables',
-    'admin.motor-backend.config-variables',
+    'motor-admin.config_variables',
+    'admin.motor-admin.config-variables',
     modelRepository(axios),
     model,
     schema,

@@ -42,8 +42,8 @@ export default function roleForm() {
   })
 
   const { getData, onSubmit } = baseForm(
-    'motor-backend.roles',
-    'admin.motor-backend.roles',
+    'motor-admin.roles',
+    'admin.motor-admin.roles',
     modelRepository(axios),
     model,
     schema,

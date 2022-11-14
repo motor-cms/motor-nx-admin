@@ -6,27 +6,27 @@ const routes: Array<RouteRecordRaw> = [
    * Config variables
    */
   {
-    path: '/admin/motor-backend/config-variables',
-    name: 'admin.motor-backend.config-variables',
+    path: '/admin/motor-admin/config-variables',
+    name: 'admin.motor-admin.config-variables',
     meta: {
       layout: 'AdminLayout', // we add new meta layout here to use it later
-      title: 'motor-backend.config_variables.config_variables',
+      title: 'motor-admin.config_variables.config_variables',
     },
     beforeEnter: checkAuth,
     component: () => import('../views/admin/config-variables/index.vue'),
   },
   {
-    path: '/admin/motor-backend/config-variables/create',
-    name: 'admin.motor-backend.config-variables.create',
+    path: '/admin/motor-admin/config-variables/create',
+    name: 'admin.motor-admin.config-variables.create',
     meta: {
-      title: 'motor-backend.config_variables.config_variables',
+      title: 'motor-admin.config_variables.config_variables',
       breadcrumbs: [
         {
-          route: 'admin.motor-backend.config-variables',
-          name: 'motor-backend.config_variables.config_variables',
+          route: 'admin.motor-admin.config-variables',
+          name: 'motor-admin.config_variables.config_variables',
         },
         {
-          name: 'motor-backend.config_variables.new',
+          name: 'motor-admin.config_variables.create',
         },
       ],
     },
@@ -34,17 +34,17 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/admin/config-variables/edit.vue'),
   },
   {
-    path: '/admin/motor-backend/config-variables/edit/:id',
-    name: 'admin.motor-backend.config-variables.edit',
+    path: '/admin/motor-admin/config-variables/edit/:id',
+    name: 'admin.motor-admin.config-variables.edit',
     meta: {
-      title: 'motor-backend.config_variables.config_variables',
+      title: 'motor-admin.config_variables.config_variables',
       breadcrumbs: [
         {
-          route: 'admin.motor-backend.config-variables',
-          name: 'motor-backend.config_variables.config_variables',
+          route: 'admin.motor-admin.config-variables',
+          name: 'motor-admin.config_variables.config_variables',
         },
         {
-          name: 'motor-backend.config_variables.edit',
+          name: 'motor-admin.config_variables.edit',
         },
       ],
     },

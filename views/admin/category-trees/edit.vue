@@ -1,6 +1,6 @@
 <template>
   <AdminCommonForm
-    back-route="admin.motor-backend.category-trees"
+    back-route="admin.motor-admin.category-trees"
     :title="title"
     @submit="onSubmit"
   >
@@ -13,14 +13,14 @@
           type="text"
           name="name"
           id="name"
-          :label="$t('motor-backend.categories.name')"
+          :label="$t('motor-admin.categories.name')"
           :value="model.name"
         ></FormsInputField>
         <FormsInputField
           type="text"
           name="scope"
           id="scope"
-          :label="$t('motor-backend.category_trees.scope')"
+          :label="$t('motor-admin.category_trees.scope')"
           :value="model.scope"
         ></FormsInputField>
       </div>
@@ -33,10 +33,10 @@ import AdminCommonForm from 'motor-core/components/admin/common/Form.vue'
 import FormsInputField from 'motor-core/components/forms/InputField.vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import form from 'motor-backend/forms/categoryTreeForm'
+import form from 'motor-admin/forms/categoryTreeForm'
 
 export default defineComponent({
-  name: 'admin-motor-backend-category-trees-create',
+  name: 'admin-motor-admin-category-trees-create',
   components: {
     AdminCommonForm,
     FormsInputField,
@@ -52,12 +52,12 @@ export default defineComponent({
     const { model, getData, onSubmit } = form()
 
     // Set default action title
-    const title = ref(t('motor-backend.category_trees.new'))
+    const title = ref(t('motor-admin.category_trees.create'))
 
     // Get id from route and load record
     const id: string = router.currentRoute.value.params.id as string
     if (id) {
-      title.value = t('motor-backend.category_trees.edit')
+      title.value = t('motor-admin.category_trees.edit')
       getData(id)
     }
 

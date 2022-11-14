@@ -6,27 +6,27 @@ const routes: Array<RouteRecordRaw> = [
    * Users
    */
   {
-    path: '/admin/motor-backend/users',
-    name: 'admin.motor-backend.users',
+    path: '/admin/motor-admin/users',
+    name: 'admin.motor-admin.users',
     meta: {
       layout: 'AdminLayout', // we add new meta layout here to use it later
-      title: 'motor-backend.users.users',
+      title: 'motor-admin.users.users',
     },
     beforeEnter: checkAuth,
     component: () => import('../views/admin/users/index.vue'),
   },
   {
-    path: '/admin/motor-backend/users/create',
-    name: 'admin.motor-backend.users.create',
+    path: '/admin/motor-admin/users/create',
+    name: 'admin.motor-admin.users.create',
     meta: {
-      title: 'motor-backend.users.users',
+      title: 'motor-admin.users.users',
       breadcrumbs: [
         {
-          route: 'admin.motor-backend.users',
-          name: 'motor-backend.users.users',
+          route: 'admin.motor-admin.users',
+          name: 'motor-admin.users.users',
         },
         {
-          name: 'motor-backend.users.new',
+          name: 'motor-admin.users.create',
         },
       ],
     },
@@ -34,17 +34,17 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/admin/users/edit.vue'),
   },
   {
-    path: '/admin/motor-backend/users/edit/:id',
-    name: 'admin.motor-backend.users.edit',
+    path: '/admin/motor-admin/users/edit/:id',
+    name: 'admin.motor-admin.users.edit',
     meta: {
-      title: 'motor-backend.users.users',
+      title: 'motor-admin.users.users',
       breadcrumbs: [
         {
-          route: 'admin.motor-backend.users',
-          name: 'motor-backend.users.users',
+          route: 'admin.motor-admin.users',
+          name: 'motor-admin.users.users',
         },
         {
-          name: 'motor-backend.users.edit',
+          name: 'motor-admin.users.edit',
         },
       ],
     },

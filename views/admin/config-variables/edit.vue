@@ -1,6 +1,6 @@
 <template>
   <AdminCommonForm
-    back-route="admin.motor-backend.config-variables"
+    back-route="admin.motor-admin.config-variables"
     :title="title"
     @submit="onSubmit"
   >
@@ -13,7 +13,7 @@
           type="text"
           name="package"
           id="package"
-          :label="$t('motor-backend.config_variables.package')"
+          :label="$t('motor-admin.config_variables.package')"
           :value="model.package"
         ></FormsInputField>
       </div>
@@ -22,7 +22,7 @@
           type="text"
           name="group"
           id="group"
-          :label="$t('motor-backend.config_variables.group')"
+          :label="$t('motor-admin.config_variables.group')"
           :value="model.group"
         ></FormsInputField>
       </div>
@@ -31,7 +31,7 @@
           type="text"
           name="name"
           id="name"
-          :label="$t('motor-backend.config_variables.name')"
+          :label="$t('motor-admin.config_variables.name')"
           :value="model.name"
         ></FormsInputField>
       </div>
@@ -40,7 +40,7 @@
           type="text"
           name="value"
           id="value"
-          :label="$t('motor-backend.config_variables.value')"
+          :label="$t('motor-admin.config_variables.value')"
           :value="model.value"
         ></FormsTextAreaField>
       </div>
@@ -54,10 +54,10 @@ import FormsInputField from 'motor-core/components/forms/InputField.vue'
 import FormsTextAreaField from 'motor-core/components/forms/TextAreaField.vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import form from 'motor-backend/forms/configVariableForm'
+import form from 'motor-admin/forms/configVariableForm'
 
 export default defineComponent({
-  name: 'admin-motor-backend-config-variables-create',
+  name: 'admin-motor-admin-config-variables-create',
   components: {
     AdminCommonForm,
     FormsInputField,
@@ -74,12 +74,12 @@ export default defineComponent({
     const { model, getData, onSubmit } = form()
 
     // Set default action title
-    const title = ref(t('motor-backend.config_variables.new'))
+    const title = ref(t('motor-admin.config_variables.create'))
 
     // Get id from route and load record
     const id: string = router.currentRoute.value.params.id as string
     if (id) {
-      title.value = t('motor-backend.config_variables.edit')
+      title.value = t('motor-admin.config_variables.edit')
       getData(id)
     }
 

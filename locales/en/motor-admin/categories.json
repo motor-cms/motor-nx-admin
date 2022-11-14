@@ -1,7 +1,7 @@
 {
   "categories": "Categories",
   "category": "Category",
-  "new": "Create category",
+  "create": "Create category",
   "edit": "Edit category",
   "save": "Save category",
   "created": "Category created",

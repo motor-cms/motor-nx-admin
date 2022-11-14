@@ -7,7 +7,7 @@ export default function userGrid() {
 
   const { rows, meta, refreshRecords, handleCellEvent } = baseGrid(
     repository,
-    'motor-backend.users'
+    'motor-admin.users'
   )
 
   return { rows, meta, refreshRecords, handleCellEvent }

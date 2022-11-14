@@ -86,8 +86,8 @@ export default function categoryForm() {
     .category_tree as string
 
   const { onSubmit, getData } = baseForm(
-    'motor-backend.categories',
-    'admin.motor-backend.categories',
+    'motor-admin.categories',
+    'admin.motor-admin.categories',
     modelRepository(axios),
     model,
     schema,

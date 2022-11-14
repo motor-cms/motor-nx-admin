@@ -6,27 +6,27 @@ const routes: Array<RouteRecordRaw> = [
    * Languages
    */
   {
-    path: '/admin/motor-backend/languages',
-    name: 'admin.motor-backend.languages',
+    path: '/admin/motor-admin/languages',
+    name: 'admin.motor-admin.languages',
     meta: {
       layout: 'AdminLayout', // we add new meta layout here to use it later
-      title: 'motor-backend.languages.languages',
+      title: 'motor-admin.languages.languages',
     },
     beforeEnter: checkAuth,
     component: () => import('../views/admin/languages/index.vue'),
   },
   {
-    path: '/admin/motor-backend/languages/create',
-    name: 'admin.motor-backend.languages.create',
+    path: '/admin/motor-admin/languages/create',
+    name: 'admin.motor-admin.languages.create',
     meta: {
-      title: 'motor-backend.languages.languages',
+      title: 'motor-admin.languages.languages',
       breadcrumbs: [
         {
-          route: 'admin.motor-backend.languages',
-          name: 'motor-backend.languages.languages',
+          route: 'admin.motor-admin.languages',
+          name: 'motor-admin.languages.languages',
         },
         {
-          name: 'motor-backend.languages.new',
+          name: 'motor-admin.languages.create',
         },
       ],
     },
@@ -34,17 +34,17 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/admin/languages/edit.vue'),
   },
   {
-    path: '/admin/motor-backend/languages/edit/:id',
-    name: 'admin.motor-backend.languages.edit',
+    path: '/admin/motor-admin/languages/edit/:id',
+    name: 'admin.motor-admin.languages.edit',
     meta: {
-      title: 'motor-backend.languages.languages',
+      title: 'motor-admin.languages.languages',
       breadcrumbs: [
         {
-          route: 'admin.motor-backend.languages',
-          name: 'motor-backend.languages.languages',
+          route: 'admin.motor-admin.languages',
+          name: 'motor-admin.languages.languages',
         },
         {
-          name: 'motor-backend.languages.edit',
+          name: 'motor-admin.languages.edit',
         },
       ],
     },

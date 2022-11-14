@@ -1,8 +1,8 @@
 <template>
   <AdminCommonGrid
-    :name="$t('motor-backend.users.users')"
-    create-route="admin.motor-backend.users.create"
-    :create-label="$t('motor-backend.users.new')"
+    :name="$t('motor-admin.users.users')"
+    create-route="admin.motor-admin.users.create"
+    :create-label="$t('motor-admin.users.create')"
     :rows="rows"
     :columns="columns"
     :meta="meta"
@@ -20,10 +20,10 @@ import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import EditButton from 'motor-core/components/admin/cell/EditButton.vue'
 import DeleteButton from 'motor-core/components/admin/cell/DeleteButton.vue'
-import grid from 'motor-backend/grids/userGrid'
+import grid from 'motor-admin/grids/userGrid'
 
 export default defineComponent({
-  name: 'admin-motor-backend.users',
+  name: 'admin-motor-admin.users',
   components: {
     AdminCommonGrid,
   },
@@ -34,15 +34,15 @@ export default defineComponent({
     // Define columns for grid
     const columns = ref([
       {
-        name: t('motor-backend.users.name'),
+        name: t('motor-admin.users.name'),
         prop: 'name',
       },
       {
-        name: t('motor-backend.clients.client'),
+        name: t('motor-admin.clients.client'),
         prop: 'client.name',
       },
       {
-        name: t('motor-backend.roles.roles'),
+        name: t('motor-admin.roles.roles'),
         prop: 'roles',
         renderer: { type: 'list', property: 'name' },
       },
@@ -55,7 +55,7 @@ export default defineComponent({
           {
             name: 'EditButton',
             options: {
-              route: 'admin.motor-backend.users.edit',
+              route: 'admin.motor-admin.users.edit',
               name: t('global.edit'),
             },
           },

@@ -1,6 +1,6 @@
 <template>
   <AdminCommonForm
-    back-route="admin.motor-backend.email-templates"
+    back-route="admin.motor-admin.email-templates"
     :title="title"
     @submit="onSubmit"
   >
@@ -12,7 +12,7 @@
         <FormsSelectField
           name="client_id"
           id="client_id"
-          :label="$t('motor-backend.clients.client')"
+          :label="$t('motor-admin.clients.client')"
           :options="clients"
           :value="model.client_id"
         ></FormsSelectField>
@@ -21,7 +21,7 @@
         <FormsSelectField
           name="language_id"
           id="language_id"
-          :label="$t('motor-backend.languages.language')"
+          :label="$t('motor-admin.languages.language')"
           :options="languages"
           :value="model.language_id"
         ></FormsSelectField>
@@ -31,7 +31,7 @@
           type="text"
           name="name"
           id="name"
-          :label="$t('motor-backend.global.name')"
+          :label="$t('motor-admin.global.name')"
           :value="model.name"
         ></FormsInputField>
       </div>
@@ -40,7 +40,7 @@
           type="text"
           name="default_sender_name"
           id="default_sender_name"
-          :label="$t('motor-backend.email_templates.default_sender_name')"
+          :label="$t('motor-admin.email_templates.default_sender_name')"
           :value="model.default_sender_name"
         ></FormsInputField>
       </div>
@@ -49,7 +49,7 @@
           type="text"
           name="default_sender_email"
           id="default_sender_email"
-          :label="$t('motor-backend.email_templates.default_sender_email')"
+          :label="$t('motor-admin.email_templates.default_sender_email')"
           :value="model.default_sender_email"
         ></FormsInputField>
       </div>
@@ -58,7 +58,7 @@
           type="text"
           name="default_recipient_name"
           id="default_recipient_name"
-          :label="$t('motor-backend.email_templates.default_recipient_name')"
+          :label="$t('motor-admin.email_templates.default_recipient_name')"
           :value="model.default_recipient_name"
         ></FormsInputField>
       </div>
@@ -67,7 +67,7 @@
           type="text"
           name="default_recipient_email"
           id="default_recipient_email"
-          :label="$t('motor-backend.email_templates.default_recipient_email')"
+          :label="$t('motor-admin.email_templates.default_recipient_email')"
           :value="model.default_recipient_email"
         ></FormsInputField>
       </div>
@@ -76,7 +76,7 @@
           type="text"
           name="default_cc_email"
           id="default_cc_email"
-          :label="$t('motor-backend.email_templates.default_cc_email')"
+          :label="$t('motor-admin.email_templates.default_cc_email')"
           :value="model.default_cc_email"
         ></FormsInputField>
       </div>
@@ -85,7 +85,7 @@
           type="text"
           name="default_bcc_email"
           id="default_bcc_email"
-          :label="$t('motor-backend.email_templates.default_bcc_email')"
+          :label="$t('motor-admin.email_templates.default_bcc_email')"
           :value="model.default_bcc_email"
         ></FormsInputField>
       </div>
@@ -93,7 +93,7 @@
         <FormsTextAreaField
           name="body_text"
           id="body_text"
-          :label="$t('motor-backend.email_templates.body_text')"
+          :label="$t('motor-admin.email_templates.body_text')"
           :value="model.body_text"
         ></FormsTextAreaField>
       </div>
@@ -101,7 +101,7 @@
         <FormsTextAreaField
           name="body_html"
           id="body_html"
-          :label="$t('motor-backend.email_templates.body_html')"
+          :label="$t('motor-admin.email_templates.body_html')"
           :value="model.body_html"
         ></FormsTextAreaField>
       </div>
@@ -116,10 +116,10 @@ import FormsSelectField from 'motor-core/components/forms/SelectField.vue'
 import FormsTextAreaField from 'motor-core/components/forms/TextAreaField.vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import form from 'motor-backend/forms/emailTemplateForm'
+import form from 'motor-admin/forms/emailTemplateForm'
 
 export default defineComponent({
-  name: 'admin-motor-backend-email-templates-create',
+  name: 'admin-motor-admin-email-templates-create',
   components: {
     AdminCommonForm,
     FormsInputField,
@@ -137,12 +137,12 @@ export default defineComponent({
     const { model, getData, onSubmit, languages, clients } = form()
 
     // Set default action title
-    const title = ref(t('motor-backend.email_templates.new'))
+    const title = ref(t('motor-admin.email_templates.create'))
 
     // Get id from route and load record
     const id: string = router.currentRoute.value.params.id as string
     if (id) {
-      title.value = t('motor-backend.email_templates.edit')
+      title.value = t('motor-admin.email_templates.edit')
       getData(id)
     }
 

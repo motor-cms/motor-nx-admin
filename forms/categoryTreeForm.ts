@@ -26,8 +26,8 @@ export default function categoryTreeForm() {
   const sanitizer = () => {}
 
   const { getData, onSubmit } = baseForm(
-    'motor-backend.category_trees',
-    'admin.motor-backend.category-trees',
+    'motor-admin.category_trees',
+    'admin.motor-admin.category-trees',
     modelRepository(axios),
     model,
     schema,

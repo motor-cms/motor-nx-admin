@@ -68,8 +68,8 @@ export default function emailTemplateForm() {
   })
 
   const { getData, onSubmit } = baseForm(
-    'motor-backend.email_templates',
-    'admin.motor-backend.email-templates',
+    'motor-admin.email_templates',
+    'admin.motor-admin.email-templates',
     modelRepository(axios),
     model,
     schema,

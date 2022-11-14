@@ -7,7 +7,7 @@ export default function categoryTreeGrid() {
 
   const { rows, meta, refreshRecords, handleCellEvent } = baseGrid(
     repository,
-    'motor-backend.category_trees'
+    'motor-admin.category_trees'
   )
 
   return { rows, meta, refreshRecords, handleCellEvent }

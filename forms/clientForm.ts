@@ -43,8 +43,8 @@ export default function clientForm() {
   const sanitizer = () => {}
 
   const { getData, onSubmit } = baseForm(
-    'motor-backend.clients',
-    'admin.motor-backend.clients',
+    'motor-admin.clients',
+    'admin.motor-admin.clients',
     modelRepository(axios),
     model,
     schema,

@@ -1,8 +1,8 @@
 <template>
   <AdminCommonGrid
-    :name="$t('motor-backend.category_trees.category_trees')"
-    create-route="admin.motor-backend.category-trees.create"
-    :create-label="$t('motor-backend.category_trees.new')"
+    :name="$t('motor-admin.category_trees.category_trees')"
+    create-route="admin.motor-admin.category-trees.create"
+    :create-label="$t('motor-admin.category_trees.create')"
     :rows="rows"
     :columns="columns"
     :meta="meta"
@@ -20,11 +20,11 @@ import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import EditButton from 'motor-core/components/admin/cell/EditButton.vue'
 import DeleteButton from 'motor-core/components/admin/cell/DeleteButton.vue'
-import grid from 'motor-backend/grids/categoryTreeGrid'
+import grid from 'motor-admin/grids/categoryTreeGrid'
 import Button from 'motor-core/components/admin/cell/Button.vue'
 
 export default defineComponent({
-  name: 'admin-motor-backend.category-trees',
+  name: 'admin-motor-admin.category-trees',
   components: {
     AdminCommonGrid,
   },
@@ -35,7 +35,7 @@ export default defineComponent({
     // Define columns for grid
     const columns = ref([
       {
-        name: t('motor-backend.categories.name'),
+        name: t('motor-admin.categories.name'),
         prop: 'name',
       },
       {
@@ -47,14 +47,14 @@ export default defineComponent({
           {
             name: 'Button',
             options: {
-              route: 'admin.motor-backend.categories',
-              name: t('motor-backend.category_trees.show_nodes'),
+              route: 'admin.motor-admin.categories',
+              name: t('motor-admin.category_trees.show_nodes'),
             },
           },
           {
             name: 'EditButton',
             options: {
-              route: 'admin.motor-backend.category-trees.edit',
+              route: 'admin.motor-admin.category-trees.edit',
               name: t('global.edit'),
             },
           },
