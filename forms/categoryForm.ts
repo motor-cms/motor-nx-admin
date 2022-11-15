@@ -2,21 +2,11 @@ import axios from 'axios'
 import baseForm from 'motor-core/forms/baseForm'
 import * as yup from 'yup'
 import { ref, watch } from 'vue'
-import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/category'
 import categoryTreeRepository from '../api/categoryTree'
-import { useStore } from 'vuex'
-import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
 
 export default function categoryForm() {
-  // Load i18n module
-  const { t, tm } = useI18n()
-
-  const store = useStore()
-
-  const toast = useToast()
-
   const router = useRouter()
 
   // Validation schema
