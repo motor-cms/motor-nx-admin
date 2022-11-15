@@ -1,13 +1,13 @@
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import baseForm from 'motor-core/forms/baseForm'
 import * as yup from 'yup'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/user'
-import { useStore } from 'vuex'
 import Repository from 'motor-core/types/repository'
 import clientRepository from '../api/client'
 import roleRepository from '../api/role'
+import { useUserStore } from 'motor-core/store/user'
 
 export default function userForm() {
   // Load i18n module
@@ -66,14 +66,13 @@ export default function userForm() {
     clients.value = options
   })
 
-  const store = useStore()
+  const userStore = useUserStore()
 
   const afterSubmit = async () => {
     // FIXME: only update user if the currently logged in user was updated
-    await axios.get('/api/me').then((response) => {
-      localStorage.setItem('user', JSON.stringify(response.data.data))
-      store.commit('motor/setUser', response.data.data)
-    })
+    const response: AxiosResponse<any> = await axios.get('/api/me')
+    localStorage.setItem('user', JSON.stringify(response.data.data))
+    userStore.setUser(response.data.data)
   }
 
   const { getData, onSubmit } = baseForm(
