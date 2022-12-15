@@ -49,6 +49,7 @@ export default defineComponent({
             options: {
               route: 'admin.motor-admin.categories',
               name: t('motor-admin.category_trees.show_nodes'),
+              property: 'category_tree'
             },
           },
           {
