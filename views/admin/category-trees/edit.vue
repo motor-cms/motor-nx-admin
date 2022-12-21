@@ -29,11 +29,11 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import AdminCommonForm from 'motor-core/components/admin/common/Form.vue'
-import FormsInputField from 'motor-core/components/forms/InputField.vue'
+import AdminCommonForm from 'motor-nx-core/components/admin/common/Form.vue'
+import FormsInputField from 'motor-nx-core/components/forms/InputField.vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import form from 'motor-admin/forms/categoryTreeForm'
+import form from 'motor-nx-admin/forms/categoryTreeForm'
 
 export default defineComponent({
   name: 'admin-motor-admin-category-trees-create',

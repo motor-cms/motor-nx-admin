@@ -110,13 +110,13 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import AdminCommonForm from 'motor-core/components/admin/common/Form.vue'
-import FormsInputField from 'motor-core/components/forms/InputField.vue'
-import FormsSelectField from 'motor-core/components/forms/SelectField.vue'
-import FormsTextAreaField from 'motor-core/components/forms/TextAreaField.vue'
+import AdminCommonForm from 'motor-nx-core/components/admin/common/Form.vue'
+import FormsInputField from 'motor-nx-core/components/forms/InputField.vue'
+import FormsSelectField from 'motor-nx-core/components/forms/SelectField.vue'
+import FormsTextAreaField from 'motor-nx-core/components/forms/TextAreaField.vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import form from 'motor-admin/forms/emailTemplateForm'
+import form from 'motor-nx-admin/forms/emailTemplateForm'
 
 export default defineComponent({
   name: 'admin-motor-admin-email-templates-create',

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import baseGrid from 'motor-core/grids/baseGrid'
+import baseGrid from 'motor-nx-core/grids/baseGrid'
 import modelRepository from '../api/client'
 
 export default function clientGrid() {

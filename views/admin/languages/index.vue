@@ -15,12 +15,12 @@
 </template>
 
 <script lang="ts">
-import AdminCommonGrid from 'motor-core/components/admin/common/Grid.vue'
+import AdminCommonGrid from 'motor-nx-core/components/admin/common/Grid.vue'
 import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import EditButton from 'motor-core/components/admin/cell/EditButton.vue'
-import DeleteButton from 'motor-core/components/admin/cell/DeleteButton.vue'
-import grid from 'motor-admin/grids/languageGrid'
+import EditButton from 'motor-nx-core/components/admin/cell/EditButton.vue'
+import DeleteButton from 'motor-nx-core/components/admin/cell/DeleteButton.vue'
+import grid from 'motor-nx-admin/grids/languageGrid'
 
 export default defineComponent({
   name: 'admin-motor-admin.languages',

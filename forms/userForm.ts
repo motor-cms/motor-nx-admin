@@ -1,22 +1,25 @@
 import axios, { AxiosResponse } from 'axios'
-import baseForm from 'motor-core/forms/baseForm'
-import * as yup from 'yup'
+import baseForm from 'motor-nx-core/forms/baseForm'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/user'
-import Repository from 'motor-core/types/repository'
+import Repository from 'motor-nx-core/types/repository'
 import clientRepository from '../api/client'
 import roleRepository from '../api/role'
-import { useUserStore } from 'motor-core/store/user'
+import { useUserStore } from 'motor-nx-core/store/user'
+import { toFormValidator } from '@vee-validate/zod';
+import * as zod from 'zod';
 
 export default function userForm() {
   // Load i18n module
   const { t, tm } = useI18n()
 
   // Validation schema
-  const schema = yup.object().shape({
-    name: yup.string().required(),
-  })
+  const schema = toFormValidator(
+      zod.object({
+        name: zod.string().min(3),
+      })
+  )
 
   // Record
   const model = ref({

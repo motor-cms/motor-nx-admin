@@ -127,15 +127,15 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import AdminCommonForm from 'motor-core/components/admin/common/Form.vue'
-import FormsInputField from 'motor-core/components/forms/InputField.vue'
-import FormsSelect2Field from 'motor-core/components/forms/Select2Field.vue'
-import FormsTextAreaField from 'motor-core/components/forms/TextAreaField.vue'
-import FormsCheckboxField from 'motor-core/components/forms/CheckboxField.vue'
-import FormsStaticField from 'motor-core/components/forms/StaticField.vue'
+import AdminCommonForm from 'motor-nx-core/components/admin/common/Form.vue'
+import FormsInputField from 'motor-nx-core/components/forms/InputField.vue'
+import FormsSelect2Field from 'motor-nx-core/components/forms/Select2Field.vue'
+import FormsTextAreaField from 'motor-nx-core/components/forms/TextAreaField.vue'
+import FormsCheckboxField from 'motor-nx-core/components/forms/CheckboxField.vue'
+import FormsStaticField from 'motor-nx-core/components/forms/StaticField.vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import form from 'motor-admin/forms/clientForm'
+import form from 'motor-nx-admin/forms/clientForm'
 
 export default defineComponent({
   name: 'admin-motor-admin-clients-create',

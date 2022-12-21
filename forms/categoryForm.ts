@@ -1,18 +1,21 @@
 import axios from 'axios'
-import baseForm from 'motor-core/forms/baseForm'
-import * as yup from 'yup'
+import baseForm from 'motor-nx-core/forms/baseForm'
 import { ref, watch } from 'vue'
 import modelRepository from '../api/category'
 import categoryTreeRepository from '../api/categoryTree'
 import { useRouter } from 'vue-router'
+import { toFormValidator } from '@vee-validate/zod';
+import * as zod from 'zod';
 
 export default function categoryForm() {
   const router = useRouter()
 
   // Validation schema
-  const schema = yup.object().shape({
-    name: yup.string().required(),
-  })
+  const schema = toFormValidator(
+    zod.object({
+      name: zod.string().min(3),
+    })
+  )
 
   // Record
   const model = ref({

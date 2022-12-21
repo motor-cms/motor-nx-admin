@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from 'vue-router'
-import checkAuth from 'motor-core/router/checkAuth'
+import checkAuth from 'motor-nx-core/router/checkAuth'
 
 const routes: Array<RouteRecordRaw> = [
   /**

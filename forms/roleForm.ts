@@ -1,20 +1,25 @@
 import axios from 'axios'
-import baseForm from 'motor-core/forms/baseForm'
-import * as yup from 'yup'
+import baseForm from 'motor-nx-core/forms/baseForm'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/role'
-import Repository from 'motor-core/types/repository'
+import Repository from 'motor-nx-core/types/repository'
 import permissionRepository from '../api/permission'
+import { toFormValidator } from '@vee-validate/zod';
+import * as zod from 'zod';
 
 export default function roleForm() {
   // Load i18n module
   const { t, tm } = useI18n()
 
   // Validation schema
-  const schema = yup.object().shape({
-    name: yup.string().required(),
-  })
+  const schema = toFormValidator(
+      zod.object({
+        name: zod.string().min(3),
+        english_name: zod.string().min(3),
+        iso_639_1: zod.string().min(2),
+      })
+  )
 
   // Record
   const model = ref({
