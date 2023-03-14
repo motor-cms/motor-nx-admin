@@ -42,13 +42,13 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue'
-import AdminCommonForm from 'motor-nx-core/components/admin/common/Form.vue'
-import FormsSelectField from 'motor-nx-core/components/forms/SelectField.vue'
-import FormsInputField from 'motor-nx-core/components/forms/InputField.vue'
-import FormsFileField from '~/packages/motor-nx-core/components/forms/FileUploadField.vue'
-import FormsCheckboxArrayField from 'motor-nx-core/components/forms/CheckboxArrayField.vue'
+import AdminCommonForm from '@zrm/motor-nx-core/components/admin/common/Form.vue'
+import FormsSelectField from '@zrm/motor-nx-core/components/forms/SelectField.vue'
+import FormsInputField from '@zrm/motor-nx-core/components/forms/InputField.vue'
+import FormsFileField from '@zrm/motor-nx-core/components/forms/FileUploadField.vue'
+import FormsCheckboxArrayField from '@zrm/motor-nx-core/components/forms/CheckboxArrayField.vue'
 import { useI18n } from 'vue-i18n'
-import form from 'motor-nx-admin/forms/userForm'
+import form from '@zrm/motor-nx-admin/forms/userForm'
 
 export default defineComponent({
   name: 'admin-motor-admin-users-create',

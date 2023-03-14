@@ -1,4 +1,4 @@
-import baseGrid from 'motor-nx-core/grids/baseGrid'
+import baseGrid from '@zrm/motor-nx-core/grids/baseGrid'
 import modelRepository from '../api/user'
 
 export default function userGrid() {

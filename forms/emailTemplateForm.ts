@@ -1,11 +1,11 @@
-import baseForm from 'motor-nx-core/forms/baseForm'
+import baseForm from '@zrm/motor-nx-core/forms/baseForm'
 import {onMounted, ref} from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/emailTemplate'
 import { toFormValidator } from '@vee-validate/zod';
 import * as zod from 'zod';
-import {useCoreFormData} from "~/packages/motor-nx-core/composables/form/formData";
-import {useFormData} from "~/packages/motor-nx-admin/composables/formData";
+import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
+import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
 
 export default function emailTemplateForm() {
   // Load i18n module

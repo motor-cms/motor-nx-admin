@@ -17,10 +17,10 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import grid from 'motor-nx-admin/grids/categoryTreeGrid'
-import EditButton from 'motor-nx-core/components/admin/cell/EditButton.vue'
-import DeleteButton from 'motor-nx-core/components/admin/cell/DeleteButton.vue'
-import Button from 'motor-nx-core/components/admin/cell/Button.vue'
+import grid from '@zrm/motor-nx-admin/grids/categoryTreeGrid'
+import EditButton from '@zrm/motor-nx-core/components/admin/cell/EditButton.vue'
+import DeleteButton from '@zrm/motor-nx-core/components/admin/cell/DeleteButton.vue'
+import Button from '@zrm/motor-nx-core/components/admin/cell/Button.vue'
 
 export default defineComponent({
   name: 'admin-motor-admin.category-trees',

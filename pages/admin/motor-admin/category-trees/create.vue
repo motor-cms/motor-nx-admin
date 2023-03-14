@@ -30,7 +30,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import form from 'motor-nx-admin/forms/categoryTreeForm'
+import form from '@zrm/motor-nx-admin/forms/categoryTreeForm'
 
 export default defineComponent({
   name: 'admin-motor-admin-category-trees-create',

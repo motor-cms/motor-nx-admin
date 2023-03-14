@@ -1,12 +1,12 @@
-import baseForm from 'motor-nx-core/forms/baseForm'
+import baseForm from '@zrm/motor-nx-core/forms/baseForm'
 import { ref, watch } from 'vue'
 import modelRepository from '../api/category'
 import categoryTreeRepository from '../api/categoryTree'
 import { useRouter } from 'vue-router'
 import { toFormValidator } from '@vee-validate/zod';
 import * as zod from 'zod';
-import {useCoreFormData} from "~/packages/motor-nx-core/composables/form/formData";
-import {useFormData} from "~/packages/motor-nx-media/composables/formData";
+import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
+import {useFormData} from "@zrm/motor-nx-media/composables/formData";
 
 export default function categoryForm() {
   const router = useRouter()

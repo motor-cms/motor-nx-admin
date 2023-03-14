@@ -1,8 +1,8 @@
 import {ref} from "vue";
-import Repository from "~/packages/motor-nx-core/types/repository";
-import languageRepository from "~/packages/motor-nx-admin/api/language";
-import clientRepository from "~/packages/motor-nx-admin/api/client";
-import roleRepository from "~/packages/motor-nx-admin/api/role";
+import Repository from "@zrm/motor-nx-core/types/repository";
+import languageRepository from "@zrm/motor-nx-admin/api/language";
+import clientRepository from "@zrm/motor-nx-admin/api/client";
+import roleRepository from "@zrm/motor-nx-admin/api/role";
 
 export function useFormData() {
 

@@ -42,13 +42,13 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue'
-import AdminCommonForm from 'motor-nx-core/components/admin/common/Form.vue'
-import FormsInputField from 'motor-nx-core/components/forms/InputField.vue'
-import FormsCheckboxArrayField from 'motor-nx-core/components/forms/CheckboxArrayField.vue'
+import AdminCommonForm from '@zrm/motor-nx-core/components/admin/common/Form.vue'
+import FormsInputField from '@zrm/motor-nx-core/components/forms/InputField.vue'
+import FormsCheckboxArrayField from '@zrm/motor-nx-core/components/forms/CheckboxArrayField.vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import form from 'motor-nx-admin/forms/roleForm'
-import {useAppStore} from "~/packages/motor-nx-core/store/app";
+import form from '@zrm/motor-nx-admin/forms/roleForm'
+import {useAppStore} from "@zrm/motor-nx-core/store/app";
 
 export default defineComponent({
   name: 'admin-motor-admin-roles-create',

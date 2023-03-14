@@ -1,12 +1,12 @@
-import baseForm from 'motor-nx-core/forms/baseForm'
+import baseForm from '@zrm/motor-nx-core/forms/baseForm'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/role'
-import Repository from 'motor-nx-core/types/repository'
+import Repository from '@zrm/motor-nx-core/types/repository'
 import permissionRepository from '../api/permission'
 import { toFormValidator } from '@vee-validate/zod';
 import * as zod from 'zod';
-import {useAppStore} from "~/packages/motor-nx-core/store/app";
+import {useAppStore} from "@zrm/motor-nx-core/store/app";
 
 export default function roleForm() {
   // Load i18n module

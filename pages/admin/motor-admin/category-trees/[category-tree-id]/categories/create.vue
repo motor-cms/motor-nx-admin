@@ -28,7 +28,7 @@
 import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import form from 'motor-nx-admin/forms/categoryForm'
+import form from '@zrm/motor-nx-admin/forms/categoryForm'
 
 export default defineComponent({
   name: 'admin-motor-admin-categories-create',

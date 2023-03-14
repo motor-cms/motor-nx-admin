@@ -1,17 +1,17 @@
-import baseForm from 'motor-nx-core/forms/baseForm'
+import baseForm from '@zrm/motor-nx-core/forms/baseForm'
 import {ref, watch, onMounted} from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/user'
-import Repository from 'motor-nx-core/types/repository'
+import Repository from '@zrm/motor-nx-core/types/repository'
 import clientRepository from '../api/client'
 import roleRepository from '../api/role'
-import { useUserStore } from 'motor-nx-core/store/user'
+import { useUserStore } from '@zrm/motor-nx-core/store/user'
 import { toFormValidator } from '@vee-validate/zod';
 import * as zod from 'zod';
-import useApi from "motor-nx-core/composables/http/api";
-import {useAppStore} from "motor-nx-core/store/app";
-import {useCoreFormData} from "~/packages/motor-nx-core/composables/form/formData";
-import {useFormData} from "~/packages/motor-nx-admin/composables/formData";
+import useApi from "@zrm/motor-nx-core/composables/http/api";
+import {useAppStore} from "@zrm/motor-nx-core/store/app";
+import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
+import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
 
 export default function userForm() {
   // Load i18n module
