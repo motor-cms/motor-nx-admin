@@ -1,30 +1,24 @@
-import { AxiosInstance } from 'axios'
+import useApi from "motor-nx-core/composables/http/api";
 
-export default ($axios: AxiosInstance) => ({
-  index(params: any) {
-    const queryString = Object.keys(params)
-      .reduce(function (a: any[], k: string) {
-        a.push(k + '=' + params[k].toString())
-        return a
-      }, [])
-      .join('&')
-
-    return $axios.get('/api/permissions?' + queryString)
+export default () => ({
+  api: useApi(),
+  index(params: any, cached: boolean = true) {
+    return this.api.get('permissions', cached, params)
   },
 
   create(payload: object) {
-    return $axios.post(`/api/permissions`, payload)
+    return this.api.post(`permissions`, payload)
   },
 
-  get(id: number): Promise<object> {
-    return $axios.get(`/api/permissions/${id}`)
+   get(id: number): Promise<object> {
+    return this.api.get(`permissions/${id}`)
   },
 
   update(payload: object, id: number) {
-    return $axios.put(`/api/permissions/${id}`, payload)
+    return this.api.put(`permissions/${id}`, payload)
   },
 
   delete(id: number) {
-    return $axios.delete(`/api/permissions/${id}`)
+    return this.api.destroy(`permissions/${id}`)
   },
 })

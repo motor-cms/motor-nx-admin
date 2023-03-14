@@ -1,10 +1,11 @@
-import axios from 'axios'
+
 import baseForm from 'motor-nx-core/forms/baseForm'
-import { ref } from 'vue'
+import {onMounted, ref} from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/configVariable'
 import { toFormValidator } from '@vee-validate/zod';
 import * as zod from 'zod';
+import {useCoreFormData} from "~/packages/motor-nx-core/composables/form/formData";
 
 export default function configVariableForm() {
   // Load i18n module
@@ -34,11 +35,19 @@ export default function configVariableForm() {
   const { getData, onSubmit } = baseForm(
     'motor-admin.config_variables',
     'admin.motor-admin.config-variables',
-    modelRepository(axios),
+    modelRepository(),
     model,
     schema,
     sanitizer
   )
+
+  const { getRelevantFormData } = useCoreFormData();
+
+  onMounted(async () => {
+    await getRelevantFormData(getData,[
+    ],[
+    ]);
+  })
 
   return {
     getData,

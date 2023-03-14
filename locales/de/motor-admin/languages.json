@@ -1,0 +1,13 @@
+{
+  "languages": "Sprachen",
+  "language": "Sprache",
+  "create": "Sprache anlegen",
+  "edit": "Sprache bearbeiten",
+  "save": "Sprache speichern",
+  "created": "Sprache angelegt",
+  "updated": "Sprache aktualisiert",
+  "deleted": "Sprache gelöscht",
+  "iso_639_1": "ISO 639-1",
+  "native_name": "Nativer Name",
+  "english_name": "Englischsprachiger Name"
+}

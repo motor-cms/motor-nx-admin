@@ -1,10 +1,12 @@
-import axios from 'axios'
+
 import baseForm from 'motor-nx-core/forms/baseForm'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/categoryTree'
 import { toFormValidator } from '@vee-validate/zod';
 import * as zod from 'zod';
+import {useCoreFormData} from "~/packages/motor-nx-core/composables/form/formData";
+import {useFormData} from "~/packages/motor-nx-media/composables/formData";
 
 export default function categoryTreeForm() {
   // Load i18n module
@@ -31,11 +33,20 @@ export default function categoryTreeForm() {
   const { getData, onSubmit } = baseForm(
     'motor-admin.category_trees',
     'admin.motor-admin.category-trees',
-    modelRepository(axios),
+    modelRepository(),
     model,
     schema,
     sanitizer
   )
+
+  const { getRelevantFormData } = useCoreFormData()
+  const { getCategoryData } = useFormData();
+
+  onMounted(async () => {
+    await getRelevantFormData(getData,[
+    ],[
+    ]);
+  })
 
   return {
     getData,

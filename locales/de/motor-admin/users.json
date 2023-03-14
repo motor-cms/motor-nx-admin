@@ -1,0 +1,20 @@
+{
+  "users": "Benutzer",
+  "user": "Benutzer",
+  "create": "Benutzer erstellen",
+  "edit": "Benutzer bearbeiten",
+  "save": "Benutzer speichern",
+  "created": "Benutzer erstellt",
+  "updated": "Benutzer aktualisiert",
+  "deleted": "Benutzer gelöscht",
+  "name": "Name",
+  "email": "E-Mail",
+  "avatar": "Avatar",
+  "password": "Passwort",
+  "password_confirm": "Passwort bestätigen",
+  "profile": {
+    "edit": "Profil bearbeiten",
+    "save": "Profil speichern",
+    "updated": "Profil aktualisiert"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "clients": "Kunden",
+  "client": "Kunde",
+  "create": "Kunde erstellen",
+  "edit": "Kunde bearbeiten",
+  "save": "Kunde speichern",
+  "created": "Kunde erstellt",
+  "updated": "Kunde aktualisiert",
+  "deleted": "Kunde gelöscht",
+  "name": "Name",
+  "slug": "Bezeichnung",
+  "is_active": "Aktiv",
+  "description": "Beschreibung",
+  "contact": "Kontakt",
+  "address_info": "Informationen zur Adresse",
+  "contact_info": "Kontaktinformationen",
+  "additional_info": "Zusätzliche Informationen",
+  "all": "Alle Kunden"
+}

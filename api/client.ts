@@ -1,30 +1,25 @@
-import { AxiosInstance } from 'axios'
+import useApi from "motor-nx-core/composables/http/api";
 
-export default ($axios: AxiosInstance) => ({
-    index(params: any) {
-        const queryString = Object.keys(params)
-            .reduce(function (a: any[], k: string) {
-                a.push(k + '=' + params[k].toString())
-                return a
-            }, [])
-            .join('&')
-
-        return $axios.get('/api/clients?' + queryString)
+export default () => ({
+    api: useApi(),
+    async index(params: any, cached: boolean = true) {
+        return this.api.get('clients', cached, params)
     },
 
-    create(payload: object) {
-        return $axios.post(`/api/clients`, payload)
+    async create(payload: object) {
+         console.log("posting", payload);
+         return this.api.post(`clients`, payload)
     },
 
-    get(id: number): Promise<object> {
-        return $axios.get(`/api/clients/${id}`)
+    async  get(id: number): Promise<object> {
+       return this.api.get(`clients/${id}`)
     },
 
-    update(payload: object, id: number) {
-        return $axios.put(`/api/clients/${id}`, payload)
+    async update(payload: object, id: number) {
+      return this.api.put(`clients/${id}`, payload)
     },
 
-    delete(id: number) {
-        return $axios.delete(`/api/clients/${id}`)
+    async delete(id: number) {
+       return this.api.destroy(`clients/${id}`)
     },
 })

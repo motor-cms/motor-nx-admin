@@ -1,30 +1,24 @@
-import { AxiosInstance } from 'axios'
+import useApi from "motor-nx-core/composables/http/api";
 
-export default ($axios: AxiosInstance) => ({
-  index(params: any) {
-    const queryString = Object.keys(params)
-      .reduce(function (a: any[], k: string) {
-        a.push(k + '=' + params[k].toString())
-        return a
-      }, [])
-      .join('&')
-
-    return $axios.get('/api/category_trees?' + queryString)
+export default () => ({
+  api: useApi(),
+  index(params: any, cached: boolean) {
+    return this.api.get('category_trees', cached, params)
   },
 
   create(payload: object) {
-    return $axios.post(`/api/category_trees`, payload)
+    return this.api.post(`category_trees`, payload)
   },
 
-  get(id: number | string): Promise<object> {
-    return $axios.get(`/api/category_trees/${id}`)
+  get(id: number | string, cached:boolean): Promise<object> {
+    return this.api.get(`category_trees/${id}`, cached)
   },
 
   update(payload: object, id: number) {
-    return $axios.put(`/api/category_trees/${id}`, payload)
+    return this.api.put(`category_trees/${id}`, payload)
   },
 
   delete(id: number) {
-    return $axios.delete(`/api/category_trees/${id}`)
+    return this.api.destroy(`category_trees/${id}`)
   },
 })

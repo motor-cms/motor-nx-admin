@@ -1,0 +1,14 @@
+{
+  "categories": "Kategorien",
+  "category": "Kategorie",
+  "create": "Kategorie erstellen",
+  "edit": "Kategorie bearbeiten",
+  "save": "Kategorie speichern",
+  "created": "Kategorie erstellt",
+  "updated": "Kategorie aktualisiert",
+  "deleted": "Kategorie gelöscht",
+  "name": "Name",
+  "new_category": "Neue Kategorie",
+  "all_categories": "Alle Kategorien",
+  "items_for": "Kategorien für: :name"
+}

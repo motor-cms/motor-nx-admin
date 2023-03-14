@@ -1,4 +1,3 @@
-import axios from 'axios'
 import baseForm from 'motor-nx-core/forms/baseForm'
 import { ref, watch } from 'vue'
 import modelRepository from '../api/category'
@@ -6,9 +5,17 @@ import categoryTreeRepository from '../api/categoryTree'
 import { useRouter } from 'vue-router'
 import { toFormValidator } from '@vee-validate/zod';
 import * as zod from 'zod';
+import {useCoreFormData} from "~/packages/motor-nx-core/composables/form/formData";
+import {useFormData} from "~/packages/motor-nx-media/composables/formData";
 
 export default function categoryForm() {
   const router = useRouter()
+  const id: string = router.currentRoute.value.params.categoryid as string
+  const categoryTreeId = router.currentRoute.value.params.categorytreeid;
+  const routeCategoryTree = 'admin.motor-admin.category-trees.' + categoryTreeId  + '.categories';
+  const categoryTree: string = router.currentRoute.value.params.categorytreeid as string
+  const { getRelevantFormData } = useCoreFormData()
+  const { treeData, getCategoryData } = useFormData();
 
   // Validation schema
   const schema = toFormValidator(
@@ -72,20 +79,16 @@ export default function categoryForm() {
       0,
       true
     )
-    console.log('found the thing', foundYou)
   }
 
-  const categoryTree: string = router.currentRoute.value.params
-    .category_tree as string
-
   const { onSubmit, getData } = baseForm(
-    'motor-admin.categories',
-    'admin.motor-admin.categories',
-    modelRepository(axios),
+    'motor-admin.category_trees',
+    routeCategoryTree,
+    modelRepository(),
     model,
     schema,
     sanitizer,
-    null,
+    () => {},
     { category_tree: categoryTree }
   )
 
@@ -96,22 +99,12 @@ export default function categoryForm() {
     }
   }
 
-  const treeData = ref({})
-
-  const id: string = router.currentRoute.value.params.id as string
-
-  categoryTreeRepository(axios)
-    .get(categoryTree)
-    .then((response: any) => {
-      if (id === undefined) {
-        response.data.data.children.push({
-          id: 0,
-          name: 'New category',
-          children: [],
-        })
-      }
-      treeData.value = response.data.data
-    })
+  onMounted(async () => {
+    await getRelevantFormData(getData,[
+    ],[
+      getCategoryData
+    ]);
+  })
 
   return {
     getData,

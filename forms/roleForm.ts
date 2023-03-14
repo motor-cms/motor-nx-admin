@@ -1,4 +1,3 @@
-import axios from 'axios'
 import baseForm from 'motor-nx-core/forms/baseForm'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -7,17 +6,19 @@ import Repository from 'motor-nx-core/types/repository'
 import permissionRepository from '../api/permission'
 import { toFormValidator } from '@vee-validate/zod';
 import * as zod from 'zod';
+import {useAppStore} from "~/packages/motor-nx-core/store/app";
 
 export default function roleForm() {
   // Load i18n module
   const { t, tm } = useI18n()
 
   // Validation schema
+  // TODO: Refactor validation
   const schema = toFormValidator(
       zod.object({
         name: zod.string().min(3),
-        english_name: zod.string().min(3),
-        iso_639_1: zod.string().min(2),
+        // english_name: zod.string().min(3),
+        // iso_639_1: zod.string().min(2),
       })
   )
 
@@ -32,28 +33,39 @@ export default function roleForm() {
   // Sanitize dates
   const sanitizer = () => {}
 
-  // Get schedules from api
-  const permissions = ref([])
-  const permissionRepo: Repository = permissionRepository(axios)
-  permissionRepo.index({ per_page: 500 }).then((response) => {
-    const options = []
-    for (let i = 0; i < response.data.data.length; i++) {
-      options.push({
-        name: response.data.data[i].name,
-        value: response.data.data[i].id,
-      })
-    }
-    permissions.value = options
-  })
-
   const { getData, onSubmit } = baseForm(
     'motor-admin.roles',
     'admin.motor-admin.roles',
-    modelRepository(axios),
+    modelRepository(),
     model,
     schema,
     sanitizer
   )
+
+  const permissions = ref<Array<Record<string, any>>>([])
+  const appStore = useAppStore();
+  onMounted(async () => {
+    try {
+      appStore.isLoading(true, true);
+      // Get schedules from api
+      const permissionRepo: Repository = permissionRepository()
+      const {data: response} = await permissionRepo.index({ per_page: 500 });
+      console.log("response", response);
+      const options = []
+      for (let i = 0; i < response.value.data.length; i++) {
+        options.push({
+          name: response.value.data[i].name,
+          value: response.value.data[i].id,
+        })
+      }
+      console.log("OPTIONS", options);
+      permissions.value = options
+    } catch (e) {
+      console.log("Error fetching permissions")
+    } finally {
+      appStore.isLoading(false,false);
+    }
+  })
 
   return {
     getData,

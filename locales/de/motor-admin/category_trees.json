@@ -1,0 +1,12 @@
+{
+  "category_trees": "Kategorie Bäume",
+  "category_tree": "Kategoriebaum",
+  "create": "Kategoriebaum erstellen",
+  "edit": "Kategoriebaum bearbeiten",
+  "save": "Kategoriebaum speichern",
+  "created": "Kategoriebaum erstellt",
+  "updated": "Kategoriebaum aktualisiert",
+  "deleted": "Kategoriebaum gelöscht",
+  "scope": "Bereich",
+  "show_nodes": "Show categories"
+}

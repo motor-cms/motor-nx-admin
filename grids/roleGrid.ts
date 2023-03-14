@@ -1,9 +1,9 @@
-import axios from 'axios'
+
 import baseGrid from 'motor-nx-core/grids/baseGrid'
 import modelRepository from '../api/role'
 
 export default function roleGrid() {
-  const repository = modelRepository(axios)
+  const repository = modelRepository()
 
   const { rows, meta, refreshRecords, handleCellEvent } = baseGrid(
     repository,

@@ -1,0 +1,63 @@
+<template>
+  <AdminCommonForm
+    :back-route=backRoute
+    :title="title"
+    @submit="onSubmit"
+  >
+    <h6 class="text-uppercase text-body text-xs font-weight-bolder">
+      Basic information
+    </h6>
+    <div class="row">
+      <div class="col-md-8">
+        <FormsInputField
+          type="text"
+          name="name"
+          id="name"
+          :label="$t('motor-admin.categories.name')"
+          :value="model.name"
+          @change="changed"
+        ></FormsInputField>
+      </div>
+      <div class="col-md-4">
+        <NestedTree :tree="treeData.children" :record="model.id" />
+      </div>
+    </div>
+  </AdminCommonForm>
+</template>
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
+import form from 'motor-nx-admin/forms/categoryForm'
+
+export default defineComponent({
+  name: 'admin-motor-admin-categories-create',
+  setup() {
+    // Load i18n module
+    const { t } = useI18n()
+    // Load router
+    const route = useRouter()
+    // Load form
+    const { model, onSubmit, treeData, replaceCategoryName } = form()
+    // Set default action title
+    const title = ref(t('motor-admin.categories.edit'))
+
+    const categoryTreeId = route.currentRoute.value.params.categorytreeid;
+
+    const backRoute: string = "admin.motor-admin.category-trees." + categoryTreeId + ".categories" as string;
+
+    const changed = (value: any) => {
+      replaceCategoryName(value)
+    }
+
+    return {
+      model,
+      title,
+      onSubmit,
+      treeData,
+      changed,
+      backRoute
+    }
+  },
+})
+</script>
