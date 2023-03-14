@@ -1,5 +1,5 @@
 {
-  "name": "motor-nx-admin",
+  "name": "@zrm/motor-nx-admin",
   "type": "module",
   "version": "1.0.0",
   "main": "./nuxt.config.ts",
