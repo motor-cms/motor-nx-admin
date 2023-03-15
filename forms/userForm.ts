@@ -11,7 +11,7 @@ import * as zod from 'zod';
 import useApi from "@zrm/motor-nx-core/composables/http/api";
 import {useAppStore} from "@zrm/motor-nx-core/store/app";
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
-import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
+import {useAdminFormData} from "@zrm/motor-nx-admin/composables/formData";
 
 export default function userForm() {
   // Load i18n module
@@ -63,7 +63,7 @@ export default function userForm() {
   )
 
   const { getRelevantFormData } = useCoreFormData();
-  const { clients, roles, loadRoles, loadClients } = useFormData()
+  const { clients, roles, loadRoles, loadClients } = useAdminFormData()
 
   onMounted(async () => {
     await getRelevantFormData(getData,[

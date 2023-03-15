@@ -4,7 +4,7 @@ import languageRepository from "@zrm/motor-nx-admin/api/language";
 import clientRepository from "@zrm/motor-nx-admin/api/client";
 import roleRepository from "@zrm/motor-nx-admin/api/role";
 
-export function useFormData() {
+export function useAdminFormData() {
 
   const languages = ref([])
   const clients = ref([])

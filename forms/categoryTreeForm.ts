@@ -6,7 +6,7 @@ import modelRepository from '../api/categoryTree'
 import { toFormValidator } from '@vee-validate/zod';
 import * as zod from 'zod';
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
-import {useFormData} from "@zrm/motor-nx-media/composables/formData";
+import {useMediaFormData} from "@zrm/motor-nx-media/composables/formData";
 
 export default function categoryTreeForm() {
   // Load i18n module
@@ -40,7 +40,7 @@ export default function categoryTreeForm() {
   )
 
   const { getRelevantFormData } = useCoreFormData()
-  const { getCategoryData } = useFormData();
+  const { getCategoryData } = useMediaFormData();
 
   onMounted(async () => {
     await getRelevantFormData(getData,[

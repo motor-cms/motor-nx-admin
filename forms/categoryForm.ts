@@ -6,7 +6,7 @@ import { useRouter } from 'vue-router'
 import { toFormValidator } from '@vee-validate/zod';
 import * as zod from 'zod';
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
-import {useFormData} from "@zrm/motor-nx-media/composables/formData";
+import {useMediaFormData} from "@zrm/motor-nx-media/composables/formData";
 
 export default function categoryForm() {
   const router = useRouter()
@@ -15,7 +15,7 @@ export default function categoryForm() {
   const routeCategoryTree = 'admin.motor-admin.category-trees.' + categoryTreeId  + '.categories';
   const categoryTree: string = router.currentRoute.value.params.categorytreeid as string
   const { getRelevantFormData } = useCoreFormData()
-  const { treeData, getCategoryData } = useFormData();
+  const { treeData, getCategoryData } = useMediaFormData();
 
   // Validation schema
   const schema = toFormValidator(

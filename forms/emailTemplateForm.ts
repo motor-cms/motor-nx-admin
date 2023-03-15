@@ -5,7 +5,7 @@ import modelRepository from '../api/emailTemplate'
 import { toFormValidator } from '@vee-validate/zod';
 import * as zod from 'zod';
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
-import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
+import {useAdminFormData} from "@zrm/motor-nx-admin/composables/formData";
 
 export default function emailTemplateForm() {
   // Load i18n module
@@ -50,7 +50,7 @@ export default function emailTemplateForm() {
   )
 
   const { getRelevantFormData } = useCoreFormData();
-  const { clients, languages, loadLanguages, loadClients } = useFormData()
+  const { clients, languages, loadLanguages, loadClients } = useAdminFormData()
 
   onMounted(async () => {
     await getRelevantFormData(getData,[
