@@ -6,7 +6,7 @@ import { useRouter } from 'vue-router'
 import { toFormValidator } from '@vee-validate/zod';
 import * as zod from 'zod';
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
-import {useMediaFormData} from "@zrm/motor-nx-media/composables/formData";
+import {useMediaFormData} from "@zrm/motor-nx-admin/composables/formData";
 
 export default function categoryForm() {
   const router = useRouter()
