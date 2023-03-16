@@ -1,0 +1,20 @@
+{
+  "email_templates": "Modèles d'email",
+  "email_template": "Modèle d'email",
+  "create": "Créer un modèle d'email",
+  "edit": "Modifier le modèle d'email",
+  "save": "Enregistrer le modèle d'email",
+  "created": "Modèle d'email créé",
+  "updated": "Modèle d'email mis à jour",
+  "deleted": "Modèle d'email supprimé",
+  "template_info": "Informations sur le modèle",
+  "subject": "Objet",
+  "default_sender_name": "Nom de l'expéditeur par défaut",
+  "default_sender_email": "Adresse email de l'expéditeur par défaut",
+  "default_recipient_name": "Nom du destinataire par défaut",
+  "default_recipient_email": "Adresse email du destinataire par défaut",
+  "default_cc_email": "Emails en cc par défaut (séparés par ;)",
+  "default_bcc_email": "Emails en bcc par défaut (séparés par ;)",
+  "body_text": "Corps du message (texte)",
+  "body_html": "Corps du message (html)"
+}

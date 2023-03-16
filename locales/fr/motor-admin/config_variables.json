@@ -1,0 +1,14 @@
+{
+  "config_variables": "Variables de configuration",
+  "config_variable": "Variable de configuration",
+  "create": "Créer une variable de configuration",
+  "edit": "Éditer la variable de configuration",
+  "save": "Sauvegarder la variable de configuration",
+  "created": "Variable de configuration créée",
+  "updated": "Variable de configuration mise à jour",
+  "deleted": "Variable de configuration supprimée",
+  "package": "Paquet",
+  "group": "Groupe",
+  "name": "Nom",
+  "value": "Valeur"
+}
