@@ -4,9 +4,8 @@ import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/role'
 import Repository from '@zrm/motor-nx-core/types/repository'
 import permissionRepository from '../api/permission'
-import { toFormValidator } from '@vee-validate/zod';
-import * as zod from 'zod';
 import {useAppStore} from "@zrm/motor-nx-core/store/app";
+import {object, string} from "yup";
 
 export default function roleForm() {
   // Load i18n module
@@ -14,13 +13,9 @@ export default function roleForm() {
 
   // Validation schema
   // TODO: Refactor validation
-  const schema = toFormValidator(
-      zod.object({
-        name: zod.string().min(3),
-        // english_name: zod.string().min(3),
-        // iso_639_1: zod.string().min(2),
-      })
-  )
+  const schema = object({
+    name: string().min(3),
+  })
 
   // Record
   const model = ref({

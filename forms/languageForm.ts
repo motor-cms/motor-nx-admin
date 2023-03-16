@@ -3,23 +3,20 @@ import {onMounted, ref} from 'vue'
 import {useI18n} from 'vue-i18n'
 import modelRepository from '../api/language'
 import {languages} from 'countries-list'
-import {toFormValidator} from '@vee-validate/zod';
-import * as zod from 'zod';
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
 import {useAdminFormData} from "@zrm/motor-nx-admin/composables/formData";
+import {object, string} from "yup";
 
 export default function languageForm() {
   // Load i18n module
   const {t, tm} = useI18n()
 
   // Validation schema
-  const schema = toFormValidator(
-    zod.object({
-      native_name: zod.string().min(3),
-      english_name: zod.string().min(3),
-      iso_639_1: zod.string().min(2),
-    })
-  )
+  const schema = object({
+    native_name: string().min(3),
+    english_name: string().min(3),
+    iso_639_1: string().min(2),
+  })
 
   // Record
   const model = ref({

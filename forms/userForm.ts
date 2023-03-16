@@ -6,23 +6,20 @@ import Repository from '@zrm/motor-nx-core/types/repository'
 import clientRepository from '../api/client'
 import roleRepository from '../api/role'
 import { useUserStore } from '@zrm/motor-nx-core/store/user'
-import { toFormValidator } from '@vee-validate/zod';
-import * as zod from 'zod';
 import useApi from "@zrm/motor-nx-core/composables/http/api";
 import {useAppStore} from "@zrm/motor-nx-core/store/app";
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
 import {useAdminFormData} from "@zrm/motor-nx-admin/composables/formData";
+import {object, string} from "yup";
 
 export default function userForm() {
   // Load i18n module
   const {t, tm} = useI18n()
 
   // Validation schema
-  const schema = toFormValidator(
-    zod.object({
-      name: zod.string().min(3),
-    })
-  )
+  const schema = object({
+    name: string().min(3),
+  })
 
   // Record
   const model = ref({

@@ -1,12 +1,10 @@
 import baseForm from '@zrm/motor-nx-core/forms/baseForm'
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import modelRepository from '../api/category'
-import categoryTreeRepository from '../api/categoryTree'
 import { useRouter } from 'vue-router'
-import { toFormValidator } from '@vee-validate/zod';
-import * as zod from 'zod';
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
-import {useMediaFormData} from "@zrm/motor-nx-admin/composables/formData";
+import {useMediaFormData} from "@zrm/motor-nx-media/composables/formData";
+import {object, string} from "yup";
 
 export default function categoryForm() {
   const router = useRouter()
@@ -18,11 +16,9 @@ export default function categoryForm() {
   const { treeData, getCategoryData } = useMediaFormData();
 
   // Validation schema
-  const schema = toFormValidator(
-    zod.object({
-      name: zod.string().min(3),
-    })
-  )
+  const schema = object({
+    name: string().min(3),
+  })
 
   // Record
   const model = ref({

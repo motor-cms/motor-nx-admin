@@ -2,23 +2,20 @@ import baseForm from '@zrm/motor-nx-core/forms/baseForm'
 import {onMounted, ref} from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/emailTemplate'
-import { toFormValidator } from '@vee-validate/zod';
-import * as zod from 'zod';
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
 import {useAdminFormData} from "@zrm/motor-nx-admin/composables/formData";
+import {number, object, string} from "yup";
 
 export default function emailTemplateForm() {
   // Load i18n module
   const { t, tm } = useI18n()
 
   // Validation schema
-  const schema = toFormValidator(
-      zod.object({
-        name: zod.string().min(3),
-        client_id: zod.number().min(1),
-        language_id: zod.number().min(1),
-      })
-  )
+  const schema = object({
+    name: string().min(3),
+    client_id: number().min(1),
+    language_id: number().min(1),
+  })
 
   // Record
   const model = ref({

@@ -3,24 +3,6 @@ import Repository from "@zrm/motor-nx-core/types/repository";
 import languageRepository from "@zrm/motor-nx-admin/api/language";
 import clientRepository from "@zrm/motor-nx-admin/api/client";
 import roleRepository from "@zrm/motor-nx-admin/api/role";
-import categoryTreeRepository from "@zrm/motor-nx-admin/api/categoryTree";
-
-export function useMediaFormData() {
-
-  const treeData = ref({})
-
-  const getCategoryData = async (cached: boolean) => {
-    const {data: response} = await categoryTreeRepository()
-      .get(1, cached);
-    treeData.value = response.value.data
-  }
-
-  return {
-    treeData,
-    getCategoryData
-  }
-}
-
 
 export function useAdminFormData() {
 
