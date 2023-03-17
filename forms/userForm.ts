@@ -9,7 +9,7 @@ import { useUserStore } from '@zrm/motor-nx-core/store/user'
 import useApi from "@zrm/motor-nx-core/composables/http/api";
 import {useAppStore} from "@zrm/motor-nx-core/store/app";
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
-import {useAdminFormData} from "@zrm/motor-nx-admin/composables/formData";
+import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
 import {object, string} from "yup";
 
 export default function userForm() {
@@ -60,7 +60,7 @@ export default function userForm() {
   )
 
   const { getRelevantFormData } = useCoreFormData();
-  const { clients, roles, loadRoles, loadClients } = useAdminFormData()
+  const { clients, roles, loadRoles, loadClients } = useFormData()
 
   onMounted(async () => {
     await getRelevantFormData(getData,[

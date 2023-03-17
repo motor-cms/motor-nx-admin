@@ -3,7 +3,7 @@ import {onMounted, ref} from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/emailTemplate'
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
-import {useAdminFormData} from "@zrm/motor-nx-admin/composables/formData";
+import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
 import {number, object, string} from "yup";
 
 export default function emailTemplateForm() {
@@ -47,7 +47,7 @@ export default function emailTemplateForm() {
   )
 
   const { getRelevantFormData } = useCoreFormData();
-  const { clients, languages, loadLanguages, loadClients } = useAdminFormData()
+  const { clients, languages, loadLanguages, loadClients } = useFormData()
 
   onMounted(async () => {
     await getRelevantFormData(getData,[

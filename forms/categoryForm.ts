@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import modelRepository from '../api/category'
 import { useRouter } from 'vue-router'
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
-import {useMediaFormData} from "@zrm/motor-nx-admin/composables/formData";
+import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
 import {object, string} from "yup";
 
 export default function categoryForm() {
@@ -13,7 +13,7 @@ export default function categoryForm() {
   const routeCategoryTree = 'admin.motor-admin.category-trees.' + categoryTreeId  + '.categories';
   const categoryTree: string = router.currentRoute.value.params.categorytreeid as string
   const { getRelevantFormData } = useCoreFormData()
-  const { treeData, getCategoryData } = useMediaFormData();
+  const { treeData, getCategoryData } = useFormData();
 
   // Validation schema
   const schema = object({

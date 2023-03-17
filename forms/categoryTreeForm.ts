@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/categoryTree'
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
-import {useMediaFormData} from "@zrm/motor-nx-admin/composables/formData";
+import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
 import {object, string} from "yup";
 
 export default function categoryTreeForm() {
@@ -37,7 +37,7 @@ export default function categoryTreeForm() {
   )
 
   const { getRelevantFormData } = useCoreFormData()
-  const { getCategoryData } = useMediaFormData();
+  const { getCategoryData } = useFormData();
 
   onMounted(async () => {
     await getRelevantFormData(getData,[

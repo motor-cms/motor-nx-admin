@@ -4,7 +4,7 @@ import {useI18n} from 'vue-i18n'
 import modelRepository from '../api/language'
 import {languages} from 'countries-list'
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
-import {useAdminFormData} from "@zrm/motor-nx-admin/composables/formData";
+import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
 import {object, string} from "yup";
 
 export default function languageForm() {
