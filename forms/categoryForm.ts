@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import modelRepository from '../api/category'
 import { useRouter } from 'vue-router'
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
-import {useMediaFormData} from "@zrm/motor-nx-media/composables/formData";
+import {useMediaFormData} from "@zrm/motor-nx-admin/composables/formData";
 import {object, string} from "yup";
 
 export default function categoryForm() {
