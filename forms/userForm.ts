@@ -10,7 +10,7 @@ import useApi from "@zrm/motor-nx-core/composables/http/api";
 import {useAppStore} from "@zrm/motor-nx-core/store/app";
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
 import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
-import {object, string} from "yup";
+import {array, InferType, number, object, string} from "yup";
 
 export default function userForm() {
   // Load i18n module
@@ -18,17 +18,36 @@ export default function userForm() {
 
   // Validation schema
   const schema = object({
-    name: string().min(3),
+    id: number().min(1).nullable(),
+    client_id: number().min(1).nullable(),
+    name: string().min(3).required(),
+    email: string().email().min(3).required(),
+    password: string().min(3).nullable(),
+    roles: array().nullable(),
+    permissions: array().nullable(),
+    avatar: object().nullable(),
   })
 
+  interface Avatar {
+    dataUrl: string
+    name: string
+  }
+
+  type UserForm = InferType<typeof schema>;
+
   // Record
-  const model = ref({
-    id: 0,
+  const model = ref<UserForm>({
+    id: null,
+    client_id: 0,
     name: '',
-    client: <any>{},
-    client_id: null,
-    roles: <any>[],
-    avatar: <any>{},
+    email: '',
+    password: '',
+    roles: [],
+    permissions: [],
+    avatar: {
+      dataUrl: '',
+      name: '',
+    }
   })
 
   // Sanitize data url

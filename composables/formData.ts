@@ -11,11 +11,25 @@ export function useFormData() {
   const clients = ref([])
   const roles = ref([])
   const treeData = ref({})
+  const categories = ref([])
 
   const getCategoryData = async (cached: boolean) => {
     const {data: response} = await categoryTreeRepository()
       .get(1, cached);
     treeData.value = response.value.data
+  }
+
+  const loadCategories = async (cached: boolean) => {
+    const {data: response} = await categoryTreeRepository()
+      .index({}, cached);
+    const categoryOptions = []
+    for (let i = 0; i < response.value.data.length; i++) {
+      categoryOptions.push({
+        name: response.value.data[i].name,
+        value: response.value.data[i].id,
+      })
+    }
+    categories.value = categoryOptions
   }
 
   const loadRoles = async (cached: boolean) => {
@@ -60,10 +74,12 @@ export function useFormData() {
     loadLanguages,
     loadClients,
     loadRoles,
+    loadCategories,
     languages,
     clients,
     roles,
     treeData,
+    categories,
     getCategoryData
   }
 }

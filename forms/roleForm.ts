@@ -5,7 +5,7 @@ import modelRepository from '../api/role'
 import Repository from '@zrm/motor-nx-core/types/repository'
 import permissionRepository from '../api/permission'
 import {useAppStore} from "@zrm/motor-nx-core/store/app";
-import {object, string} from "yup";
+import {array, InferType, number, object, string} from "yup";
 
 export default function roleForm() {
   // Load i18n module
@@ -14,12 +14,17 @@ export default function roleForm() {
   // Validation schema
   // TODO: Refactor validation
   const schema = object({
-    name: string().min(3),
+    id: number().min(1).nullable(),
+    name: string().min(3).required(),
+    guard_name: string().min(3).required(),
+    permissions: array().nullable(),
   })
 
+  type RoleForm = InferType<typeof schema>;
+
   // Record
-  const model = ref({
-    id: 0,
+  const model = ref<RoleForm>({
+    id: null,
     name: '',
     guard_name: '',
     permissions: <any>[],

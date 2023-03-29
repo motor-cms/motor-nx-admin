@@ -5,7 +5,7 @@ import modelRepository from '../api/language'
 import {languages} from 'countries-list'
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
 import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
-import {object, string} from "yup";
+import {InferType, number, object, string} from "yup";
 
 export default function languageForm() {
   // Load i18n module
@@ -13,14 +13,17 @@ export default function languageForm() {
 
   // Validation schema
   const schema = object({
-    native_name: string().min(3),
-    english_name: string().min(3),
-    iso_639_1: string().min(2),
+    id: number().min(1).nullable(),
+    native_name: string().min(3).required(),
+    english_name: string().min(3).required(),
+    iso_639_1: string().min(2).required(),
   })
 
+  type LanguageForm = InferType<typeof schema>;
+
   // Record
-  const model = ref({
-    id: 0,
+  const model = ref<LanguageForm>({
+    id: null,
     native_name: '',
     english_name: '',
     iso_639_1: '',

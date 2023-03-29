@@ -4,7 +4,7 @@ import modelRepository from '../api/category'
 import { useRouter } from 'vue-router'
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
 import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
-import {object, string} from "yup";
+import {InferType, number, object, string} from "yup";
 
 export default function categoryForm() {
   const router = useRouter()
@@ -17,16 +17,22 @@ export default function categoryForm() {
 
   // Validation schema
   const schema = object({
-    name: string().min(3),
+    id: number().min(1).nullable(),
+    name: string().min(3).required(),
+    previous_sibling_id: number().min(1).nullable(),
+    next_sibling_id: number().min(1).nullable(),
+    parent_id: number().min(1).required(),
   })
 
+  type CategoryForm = InferType<typeof schema>;
+
   // Record
-  const model = ref({
-    id: 0,
+  const model = ref<CategoryForm>({
+    id: null,
     name: '',
     previous_sibling_id: null,
     next_sibling_id: null,
-    parent_id: null,
+    parent_id: 0,
   })
 
   const search = (

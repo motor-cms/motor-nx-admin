@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/emailTemplate'
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
 import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
-import {number, object, string} from "yup";
+import {InferType, number, object, string} from "yup";
 
 export default function emailTemplateForm() {
   // Load i18n module
@@ -12,26 +12,38 @@ export default function emailTemplateForm() {
 
   // Validation schema
   const schema = object({
-    name: string().min(3),
-    client_id: number().min(1),
-    language_id: number().min(1),
+    id: number().min(1).nullable(),
+    client_id: number().min(1).required(),
+    language_id: number().min(1).required(),
+    name: string().min(3).required(),
+    subject: string().min(3).required(),
+    body_text: string().min(3).nullable(),
+    body_html: string().min(3).nullable(),
+    default_sender_name: string().min(3).nullable(),
+    default_sender_email: string().min(3).nullable(),
+    default_recipient_name: string().min(3).nullable(),
+    default_recipient_email: string().min(3).nullable(),
+    default_cc_email: string().min(3).nullable(),
+    default_bcc_email: string().min(3).nullable(),
   })
 
+  type EmailTemplateForm = InferType<typeof schema>;
+
   // Record
-  const model = ref({
-    id: 0,
-    client_id: null,
-    language_id: null,
+  const model = ref<EmailTemplateForm>({
+    id: null,
+    client_id: 0,
+    language_id: 0,
     name: '',
     subject: '',
+    body_text: '',
+    body_html: '',
     default_sender_name: '',
     default_sender_email: '',
     default_recipient_name: '',
     default_recipient_email: '',
     default_cc_email: '',
     default_bcc_email: '',
-    body_text: '',
-    body_html: '',
   })
 
   // Sanitize dates

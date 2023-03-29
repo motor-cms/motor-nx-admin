@@ -5,7 +5,7 @@ import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/client'
 import { countries } from 'countries-list'
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
-import {boolean, object, string} from "yup";
+import {boolean, InferType, number, object, string} from "yup";
 
 export default function clientForm() {
   // Load i18n module
@@ -13,26 +13,38 @@ export default function clientForm() {
 
   // Validation schema
   const schema = object({
-    name: string().min(3),
-    website: string().url(),
+    id: number().min(1).nullable(),
+    name: string().min(3).required(),
+    slug: string().min(3).required(),
+    address: string().min(3).nullable(),
+    zip: string().min(5).nullable(),
+    city: string().min(3).nullable(),
+    country_iso_3116_1: string().min(2).max(2).nullable(),
+    website: string().url().nullable(),
+    description: string().nullable(),
     is_active: boolean().nullable(),
-    contact_email: string().email()
+    contact_name: string().nullable(),
+    contact_email: string().email(),
+    contact_phone: string().nullable(),
   })
 
+  type ClientForm = InferType<typeof schema>;
+
   // Record
-  const model = ref({
-    id: 0,
+  const model = ref<ClientForm>({
+    id: null,
     name: '',
-    is_active: false,
-    description: '',
+    slug: '',
     address: '',
     zip: '',
     city: '',
     country_iso_3116_1: 'DE',
-    contact_name: '',
-    contact_phone: '',
-    contact_email: '',
     website: '',
+    description: '',
+    is_active: false,
+    contact_name: '',
+    contact_email: '',
+    contact_phone: '',
   })
 
   const countryOptions = []

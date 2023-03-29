@@ -5,7 +5,7 @@ import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/categoryTree'
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
 import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
-import {object, string} from "yup";
+import {InferType, number, object, string} from "yup";
 
 export default function categoryTreeForm() {
   // Load i18n module
@@ -13,13 +13,16 @@ export default function categoryTreeForm() {
 
   // Validation schema
   const schema = object({
-    name: string().min(3),
-    scope: string().min(3)
+    id: number().min(1).nullable(),
+    name: string().min(3).required(),
+    scope: string().min(5).required()
   })
 
+  type CategoryTreeForm = InferType<typeof schema>;
+
   // Record
-  const model = ref({
-    id: 0,
+  const model = ref<CategoryTreeForm>({
+    id: null,
     name: '',
     scope: '',
   })
@@ -49,5 +52,6 @@ export default function categoryTreeForm() {
     getData,
     onSubmit,
     model,
+    schema
   }
 }
