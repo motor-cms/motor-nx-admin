@@ -67,6 +67,10 @@ export default defineComponent({
 
     const createRoute = computed(() => 'admin.motor-admin.category-trees.' + route.params.categorytreeid + '.categories.create');
 
+    onMounted(async () => {
+      await refreshRecords();
+    })
+
     // WE START THE OUTSOURCED CODE HERE
     const { rows, meta, refreshRecords, handleCellEvent } = grid()
     return {

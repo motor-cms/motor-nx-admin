@@ -75,6 +75,10 @@ export default defineComponent({
 
     const routeParser = useRouteParser();
 
+    onMounted(async () => {
+      await refreshRecords();
+    })
+
     return {
       columns,
       filters,
