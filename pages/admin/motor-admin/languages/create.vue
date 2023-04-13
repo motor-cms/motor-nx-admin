@@ -27,48 +27,28 @@
         ></FormsInputField>
       </div>
       <div class="col-md-12">
-        <FormsSelect2Field
+        <FormsSelectField
           name="iso_639_1"
           id="iso_639_1"
           :label="$t('motor-admin.languages.iso_639_1')"
           v-model="model.iso_639_1"
           :options="languageOptions"
-        ></FormsSelect2Field>
+        ></FormsSelectField>
       </div>
     </div>
   </AdminCommonForm>
 </template>
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
-import AdminCommonForm from '@zrm/motor-nx-core/components/admin/common/Form.vue'
-import FormsInputField from '@zrm/motor-nx-core/components/forms/InputField.vue'
-import FormsSelect2Field from '@zrm/motor-nx-core/components/forms/Select2Field.vue'
+<script setup lang="ts">
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import form from '@zrm/motor-nx-admin/forms/languageForm'
+// Load i18n module
+const { t } = useI18n()
 
-export default defineComponent({
-  name: 'admin-motor-admin-languages-create',
-  components: {
-    AdminCommonForm,
-    FormsInputField,
-    FormsSelect2Field,
-  },
-  setup() {
-    // Load i18n module
-    const { t } = useI18n()
+// Load form
+const { model, onSubmit, languageOptions } = form()
 
-    // Load form
-    const { model, onSubmit, languageOptions } = form()
+// Set default action title
+const title = ref(t('motor-admin.languages.create'))
 
-    // Set default action title
-    const title = ref(t('motor-admin.languages.create'))
-
-    return {
-      model,
-      title,
-      onSubmit,
-      languageOptions,
-    }
-  },
-})
 </script>
