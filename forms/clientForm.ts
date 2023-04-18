@@ -15,7 +15,8 @@ export default function clientForm() {
   const schema = object({
     id: number().min(1).nullable(),
     name: string().min(3).required(),
-    slug: string().min(3).required(),
+    slug: string().nullable(),
+    //slug: string().min(3).required(),
     address: string().min(3).nullable(),
     zip: string().min(5).nullable(),
     city: string().min(3).nullable(),

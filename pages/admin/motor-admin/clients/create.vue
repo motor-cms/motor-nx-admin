@@ -125,43 +125,15 @@
     </div>
   </AdminCommonForm>
 </template>
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
-import AdminCommonForm from '@zrm/motor-nx-core/components/admin/common/Form.vue'
-import FormsInputField from '@zrm/motor-nx-core/components/forms/InputField.vue'
-import FormsSelectField from '@zrm/motor-nx-core/components/forms/SelectField.vue'
-import FormsTextAreaField from '@zrm/motor-nx-core/components/forms/TextAreaField.vue'
-import FormsCheckboxField from '@zrm/motor-nx-core/components/forms/CheckboxField.vue'
-import FormsStaticField from '@zrm/motor-nx-core/components/forms/StaticField.vue'
+<script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import form from '@zrm/motor-nx-admin/forms/clientForm'
+// Load i18n module
+const { t } = useI18n()
 
-export default defineComponent({
-  name: 'admin-motor-admin-clients-create',
-  components: {
-    AdminCommonForm,
-    FormsInputField,
-    FormsSelectField,
-    FormsTextAreaField,
-    FormsCheckboxField,
-    FormsStaticField,
-  },
-  setup() {
-    // Load i18n module
-    const { t } = useI18n()
+// Load form
+const { model, onSubmit, countryOptions } = form()
 
-    // Load form
-    const { model, onSubmit, countryOptions } = form()
-
-    // Set default action title
-    const title = ref(t('motor-admin.clients.create'))
-
-    return {
-      model,
-      title,
-      onSubmit,
-      countryOptions,
-    }
-  },
-})
+// Set default action title
+const title = ref(t('motor-admin.clients.create'))
 </script>
