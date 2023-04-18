@@ -75,14 +75,14 @@ watch(model, () => {
 const appStore = useAppStore();
 
 onMounted(async () => {
-  appStore.isLoading(true, true);
+  appStore.isLoading(true);
   // Get id from route and load record
   const id: string = router.currentRoute.value.params.id as string
   if (id) {
     title.value = t('motor-admin.roles.edit')
     await getData(id)
   }
-  appStore.isLoading(false, false);
+  appStore.isLoading(false);
 })
 
 </script>
