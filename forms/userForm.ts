@@ -2,12 +2,8 @@ import baseForm from '@zrm/motor-nx-core/forms/baseForm'
 import {ref, watch, onMounted} from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/user'
-import Repository from '@zrm/motor-nx-core/types/repository'
-import clientRepository from '../api/client'
-import roleRepository from '../api/role'
 import { useUserStore } from '@zrm/motor-nx-core/store/user'
 import useApi from "@zrm/motor-nx-core/composables/http/api";
-import {useAppStore} from "@zrm/motor-nx-core/store/app";
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
 import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
 import {array, InferType, number, object, string} from "yup";
@@ -22,16 +18,11 @@ export default function userForm() {
     client_id: number().min(1).nullable(),
     name: string().min(3).required(),
     email: string().email().min(3).required(),
-    password: string().min(3).nullable(),
+    //password: string().nullable(),
     roles: array().nullable(),
-    permissions: array().nullable(),
-    avatar: object().nullable(),
+    //permissions: array().nullable(),
+    avatar: array().nullable(),
   })
-
-  interface Avatar {
-    dataUrl: string
-    name: string
-  }
 
   type UserForm = InferType<typeof schema>;
 
@@ -41,22 +32,15 @@ export default function userForm() {
     client_id: 0,
     name: '',
     email: '',
-    password: '',
+    //password: '',
     roles: [],
-    permissions: [],
-    avatar: {
-      dataUrl: '',
-      name: '',
-    }
+    //permissions: [],
+    avatar: []
   })
 
   // Sanitize data url
   const sanitizer = async (formData: any) => {
-    // Find start of base64 string
-    if (formData.avatar.dataUrl) {
-      const startBase64 = formData.avatar.dataUrl.indexOf(',') + 1
-      formData.avatar.dataUrl = formData.avatar.dataUrl.substring(startBase64)
-    }
+    formData.avatar = formData.avatar[0];
   }
 
   const userStore = useUserStore()

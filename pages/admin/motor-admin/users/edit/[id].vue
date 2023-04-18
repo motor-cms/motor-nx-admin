@@ -23,12 +23,12 @@
             :label="$t('motor-admin.users.name')"
             v-model="model.name"
           ></FormsInputField>
-          <FormsFileField
+          <FormsFileUploadField
             name="avatar"
             id="avatar"
             :label="$t('motor-admin.users.avatar')"
             v-model="model.avatar"
-          ></FormsFileField>
+          ></FormsFileUploadField>
           <FormsCheckboxArrayField
             name="roles"
             id="roles"
@@ -40,57 +40,31 @@
       </div>
     </AdminCommonForm>
 </template>
-<script lang="ts">
-import { defineComponent, ref, watch, onMounted } from 'vue'
-import AdminCommonForm from '@zrm/motor-nx-core/components/admin/common/Form.vue'
-import FormsSelectField from '@zrm/motor-nx-core/components/forms/SelectField.vue'
-import FormsInputField from '@zrm/motor-nx-core/components/forms/InputField.vue'
-import FormsFileField from '@zrm/motor-nx-core/components/forms/FileUploadField.vue'
-import FormsCheckboxArrayField from '@zrm/motor-nx-core/components/forms/CheckboxArrayField.vue'
+<script setup lang="ts">
+import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import form from '@zrm/motor-nx-admin/forms/userForm'
+// Load i18n module
+const { t } = useI18n()
 
-export default defineComponent({
-  name: 'admin-motor-admin-users-create',
-  components: {
-    AdminCommonForm,
-    FormsInputField,
-    FormsFileField,
-    FormsSelectField,
-    FormsCheckboxArrayField,
-  },
-  setup() {
-    // Load i18n module
-    const { t } = useI18n()
+// Load form
+const { model, onSubmit, clients, roles } = form()
 
-    // Load form
-    const { model, onSubmit, clients, roles } = form()
+// Set default action title
+const title = ref(t('motor-admin.users.edit'))
 
-    // Set default action title
-    const title = ref(t('motor-admin.users.edit'))
+// Sanitize roles
+watch(model, () => {
+  const checkAgainst = Object.entries(model.value.roles)
 
-    // Sanitize roles
-    watch(model, () => {
-      const checkAgainst = Object.entries(model.value.roles)
-
-      const options = []
-      for (const object of checkAgainst) {
-        const checkObject: any = object
-        if (checkObject[1]) {
-          options.push(checkObject[1]['id'])
-        }
-      }
-
-      model.value.roles = options
-    })
-
-    return {
-      model,
-      title,
-      onSubmit,
-      clients,
-      roles,
+  const options = []
+  for (const object of checkAgainst) {
+    const checkObject: any = object
+    if (checkObject[1]) {
+      options.push(checkObject[1]['id'])
     }
-  },
+  }
+
+  model.value.roles = options
 })
 </script>
