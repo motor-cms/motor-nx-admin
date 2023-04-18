@@ -40,70 +40,35 @@
     </div>
   </AdminCommonForm>
 </template>
-<script lang="ts">
-import { defineComponent, ref, watch } from 'vue'
-import AdminCommonForm from '@zrm/motor-nx-core/components/admin/common/Form.vue'
-import FormsInputField from '@zrm/motor-nx-core/components/forms/InputField.vue'
-import FormsCheckboxArrayField from '@zrm/motor-nx-core/components/forms/CheckboxArrayField.vue'
+<script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
 import form from '@zrm/motor-nx-admin/forms/roleForm'
-import {useAppStore} from "@zrm/motor-nx-core/store/app";
 
-export default defineComponent({
-  name: 'admin-motor-admin-roles-create',
-  components: {
-    AdminCommonForm,
-    FormsInputField,
-    FormsCheckboxArrayField,
-  },
-  setup() {
-    // Load i18n module
-    const { t } = useI18n()
+// Load i18n module
+const { t } = useI18n()
 
-    // Load router
-    const router = useRouter()
+// Load router
+const router = useRouter()
 
-    // Load form
-    const { model, getData, onSubmit, permissions } = form()
+// Load form
+const { model, getData, onSubmit, permissions } = form()
 
-    // Set default action title
-    const title = ref(t('motor-admin.roles.create'))
+// Set default action title
+const title = ref(t('motor-admin.roles.create'))
 
-    // Sanitize roles
-    watch(model, () => {
-      const checkAgainst = Object.entries(model.value.permissions)
+// Sanitize roles
+watch(model, () => {
+  const checkAgainst = Object.entries(model.value.permissions)
 
-      const options = []
-      for (const object of checkAgainst) {
-        const checkObject: any = object
-        if (checkObject[1]) {
-          options.push(checkObject[1]['id'])
-        }
-      }
-
-      model.value.permissions = options
-    })
-
-    const appStore = useAppStore();
-
-    onMounted(async () => {
-      appStore.isLoading(true, true);
-      // Get id from route and load record
-      const id: string = router.currentRoute.value.params.id as string
-      if (id) {
-        title.value = t('motor-admin.roles.edit')
-        await getData(id)
-      }
-      appStore.isLoading(false, false);
-    })
-
-    return {
-      model,
-      title,
-      onSubmit,
-      permissions,
+  const options = []
+  for (const object of checkAgainst) {
+    const checkObject: any = object
+    if (checkObject[1]) {
+      options.push(checkObject[1]['id'])
     }
-  },
+  }
+  model.value.permissions = options
 })
+
+
 </script>
