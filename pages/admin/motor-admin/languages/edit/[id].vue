@@ -38,37 +38,16 @@
     </div>
   </AdminCommonForm>
 </template>
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
-import AdminCommonForm from '@zrm/motor-nx-core/components/admin/common/Form.vue'
-import FormsInputField from '@zrm/motor-nx-core/components/forms/InputField.vue'
-import FormsSelectField from '@zrm/motor-nx-core/components/forms/SelectField.vue'
+<script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import form from '@zrm/motor-nx-admin/forms/languageForm'
+// Load i18n module
+const { t } = useI18n()
 
-export default defineComponent({
-  name: 'admin-motor-admin-languages-create',
-  components: {
-    AdminCommonForm,
-    FormsInputField,
-    FormsSelectField,
-  },
-  setup() {
-    // Load i18n module
-    const { t } = useI18n()
+// Load form
+const { model, onSubmit, languageOptions } = form()
 
-    // Load form
-    const { model, onSubmit, languageOptions } = form()
+// Set default action title
+const title = ref(t('motor-admin.languages.edit'))
 
-    // Set default action title
-    const title = ref(t('motor-admin.languages.edit'))
-
-    return {
-      model,
-      title,
-      languageOptions,
-      onSubmit
-    }
-  },
-})
 </script>
