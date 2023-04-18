@@ -108,40 +108,17 @@
     </div>
   </AdminCommonForm>
 </template>
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
-import AdminCommonForm from '@zrm/motor-nx-core/components/admin/common/Form.vue'
-import FormsInputField from '@zrm/motor-nx-core/components/forms/InputField.vue'
-import FormsSelectField from '@zrm/motor-nx-core/components/forms/SelectField.vue'
-import FormsTextAreaField from '@zrm/motor-nx-core/components/forms/TextAreaField.vue'
+<script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import form from '@zrm/motor-nx-admin/forms/emailTemplateForm'
 
-export default defineComponent({
-  name: 'admin-motor-admin-email-templates-create',
-  components: {
-    AdminCommonForm,
-    FormsInputField,
-    FormsSelectField,
-    FormsTextAreaField,
-  },
-  setup() {
-    // Load i18n module
-    const { t } = useI18n()
+// Load i18n module
+const { t } = useI18n()
 
-    // Load form
-    const { model, onSubmit, languages, clients } = form()
+// Load form
+const { model, onSubmit, languages, clients } = form()
 
-    // Set default action title
-    const title = ref(t('motor-admin.email_templates.edit'))
+// Set default action title
+const title = ref(t('motor-admin.email_templates.edit'))
 
-    return {
-      model,
-      title,
-      onSubmit,
-      languages,
-      clients,
-    }
-  },
-})
 </script>
