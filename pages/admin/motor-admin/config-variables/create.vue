@@ -47,36 +47,15 @@
     </div>
   </AdminCommonForm>
 </template>
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
-import AdminCommonForm from '@zrm/motor-nx-core/components/admin/common/Form.vue'
-import FormsInputField from '@zrm/motor-nx-core/components/forms/InputField.vue'
-import FormsTextAreaField from '@zrm/motor-nx-core/components/forms/TextAreaField.vue'
-import { useI18n } from 'vue-i18n'
+<script setup lang="ts">
+import {useI18n} from 'vue-i18n'
 import form from '@zrm/motor-nx-admin/forms/configVariableForm'
+// Load i18n module
+const {t} = useI18n()
 
-export default defineComponent({
-  name: 'admin-motor-admin-config-variables-create',
-  components: {
-    AdminCommonForm,
-    FormsInputField,
-    FormsTextAreaField,
-  },
-  setup() {
-    // Load i18n module
-    const { t } = useI18n()
+// Load form
+const {model, onSubmit} = form()
 
-    // Load form
-    const { model, onSubmit } = form()
-
-    // Set default action title
-    const title = ref(t('motor-admin.config_variables.create'))
-
-    return {
-      model,
-      title,
-      onSubmit,
-    }
-  },
-})
+// Set default action title
+const title = ref(t('motor-admin.config_variables.create'))
 </script>
