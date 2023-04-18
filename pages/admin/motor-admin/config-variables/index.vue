@@ -15,6 +15,7 @@
 </template>
 
 <script lang="ts">
+import {useAppStore} from "~/packages/motor-nx-core/store/app";
 import AdminCommonGrid from '@zrm/motor-nx-core/components/admin/common/Grid.vue'
 import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -77,7 +78,7 @@ export default defineComponent({
 
     onMounted(async () => {
       await refreshRecords();
-    })
+})
 
     return {
       columns,

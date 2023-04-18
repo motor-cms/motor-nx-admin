@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import AdminCommonGrid from '@zrm/motor-nx-core/components/admin/common/Grid.vue'
+import {useAppStore} from "~/packages/motor-nx-core/store/app";
 import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import EditButton from '@zrm/motor-nx-core/components/admin/cell/EditButton.vue'
@@ -24,9 +24,6 @@ import grid from '@zrm/motor-nx-admin/grids/languageGrid'
 
 export default defineComponent({
   name: 'admin-motor-admin.languages',
-  components: {
-    AdminCommonGrid,
-  },
   setup() {
     // Load i18n module
     const { t } = useI18n()

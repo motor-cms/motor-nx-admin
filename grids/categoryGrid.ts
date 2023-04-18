@@ -48,9 +48,5 @@ export default function categoryGrid() {
     await refreshGridData([getGridData], [getGridData], params, category_tree, true, true)
   }
 
-  onMounted(async () => {
-    await refreshRecords();
-  })
-
   return { rows, meta, refreshRecords, handleCellEvent }
 }

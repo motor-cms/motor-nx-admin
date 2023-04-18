@@ -71,14 +71,14 @@
           ></FormsInputField>
         </div>
         <div class="col-md-6">
-          <FormsSelect2Field
+          <FormsSelectField
             type="text"
             name="country_iso_3166_1"
             id="country_iso_3166_1"
             :label="$t('motor-admin.global.address.country')"
             v-model="model.country_iso_3166_1"
             :options="countryOptions"
-          ></FormsSelect2Field>
+          ></FormsSelectField>
         </div>
       </div>
       <h6 class="text-uppercase text-body text-xs font-weight-bolder">
@@ -129,7 +129,7 @@
 import { defineComponent, ref } from 'vue'
 import AdminCommonForm from '@zrm/motor-nx-core/components/admin/common/Form.vue'
 import FormsInputField from '@zrm/motor-nx-core/components/forms/InputField.vue'
-import FormsSelect2Field from '@zrm/motor-nx-core/components/forms/Select2Field.vue'
+import FormsSelectField from '@zrm/motor-nx-core/components/forms/SelectField.vue'
 import FormsTextAreaField from '@zrm/motor-nx-core/components/forms/TextAreaField.vue'
 import FormsCheckboxField from '@zrm/motor-nx-core/components/forms/CheckboxField.vue'
 import FormsStaticField from '@zrm/motor-nx-core/components/forms/StaticField.vue'
@@ -141,7 +141,7 @@ export default defineComponent({
   components: {
     AdminCommonForm,
     FormsInputField,
-    FormsSelect2Field,
+    FormsSelectField,
     FormsTextAreaField,
     FormsCheckboxField,
     FormsStaticField,

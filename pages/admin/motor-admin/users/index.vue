@@ -1,25 +1,24 @@
 <template>
-    <AdminCommonGrid
-      :name="$t('motor-admin.users.users')"
-      :create-route="'admin.motor-admin.users.create'"
-      :create-label="$t('motor-admin.users.create')"
-      :rows="rows"
-      :columns="columns"
-      :meta="meta"
-      :filters="filters"
-      resource="users"
-      :loadComponents="loadComponents"
-      @submit="refreshRecords"
-      @submit-cell="handleCellEvent"
-    ></AdminCommonGrid>
+  <AdminCommonGrid
+    :name="$t('motor-admin.users.users')"
+    :create-route="'admin.motor-admin.users.create'"
+    :create-label="$t('motor-admin.users.create')"
+    :rows="rows"
+    :columns="columns"
+    :meta="meta"
+    :filters="filters"
+    resource="users"
+    :loadComponents="loadComponents"
+    @submit="refreshRecords"
+    @submit-cell="handleCellEvent"
+  ></AdminCommonGrid>
 </template>
 
 <script lang="ts">
+import {useAppStore} from "~/packages/motor-nx-core/store/app";
 import AdminCommonGrid from '@zrm/motor-nx-core/components/admin/common/Grid.vue'
 import {defineComponent, ref} from 'vue'
 import {useI18n} from 'vue-i18n'
-import EditButton from '@zrm/motor-nx-core/components/admin/cell/EditButton.vue'
-import DeleteButton from '@zrm/motor-nx-core/components/admin/cell/DeleteButton.vue'
 import grid from '@zrm/motor-nx-admin/grids/userGrid'
 import useRouteParser from "@zrm/motor-nx-core/composables/route/parse";
 
