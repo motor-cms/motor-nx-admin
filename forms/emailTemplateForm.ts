@@ -13,10 +13,10 @@ export default function emailTemplateForm() {
   // Validation schema
   const schema = object({
     id: number().min(1).nullable(),
-    client_id: number().min(1).required(),
-    language_id: number().min(1).required(),
-    name: string().min(3).required(),
-    subject: string().min(3).required(),
+    client_id: number().min(1).required().label(t('motor-admin.clients.client')),
+    language_id: number().min(1).required().label(t('motor-admin.languages.language')),
+    name: string().min(3).required().label(t('motor-admin.email_templates.name')),
+    subject: string().min(3).required().label(t('motor-admin.email_templates.subject')),
     body_text: string().min(3).nullable(),
     body_html: string().min(3).nullable(),
     default_sender_name: string().min(3).nullable(),

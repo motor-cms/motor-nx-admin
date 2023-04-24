@@ -16,5 +16,6 @@
   "default_cc_email": "Default cc email addresses (separated by ;)",
   "default_bcc_email": "Default bcc email addresses (separated by ;)",
   "body_text": "Body (text)",
-  "body_html": "Body (html)"
+  "body_html": "Body (html)",
+  "name": "Name"
 }

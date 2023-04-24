@@ -14,11 +14,10 @@ export default function roleForm() {
   const { t, tm } = useI18n()
 
   // Validation schema
-  // TODO: Refactor validation
   const schema = object({
     id: number().min(1).nullable(),
-    name: string().min(3).required(),
-    guard_name: string().min(3).required(),
+    name: string().min(3).required().label(t('motor-admin.roles.name')),
+    guard_name: string().min(3).required().label(t('motor-admin.roles.guard_name')),
     permissions: array().nullable(),
   })
 

@@ -15,9 +15,9 @@ export default function userForm() {
   // Validation schema
   const schema = object({
     id: number().min(1).nullable(),
-    client_id: number().min(1).nullable(),
-    name: string().min(3).required(),
-    email: string().email().min(3).required(),
+    client_id: number().min(1).nullable().label(t('motor-admin.clients.client')),
+    name: string().min(3).required().label(t('motor-admin.users.name')),
+    email: string().email().min(3).required().label(t('motor-admin.users.email')),
     //password: string().nullable(),
     roles: array().nullable(),
     //permissions: array().nullable(),

@@ -14,13 +14,13 @@ export default function clientForm() {
   // Validation schema
   const schema = object({
     id: number().min(1).nullable(),
-    name: string().min(3).required(),
+    name: string().min(3).required().label(t('motor-admin.clients.name')),
     slug: string().nullable(),
     //slug: string().min(3).required(),
-    address: string().min(3).nullable(),
-    zip: string().min(5).nullable(),
-    city: string().min(3).nullable(),
-    country_iso_3116_1: string().min(2).max(2).nullable(),
+    address: string().min(3).nullable().label(t('motor-admin.clients.address')),
+    zip: string().min(5).nullable().label(t('motor-admin.clients.zip')),
+    city: string().min(3).nullable().label(t('motor-admin.clients.city')),
+    country_iso_3116_1: string().min(2).max(2).nullable().label(t('motor-admin.clients.country_iso_3116_1')),
     website: string().url().nullable(),
     description: string().nullable(),
     is_active: boolean().nullable(),

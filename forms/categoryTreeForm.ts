@@ -14,8 +14,8 @@ export default function categoryTreeForm() {
   // Validation schema
   const schema = object({
     id: number().min(1).nullable(),
-    name: string().min(3).required(),
-    scope: string().min(5).required()
+    name: string().min(3).required().label(t('motor-admin.category_trees.name')),
+    scope: string().min(5).required().label(t('motor-admin.category_trees.scope'))
   })
 
   type CategoryTreeForm = InferType<typeof schema>;

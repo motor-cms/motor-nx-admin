@@ -8,5 +8,6 @@
   "updated": "Arbre de catégories mis à jour",
   "deleted": "Arbre de catégories supprimé",
   "scope": "Champ d'application",
-  "show_nodes": "Afficher les catégories"
+  "show_nodes": "Afficher les catégories",
+  "name": "Nom"
 }

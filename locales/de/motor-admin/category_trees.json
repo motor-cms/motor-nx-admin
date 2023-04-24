@@ -8,5 +8,6 @@
   "updated": "Kategoriebaum aktualisiert",
   "deleted": "Kategoriebaum gelöscht",
   "scope": "Bereich",
-  "show_nodes": "Show categories"
+  "show_nodes": "Show categories",
+  "name": "Name"
 }

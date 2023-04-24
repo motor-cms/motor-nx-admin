@@ -4,7 +4,7 @@ import {onMounted, ref} from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/configVariable'
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
-import {InferType, object, string} from "yup";
+import {InferType, object, string, number} from "yup";
 
 export default function configVariableForm() {
   // Load i18n module
@@ -13,10 +13,10 @@ export default function configVariableForm() {
   // Validation schema
   const schema = object({
     id: number().min(1).nullable(),
-    package: string().min(5),
-    group: string().min(5),
-    name: string().min(3),
-    value: string().min(3),
+    package: string().min(5).label(t('motor-admin.config_variables.package')),
+    group: string().min(5).label(t('motor-admin.config_variables.group')),
+    name: string().min(3).label(t('motor-admin.config_variables.name')),
+    value: string().min(3).label(t('motor-admin.config_variables.value')),
   })
 
   type ConfigVariablesForm = InferType<typeof schema>;

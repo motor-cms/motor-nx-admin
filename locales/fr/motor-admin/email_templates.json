@@ -16,5 +16,6 @@
   "default_cc_email": "Emails en cc par défaut (séparés par ;)",
   "default_bcc_email": "Emails en bcc par défaut (séparés par ;)",
   "body_text": "Corps du message (texte)",
-  "body_html": "Corps du message (html)"
+  "body_html": "Corps du message (html)",
+  "name": "Nom"
 }

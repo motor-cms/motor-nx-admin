@@ -14,9 +14,9 @@ export default function languageForm() {
   // Validation schema
   const schema = object({
     id: number().min(1).nullable(),
-    native_name: string().min(3).required(),
-    english_name: string().min(3).required(),
-    iso_639_1: string().min(2).required(),
+    native_name: string().min(3).required().label(t('motor-admin.languages.native_name')),
+    english_name: string().min(3).required().label(t('motor-admin.languages.english_name')),
+    iso_639_1: string().required().label(t('motor-admin.languages.iso_639_1')),
   })
 
   type LanguageForm = InferType<typeof schema>;
