@@ -23,6 +23,20 @@
             :label="$t('motor-admin.users.name')"
             v-model="model.name"
           ></FormsInputField>
+          <FormsInputField
+            type="text"
+            name="email"
+            id="email"
+            :label="$t('motor-admin.users.email')"
+            v-model="model.email"
+          ></FormsInputField>
+          <FormsInputField
+            type="password"
+            name="password"
+            id="password"
+            :label="$t('motor-admin.users.password')"
+            v-model="model.password"
+          ></FormsInputField>
           <FormsFileUploadField
             name="avatar"
             id="avatar"

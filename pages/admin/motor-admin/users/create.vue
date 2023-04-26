@@ -30,6 +30,13 @@
             :label="$t('motor-admin.users.email')"
             v-model="model.email"
           ></FormsInputField>
+          <FormsInputField
+            type="password"
+            name="password"
+            id="password"
+            :label="$t('motor-admin.users.password')"
+            v-model="model.password"
+          ></FormsInputField>
           <FormsFileUploadField
             name="avatar"
             id="avatar"
@@ -50,13 +57,13 @@
 <script setup lang="ts">
 import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import form from '@zrm/motor-nx-admin/forms/userForm'
+import userForm from '@zrm/motor-nx-admin/forms/userForm'
 
 // Load i18n module
 const { t } = useI18n()
 
 // Load form
-const { model, onSubmit, clients, roles } = form()
+const { model, onSubmit, clients, roles, form} = userForm()
 
 // Set default action title
 const title = ref(t('motor-admin.users.create'))
