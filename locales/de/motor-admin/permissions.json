@@ -1,5 +1,6 @@
 {
   "permissions": "Berechtigungen",
+  "permission_groups": "Berechtigungsgruppen",
   "permission": "Berechtigung",
   "create": "Berechtigung erstellen",
   "edit": "Berechtigung bearbeiten",
@@ -9,5 +10,7 @@
   "deleted": "Berechtigung gelöscht",
   "name": "Name",
   "group": "Gruppe",
-  "guard_name": "Bereich"
+  "guard_name": "Name des Guard",
+  "guard": "Guard",
+  "sort_position": "Sortierungsposition"
 }

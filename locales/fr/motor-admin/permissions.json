@@ -9,5 +9,7 @@
   "deleted": "Permission supprimée",
   "name": "Nom",
   "group": "Groupe",
-  "guard_name": "Zone"
+  "guard_name": "Nom de la zone",
+  "guard": "Zone",
+  "sort_position": "Rand de tri"
 }
