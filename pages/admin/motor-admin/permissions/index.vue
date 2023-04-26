@@ -1,8 +1,8 @@
 <template>
   <AdminCommonGrid
-    :name="$t('motor-admin.roles.roles')"
-    create-route="admin.motor-admin.roles.create"
-    :create-label="$t('motor-admin.roles.create')"
+    :name="$t('motor-admin.permissions.permission_groups')"
+    create-route="admin.motor-admin.permissions.create"
+    :create-label="$t('motor-admin.permissions.create')"
     :rows="rows"
     :columns="columns"
     :meta="meta"
@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import grid from '@zrm/motor-nx-admin/grids/roleGrid'
+import grid from '@zrm/motor-nx-admin/grids/permissionGroupGrid'
 
 // Load i18n module
 const { t } = useI18n()
@@ -24,12 +24,12 @@ const { t } = useI18n()
 // Define columns for grid
 const columns = ref([
   {
-    name: t('motor-admin.roles.name'),
+    name: t('motor-admin.permissions.name'),
     prop: 'name',
   },
   {
-    name: t('motor-admin.roles.guard_name'),
-    prop: 'guard_name',
+    name: t('motor-admin.permissions.sort_position'),
+    prop: 'sort_position',
   },
   {
     name: '',
@@ -38,9 +38,17 @@ const columns = ref([
     rowWrapperClass: 'justify-content-end',
     components: [
       {
+        name: 'Button',
+        options: {
+          route: 'admin.motor-admin.permissions',
+          name: t('motor-admin.permissions.permissions'),
+          property: ''
+        },
+      },
+      {
         name: 'EditButton',
         options: {
-          route: 'admin.motor-admin.roles.edit',
+          route: 'admin.motor-admin.permissions.edit',
           name: t('global.edit'),
         },
       },
