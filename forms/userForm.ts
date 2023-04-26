@@ -1,5 +1,5 @@
 import baseForm from '@zrm/motor-nx-core/forms/baseForm'
-import {ref, watch, onMounted} from 'vue'
+import {ref, watch, onMounted, Ref} from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/user'
 import { useUserStore } from '@zrm/motor-nx-core/store/user'
@@ -45,11 +45,11 @@ export default function userForm() {
 
   const userStore = useUserStore()
 
-  const afterSubmit = async () => {
-    // FIXME: only update user if the currently logged in user was updated
-    const response = await useApi().get('me')
-    localStorage.setItem('user', JSON.stringify(response.data.data))
-    userStore.setUser(response.data.data)
+  const afterSubmit = async (oldModel: Ref<Record<string, any>>, newModel: Ref<Record<string, any>>) => {
+    if (userStore.user?.id === newModel.value.id) {
+      const {data: response} = await useApi().get('me')
+      userStore.setUser(response.value.data)
+    }
   }
 
   const {getData, onSubmit} = baseForm(
