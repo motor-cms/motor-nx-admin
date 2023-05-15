@@ -4,14 +4,36 @@ import languageRepository from "@zrm/motor-nx-admin/api/language";
 import clientRepository from "@zrm/motor-nx-admin/api/client";
 import roleRepository from "@zrm/motor-nx-admin/api/role";
 import categoryTreeRepository from "@zrm/motor-nx-admin/api/categoryTree";
+import {countries} from "countries-list";
+import {useI18n} from "vue-i18n";
 
 export function useFormData() {
-
+  const { locale } = useI18n();
   const languages = ref([])
   const clients = ref([])
   const roles = ref([])
   const treeData = ref({})
   const categories = ref([])
+  const countryOptions = ref([]);
+  const salutationsPerLanguage = {
+    de: ['Herr', 'Frau'],
+    en: ['Mr.', 'Mrs.'],
+    fr: ['Monsieur','Madame'],
+  }
+
+  const gedersPerLanguage = {
+    de: [{label: 'Männlich', value: 'm'}, {label: 'Weiblich', value: 'f'}, {label: 'Divers', value: 'd'}],
+    en: [{label: 'Male', value: 'm'}, {label: 'Female', value: 'f'}, {label: 'Divers', value: 'd'}],
+    fr:  [{label: 'Masculin', value: 'm'}, {label: 'Féminin', value: 'f'}, {label: 'Divers', value: 'd'}],
+  }
+
+  const genderOptions = computed(() => {
+    return gedersPerLanguage[locale.value];
+  })
+
+  const salutationOptions = computed(() => {
+    return salutationsPerLanguage[locale.value];
+  })
 
   const getCategoryData = async (cached: boolean) => {
     const {data: response} = await categoryTreeRepository()
@@ -70,6 +92,10 @@ export function useFormData() {
     clients.value = clientOptions
   }
 
+  for (const [key, value] of Object.entries(countries)) {
+    countryOptions.value.push({ label: value.emoji + ' ' + value.name, value: key })
+  }
+
   return {
     loadLanguages,
     loadClients,
@@ -80,6 +106,9 @@ export function useFormData() {
     roles,
     treeData,
     categories,
-    getCategoryData
+    getCategoryData,
+    countryOptions,
+    salutationOptions,
+    genderOptions
   }
 }

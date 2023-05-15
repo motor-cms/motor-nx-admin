@@ -10,6 +10,7 @@
       <div class="row">
         <div class="col-md-12">
           <FormsSelectField
+            v-if="!userHasClient"
             name="client_id"
             id="client_id"
             :label="$t('motor-admin.clients.client')"
@@ -58,8 +59,11 @@
 import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import form from '@zrm/motor-nx-admin/forms/userForm'
+import {storeToRefs} from "pinia";
+import {useUserStore} from "~/packages/motor-nx-core/store/user";
 // Load i18n module
 const { t } = useI18n()
+const { userHasClient } = storeToRefs(useUserStore());
 
 // Load form
 const { model, onSubmit, clients, roles } = form()

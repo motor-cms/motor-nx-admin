@@ -15,7 +15,7 @@ export default function userForm() {
   // Validation schema post
   const postSchema = object({
     id: number().min(1).nullable(),
-    client_id: number().nullable().label(t('motor-admin.clients.client')),
+    client_id: number().label(t('motor-admin.clients.client')),
     name: string().min(3).required().label(t('motor-admin.users.name')),
     email: string().email().min(3).required().label(t('motor-admin.users.email')),
     password: string().required().label(t('motor-admin.users.password')),

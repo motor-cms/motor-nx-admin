@@ -13,7 +13,7 @@ export default function emailTemplateForm() {
   // Validation schema
   const schema = object({
     id: number().min(1).nullable(),
-    client_id: number().min(1).required().label(t('motor-admin.clients.client')),
+    client_id: number().label(t('motor-admin.clients.client')),
     language_id: number().min(1).required().label(t('motor-admin.languages.language')),
     name: string().min(3).required().label(t('motor-admin.email_templates.name')),
     subject: string().min(3).required().label(t('motor-admin.email_templates.subject')),
@@ -49,7 +49,7 @@ export default function emailTemplateForm() {
   // Sanitize dates
   const sanitizer = () => {}
 
-  const { getData, onSubmit } = baseForm(
+  const { getData, onSubmit, form } = baseForm(
     'motor-admin.email_templates',
     'admin.motor-admin.email-templates',
     modelRepository(),
@@ -76,5 +76,6 @@ export default function emailTemplateForm() {
     model,
     clients,
     languages,
+    form
   }
 }

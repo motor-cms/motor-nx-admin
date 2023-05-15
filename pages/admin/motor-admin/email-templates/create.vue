@@ -7,9 +7,11 @@
     <h6 class="text-uppercase text-body text-xs font-weight-bolder">
       Basic information
     </h6>
+    {{form.errors}}
     <div class="row">
       <div class="col-md-6">
         <FormsSelectField
+          v-if="!userHasClient"
           name="client_id"
           id="client_id"
           :label="$t('motor-admin.clients.client')"
@@ -91,6 +93,14 @@
       </div>
       <div class="col-md-12">
         <FormsTextAreaField
+          name="subject"
+          id="subject"
+          :label="$t('motor-admin.email_templates.subject')"
+          v-model="model.subject"
+        ></FormsTextAreaField>
+      </div>
+      <div class="col-md-12">
+        <FormsTextAreaField
           name="body_text"
           id="body_text"
           :label="$t('motor-admin.email_templates.body_text')"
@@ -110,13 +120,16 @@
 </template>
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import form from '@zrm/motor-nx-admin/forms/emailTemplateForm'
+import emailTemplateForm from '@zrm/motor-nx-admin/forms/emailTemplateForm'
+import {storeToRefs} from "pinia";
+import {useUserStore} from "~/packages/motor-nx-core/store/user";
 
 // Load i18n module
 const { t } = useI18n()
+const { userHasClient } = storeToRefs(useUserStore());
 
 // Load form
-const { model, onSubmit, languages, clients } = form()
+const { model, onSubmit, languages, clients, form } = emailTemplateForm()
 
 // Set default action title
 const title = ref(t('motor-admin.email_templates.create'))
