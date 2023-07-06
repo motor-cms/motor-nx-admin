@@ -11,7 +11,6 @@ const {clients, loadClients} = useFormData()
 //const { client } = storeToRefs(useClientStore());
 const { user } = storeToRefs(useUserStore());
 
-onMounted(async () => {
-  await loadClients(true);
-})
+await loadClients(true);
+
 </script>
