@@ -1,5 +1,5 @@
 <template>
-  <SelectField v-model="user.client_id" :options="clients">
+  <SelectField v-if="user" v-model="user.client_id" :options="clients">
   </SelectField>
 </template>
 <script setup lang="ts">

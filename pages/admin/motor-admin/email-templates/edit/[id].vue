@@ -10,7 +10,7 @@
     <div class="row">
       <div class="col-md-6">
         <FormsSelectField
-          v-if="!userHasClient"
+          v-show="!userHasClient"
           name="client_id"
           id="client_id"
           :label="$t('motor-admin.clients.client')"
