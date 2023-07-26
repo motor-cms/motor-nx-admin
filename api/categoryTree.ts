@@ -1,4 +1,5 @@
 import useApi from "@zrm/motor-nx-core/composables/http/api";
+import { AsyncData } from "nuxt/app";
 
 export default () => ({
   api: useApi(),
@@ -6,15 +7,15 @@ export default () => ({
     return this.api.get('category_trees', cached, params)
   },
 
-  create(payload: object) {
+  create(payload: Record<string, any>) {
     return this.api.post(`category_trees`, payload)
   },
 
-  get(id: number | string, cached:boolean): Promise<object> {
+  get(id: number | string, cached: boolean) {
     return this.api.get(`category_trees/${id}`, cached)
   },
 
-  update(payload: object, id: number) {
+  update(payload: Record<string, any>, id: number) {
     return this.api.put(`category_trees/${id}`, payload)
   },
 

@@ -10,7 +10,7 @@ export default () => ({
         return this.api.post(`roles`, payload)
     },
 
-     get(id: number): Promise<object> {
+    get(id: number): Promise<object> {
         return this.api.get(`roles/${id}`)
     },
 
