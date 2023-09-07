@@ -3,16 +3,19 @@ import Repository from "@zrm/motor-nx-core/types/repository";
 import languageRepository from "@zrm/motor-nx-admin/api/language";
 import clientRepository from "@zrm/motor-nx-admin/api/client";
 import roleRepository from "@zrm/motor-nx-admin/api/role";
+import categoryRepository from "@zrm/motor-nx-admin/api/category";
 import categoryTreeRepository from "@zrm/motor-nx-admin/api/categoryTree";
 import { countries } from "countries-list";
 import { useI18n } from "vue-i18n";
+import DraggableContent from "packages/motor-nx-core/types/draggable-content";
 
 export function useFormData() {
+  const router = useRouter()
   const { locale } = useI18n();
   const languages: Ref<GenericOptionPair[]> = ref([])
   const clients: Ref<GenericOptionPair[]> = ref([])
   const roles: Ref<GenericOptionPair[]> = ref([])
-  const treeData = ref({})
+  const treeData: Ref<DraggableContent | null> = ref(null)
   const categories: Ref<GenericOptionPair[]> = ref([])
   const countryOptions: Ref<GenericOptionPair[]> = ref([]);
 
@@ -47,19 +50,27 @@ export function useFormData() {
     return salutationsPerLanguage[valideLocale];
   })
 
-  // !This is unrefactored after fixing the TODO 342134111212 it is important to test whether the refactor work or not
-  // const getCategoryData = async (cached: boolean) => {
-  //   const response = await categoryTreeRepository()
-  //     .get(1, cached);
-  //   console.log('getCategoryData', response.data);
-
-  //   treeData.value = response.value.data
-  // }
+  const categoryTreeID: string = router.currentRoute.value.params.categorytreeid as string
+  const categoryID: string = router.currentRoute.value.params.categoryid as string
 
   const getCategoryData = async (cached: boolean) => {
-    //TODO 342134111212: Was soll diese 1 hier? Macht keinen Sinn. Erzeugt nur einen Error Requests. 
-    const response = await categoryTreeRepository().get(1, cached);
-    treeData.value = response.data.value;
+    const responseCurrentCategory = await categoryRepository().index({}, categoryTreeID);
+    const responseCurrentTree = await categoryTreeRepository().get(categoryTreeID, false);
+
+    const treeChildren: DraggableContent[] = responseCurrentCategory.data.value.data;
+    const tree: DraggableContent = responseCurrentTree.data.value.data;
+    tree.children = treeChildren;
+
+    if (categoryID === undefined && tree.children && !tree.children.some(e => e.id === 0)) {
+      tree.children.push({
+        id: 0,
+        name: 'New Category',
+        children: [],
+      })
+    }
+
+    console.log("Result Tree", tree);
+    treeData.value = tree;
   }
 
   async function loadDataAndCreateOptions(

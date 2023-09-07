@@ -19,10 +19,15 @@
         ></FormsInputField>
       </div>
       <div class="col-md-4">
-        <AdminCommonNestedTree :tree="treeData.children" :record="model.id"/>
+        <AdminCommonNestedTree :tree="treeData?.children" :record="model.id"/>
       </div>
     </div>
   </AdminCommonForm>
+  <!-- Model ID: {{ model.id }} <br/>
+  Model Name: {{ model.name }} <br/>
+  Model nextID: {{ model.next_sibling_id }} <br/>
+  Model PevID: {{ model.previous_sibling_id }} <br/>
+  Model ParentID: {{ model.parent_id }} <br/> -->
 </template>
 <script setup lang="ts">
 import {useI18n} from 'vue-i18n'
@@ -34,6 +39,7 @@ const {t} = useI18n()
 const route = useRouter()
 // Load form
 const {model, onSubmit, treeData, replaceCategoryName} = form()
+
 // Set default action title
 const title = ref(t('motor-admin.categories.edit'))
 

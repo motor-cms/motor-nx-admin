@@ -2,17 +2,18 @@ import baseForm from '@zrm/motor-nx-core/forms/baseForm'
 import { ref } from 'vue'
 import modelRepository from '../api/category'
 import { useRouter } from 'vue-router'
-import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
-import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
-import {InferType, number, object, string} from "yup";
-import {useI18n} from "vue-i18n";
+import { useCoreFormData } from "@zrm/motor-nx-core/composables/form/formData";
+import { useFormData } from "@zrm/motor-nx-admin/composables/formData";
+import { InferType, number, object, string } from "yup";
+import { useI18n } from "vue-i18n";
+import DraggableContent from 'packages/motor-nx-core/types/draggable-content';
 
 export default function categoryForm() {
   const router = useRouter()
   const id: string = router.currentRoute.value.params.categoryid as string
   const categoryTreeId = router.currentRoute.value.params.categorytreeid;
-  const routeCategoryTree = 'admin.motor-admin.category-trees.' + categoryTreeId  + '.categories';
-  const categoryTree: string = router.currentRoute.value.params.categorytreeid as string
+  const routeCategoryTree = 'admin.motor-admin.category-trees.' + categoryTreeId + '.categories';
+  const categoryTree: string = categoryTreeId as string
   const { getRelevantFormData } = useCoreFormData()
   const { treeData, getCategoryData } = useFormData();
   const { t, tm } = useI18n()
@@ -23,7 +24,8 @@ export default function categoryForm() {
     name: string().min(3).required().label(t('motor-admin.categories.name')),
     previous_sibling_id: number().min(1).nullable(),
     next_sibling_id: number().min(1).nullable(),
-    parent_id: number().min(1).required(),
+    // parent_id: number().min(1).required(),
+    parent_id: number().required(),
   })
 
   type CategoryForm = InferType<typeof schema>;
@@ -39,12 +41,17 @@ export default function categoryForm() {
 
   const search = (
     formData: any,
-    tree: any,
-    id: number,
+    tree: DraggableContent | null,
+    id: number | null | undefined,
     parent: any,
     index: number,
     replace: boolean = false
   ): any => {
+
+    if (!tree) {
+      return;
+    }
+
     if (tree.id === id) {
       if (replace) {
         // Get parent
@@ -62,6 +69,10 @@ export default function categoryForm() {
       return tree
     }
 
+    if (!tree.children) {
+      return tree;
+    }
+
     for (const { index, child } of tree.children.map(
       (child: any, index: number) => ({ index, child })
     )) {
@@ -75,6 +86,7 @@ export default function categoryForm() {
 
   // Sanitize dates
   const sanitizer = (formData: any) => {
+    console.log("formdata CatForm", JSON.parse(JSON.stringify(formData)));
     const foundYou = search(
       formData,
       treeData.value,
@@ -83,38 +95,44 @@ export default function categoryForm() {
       0,
       true
     )
+    console.log('found the thing CatForm', foundYou)
   }
 
-  const { onSubmit, getData } = baseForm(
+  const { onSubmit, getData, form, fillModel } = baseForm(
     'motor-admin.category_trees',
     routeCategoryTree,
     modelRepository(),
     model,
     schema,
     sanitizer,
-    () => {},
+    () => { },
     { category_tree: categoryTree }
   )
 
   const replaceCategoryName = (newName: any) => {
     if (typeof newName !== 'object') {
       const element = search({}, treeData.value, model.value.id, {}, 0, false)
-      element.name = newName
+
+      if (element) {
+        element.name = newName
+      }
     }
   }
 
   onMounted(async () => {
-    await getRelevantFormData(getData,[
-    ],[
+    await getRelevantFormData(getData, [
+      getCategoryData
+    ], [
       getCategoryData
     ]);
   })
 
   return {
+    form,
     getData,
     onSubmit,
     model,
     treeData,
-    replaceCategoryName,
+    replaceCategoryName
   }
 }
