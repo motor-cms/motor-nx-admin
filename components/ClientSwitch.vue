@@ -11,12 +11,9 @@ const {clients, loadClients} = useFormData()
 //const { client } = storeToRefs(useClientStore());
 const { user } = storeToRefs(useUserStore());
 
-await loadClients(true);
+await loadClients();
 
-watchEffect(() => {
-  console.log("BIN DO", user.value, clients.value);
-  if (user.value && !user.value.client_id) {
-    user.value.client_id = clients.value[0].value;
-  }
-})
+if (user.value && !user.value.client_id) {
+  user.value.client_id = clients.value[0].value;
+}
 </script>
