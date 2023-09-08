@@ -3,16 +3,16 @@ import { AsyncData } from "nuxt/app";
 
 export default () => ({
   api: useApi(),
-  index(params: any, cached: boolean) {
-    return this.api.get('category_trees', cached, params)
+  index(params: any) {
+    return this.api.get('category_trees', params)
   },
 
   create(payload: Record<string, any>) {
     return this.api.post(`category_trees`, payload)
   },
 
-  get(id: number | string, cached: boolean) {
-    return this.api.get(`category_trees/${id}`, cached)
+  get(id: number | string) {
+    return this.api.get(`category_trees/${id}`)
   },
 
   update(payload: Record<string, any>, id: number) {

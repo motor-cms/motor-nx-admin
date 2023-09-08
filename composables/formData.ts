@@ -55,7 +55,7 @@ export function useFormData() {
 
   const getCategoryData = async (cached: boolean) => {
     const responseCurrentCategory = await categoryRepository().index({}, categoryTreeID);
-    const responseCurrentTree = await categoryTreeRepository().get(categoryTreeID, false);
+    const responseCurrentTree = await categoryTreeRepository().get(categoryTreeID);
 
     const treeChildren: DraggableContent[] = responseCurrentCategory.data.value.data;
     const tree: DraggableContent = responseCurrentTree.data.value.data;
@@ -94,18 +94,18 @@ export function useFormData() {
     await loadDataAndCreateOptions(repositoryResponse, categories, 'name', 'id');
   }
 
-  const loadRoles = async (cached: boolean) => {
-    const { data: repositoryResponse } = await roleRepository().index({}, cached);
+  const loadRoles = async () => {
+    const { data: repositoryResponse } = await roleRepository().index({});
     await loadDataAndCreateOptions(repositoryResponse, roles, 'name', 'id');
   }
 
-  const loadLanguages = async (cached: boolean) => {
-    const { data: repositoryResponse } = await languageRepository().index({}, cached);
+  const loadLanguages = async () => {
+    const { data: repositoryResponse } = await languageRepository().index({});
     await loadDataAndCreateOptions(repositoryResponse, languages, 'english_name', 'id');
   }
 
-  const loadClients = async (cached: boolean) => {
-    const { data: repositoryResponse } = await clientRepository().index({}, cached);
+  const loadClients = async () => {
+    const { data: repositoryResponse } = await clientRepository().index({});
     await loadDataAndCreateOptions(repositoryResponse, clients, 'name', 'id');
   }
 
