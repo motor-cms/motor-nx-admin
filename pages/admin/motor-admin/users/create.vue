@@ -67,7 +67,7 @@ const { t } = useI18n()
 const { userHasClient } = storeToRefs(useUserStore());
 
 // Load form
-const { model, onSubmit, clients, roles, form} = userForm()
+const { model, onSubmit, clients, roles, form, getData, loadClients, loadRoles} = userForm()
 
 // Set default action title
 const title = ref(t('motor-admin.users.create'))
@@ -86,5 +86,9 @@ watch(model, () => {
 
   model.value.roles = options
 })
+
+await getData();
+await loadClients();
+await loadRoles();
 
 </script>

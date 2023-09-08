@@ -93,23 +93,11 @@ export default function userForm() {
     afterSubmit
   )
 
-  const {getRelevantFormData} = useCoreFormData();
-  const {clients, roles, loadRoles, loadClients} = useFormData()
-
-  onMounted(async () => {
-    await getRelevantFormData(getData, [
-      loadClients, loadRoles
-    ], [
-      loadClients, loadRoles
-    ]);
-  })
-
   return {
     getData,
     onSubmit,
     model,
-    clients,
-    roles,
-    form
+    form,
+    ...useFormData()
   }
 }
