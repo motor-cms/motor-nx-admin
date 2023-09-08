@@ -1,10 +1,9 @@
 
 import baseForm from '@zrm/motor-nx-core/forms/baseForm'
-import {onMounted, ref} from 'vue'
+import { ref} from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/client'
 import { countries } from 'countries-list'
-import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
 import {boolean, InferType, number, object, string} from "yup";
 
 export default function clientForm() {
@@ -64,15 +63,6 @@ export default function clientForm() {
     schema,
     sanitizer
   )
-
-  const { getRelevantFormData } = useCoreFormData();
-
-  onMounted(async () => {
-    await getRelevantFormData(getData,[
-    ],[
-    ]);
-  })
-
 
   return {
     getData,

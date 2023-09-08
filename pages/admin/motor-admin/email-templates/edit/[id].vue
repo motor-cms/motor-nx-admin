@@ -119,8 +119,8 @@
 </template>
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import form from '@zrm/motor-nx-admin/forms/emailTemplateForm'
 import {storeToRefs} from "pinia";
+import emailTemplateForm from "@zrm/motor-nx-admin/forms/emailTemplateForm";
 
 
 // Load i18n module
@@ -128,9 +128,13 @@ const { t } = useI18n()
 const { userHasClient } = storeToRefs(useUserStore());
 
 // Load form
-const { model, onSubmit, languages, clients } = form()
+const { model, onSubmit, languages, clients, form, loadLanguages, loadClients, getData } = emailTemplateForm()
 
 // Set default action title
 const title = ref(t('motor-admin.email_templates.edit'))
+
+await getData();
+await loadClients();
+await loadLanguages();
 
 </script>

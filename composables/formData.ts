@@ -3,6 +3,7 @@ import Repository from "@zrm/motor-nx-core/types/repository";
 import languageRepository from "@zrm/motor-nx-admin/api/language";
 import clientRepository from "@zrm/motor-nx-admin/api/client";
 import roleRepository from "@zrm/motor-nx-admin/api/role";
+import permissionRepository from "@zrm/motor-nx-admin/api/permission";
 import categoryRepository from "@zrm/motor-nx-admin/api/category";
 import categoryTreeRepository from "@zrm/motor-nx-admin/api/categoryTree";
 import { countries } from "countries-list";
@@ -15,6 +16,7 @@ export function useFormData() {
   const languages: Ref<GenericOptionPair[]> = ref([])
   const clients: Ref<GenericOptionPair[]> = ref([])
   const roles: Ref<GenericOptionPair[]> = ref([])
+  const permissions: Ref<GenericOptionPair[]> = ref([])
   const treeData: Ref<DraggableContent | null> = ref(null)
   const categories: Ref<GenericOptionPair[]> = ref([])
   const countryOptions: Ref<GenericOptionPair[]> = ref([]);
@@ -99,6 +101,11 @@ export function useFormData() {
     await loadDataAndCreateOptions(repositoryResponse, roles, 'name', 'id');
   }
 
+  const loadPermissions = async () => {
+    const { data: repositoryResponse } = await permissionRepository().all({per_page: 500});
+    await loadDataAndCreateOptions(repositoryResponse, permissions, 'name', 'id');
+  }
+
   const loadLanguages = async () => {
     const { data: repositoryResponse } = await languageRepository().index({});
     await loadDataAndCreateOptions(repositoryResponse, languages, 'english_name', 'id');
@@ -126,6 +133,8 @@ export function useFormData() {
     getCategoryData,
     countryOptions,
     salutationOptions,
-    genderOptions
+    genderOptions,
+    permissions,
+    loadPermissions,
   }
 }

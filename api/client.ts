@@ -2,8 +2,8 @@ import useApi from "@zrm/motor-nx-core/composables/http/api";
 
 export default () => ({
     api: useApi(),
-    async index(params: any, cached: boolean = true) {
-        return this.api.get('clients', cached, params)
+    async index(params: Record<string, any>) {
+        return this.api.get('clients', params)
     },
 
     async create(payload: object) {

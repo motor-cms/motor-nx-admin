@@ -39,15 +39,6 @@ export default function categoryTreeForm() {
     sanitizer
   )
 
-  const { getRelevantFormData } = useCoreFormData()
-  const { getCategoryData } = useFormData();
-
-  onMounted(async () => {
-    await getRelevantFormData(getData,[
-    ],[
-    ]);
-  })
-
   return {
     getData,
     onSubmit,

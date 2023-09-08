@@ -35,8 +35,6 @@ export default function categoryGrid() {
     }
   }
 
-  const { refreshGridData } = useGridData();
-
   const getGridData = async (params: any, id: string, cached: boolean = true) => {
     const {data: response } = await repository.index(params, id, cached);
     rows.value = response.value.data
@@ -45,7 +43,7 @@ export default function categoryGrid() {
 
   const refreshRecords = async (params: any = {}) => {
     const category_tree: string = router.currentRoute.value.params.categorytreeid as string
-    await refreshGridData([getGridData], [getGridData], params, category_tree, true, true)
+    await getGridData(params, category_tree)
   }
 
   return { rows, meta, refreshRecords, handleCellEvent }

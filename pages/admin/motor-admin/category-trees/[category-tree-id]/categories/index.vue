@@ -64,7 +64,6 @@ const loadComponents = <any>[
 
 const createRoute = computed(() => 'admin.motor-admin.category-trees.' + route.params.categorytreeid + '.categories.create');
 
-onMounted(async () => {
-  await refreshRecords();
-})
+await refreshRecords();
+
 </script>

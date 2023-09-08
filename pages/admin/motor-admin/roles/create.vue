@@ -51,7 +51,7 @@ const { t } = useI18n()
 const router = useRouter()
 
 // Load form
-const { model, getData, onSubmit, permissions } = form()
+const { model, getData, onSubmit, permissions, loadPermissions } = form()
 
 // Set default action title
 const title = ref(t('motor-admin.roles.create'))
@@ -70,4 +70,7 @@ watch(model, () => {
 
   model.value.permissions = options
 })
+
+await loadPermissions();
+
 </script>

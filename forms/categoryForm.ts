@@ -14,8 +14,6 @@ export default function categoryForm() {
   const categoryTreeId = router.currentRoute.value.params.categorytreeid;
   const routeCategoryTree = 'admin.motor-admin.category-trees.' + categoryTreeId + '.categories';
   const categoryTree: string = categoryTreeId as string
-  const { getRelevantFormData } = useCoreFormData()
-  const { treeData, getCategoryData } = useFormData();
   const { t, tm } = useI18n()
 
   // Validation schema
@@ -119,20 +117,13 @@ export default function categoryForm() {
     }
   }
 
-  onMounted(async () => {
-    await getRelevantFormData(getData, [
-      getCategoryData
-    ], [
-      getCategoryData
-    ]);
-  })
 
   return {
     form,
     getData,
     onSubmit,
     model,
-    treeData,
-    replaceCategoryName
+    replaceCategoryName,
+    ...useFormData(),
   }
 }

@@ -2,8 +2,8 @@ import useApi from "@zrm/motor-nx-core/composables/http/api";
 
 export default () => ({
     api: useApi(),
-    index(params: any, cached: boolean = true) {
-        return this.api.get('languages', cached, params)
+    index(params: Record<string, any>) {
+        return this.api.get('languages', params)
     },
 
     create(payload: object) {

@@ -60,8 +60,7 @@ const loadComponents = <any>[]
 
 // WE START THE OUTSOURCED CODE HERE
 const {rows, meta, refreshRecords, handleCellEvent} = grid()
-onMounted(async () => {
-  await refreshRecords();
-})
+await refreshRecords();
+
 
 </script>

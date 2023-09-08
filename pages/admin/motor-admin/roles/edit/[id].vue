@@ -51,13 +51,15 @@ const { t } = useI18n()
 const router = useRouter()
 
 // Load form
-const { model, getData, onSubmit, permissions } = form()
+const { model, getData, onSubmit, permissions, loadPermissions } = form()
 
 // Set default action title
 const title = ref(t('motor-admin.roles.create'))
 
-// Sanitize roles
-watch(model, () => {
+await loadPermissions();
+await getData();
+
+onMounted(() => {
   const checkAgainst = Object.entries(model.value.permissions)
 
   const options = []
@@ -69,6 +71,4 @@ watch(model, () => {
   }
   model.value.permissions = options
 })
-
-
 </script>

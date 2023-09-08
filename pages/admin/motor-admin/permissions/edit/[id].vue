@@ -38,9 +38,10 @@ const { t } = useI18n()
 const router = useRouter()
 
 // Load form
-const { model, onSubmit } = form()
+const { model, onSubmit, getData } = form()
 
 // Set default action title
 const title = ref(t('motor-admin.permissions.edit'))
 
+await getData();
 </script>

@@ -45,7 +45,7 @@ export default function categoryGrid() {
 
   const refreshRecords = async (params: any = {}) => {
     const category_tree: string = router.currentRoute.value.params.categorytreeid as string
-    await refreshGridData([getGridData], [getGridData], params, category_tree, true, true)
+    await getGridData(params, category_tree)
   }
 
   return { rows, meta, refreshRecords, handleCellEvent }

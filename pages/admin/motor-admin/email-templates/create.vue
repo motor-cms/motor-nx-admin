@@ -129,9 +129,11 @@ const { t } = useI18n()
 const { userHasClient } = storeToRefs(useUserStore());
 
 // Load form
-const { model, onSubmit, languages, clients, form } = emailTemplateForm()
+const { model, onSubmit, languages, clients, form, loadLanguages, loadClients } = emailTemplateForm()
 
 // Set default action title
 const title = ref(t('motor-admin.email_templates.create'))
 
+await loadLanguages();
+await loadClients();
 </script>

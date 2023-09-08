@@ -42,14 +42,6 @@ export default function configVariableForm() {
     sanitizer
   )
 
-  const { getRelevantFormData } = useCoreFormData();
-
-  onMounted(async () => {
-    await getRelevantFormData(getData,[
-    ],[
-    ]);
-  })
-
   return {
     getData,
     onSubmit,

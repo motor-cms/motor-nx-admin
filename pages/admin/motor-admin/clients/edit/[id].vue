@@ -7,7 +7,6 @@
     <h6 class="text-uppercase text-body text-xs font-weight-bolder">
       Basic information
     </h6>
-    {{model}}
     <div class="row">
       <div class="col-md-6">
         <FormsInputField
@@ -133,8 +132,10 @@ import form from '@zrm/motor-nx-admin/forms/clientForm'
 const { t } = useI18n()
 
 // Load form
-const { model, onSubmit, countryOptions } = form()
+const { model, onSubmit, countryOptions, getData } = form()
 
 // Set default action title
 const title = ref(t('motor-admin.clients.edit'))
+
+await getData();
 </script>

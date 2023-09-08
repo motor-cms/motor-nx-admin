@@ -46,13 +46,6 @@ export default function permissionForm() {
     sanitizer,
   )
 
-  const {getRelevantFormData} = useCoreFormData();
-
-  onMounted(async () => {
-    await getRelevantFormData(getData, [], []);
-  })
-
-
   return {
     getData,
     onSubmit,

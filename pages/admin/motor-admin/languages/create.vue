@@ -45,7 +45,7 @@ import form from '@zrm/motor-nx-admin/forms/languageForm'
 const { t } = useI18n()
 
 // Load form
-const { model, onSubmit, languageOptions } = form()
+const { model, onSubmit, languageOptions} = form()
 
 // Set default action title
 const title = ref(t('motor-admin.languages.create'))

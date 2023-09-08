@@ -2,9 +2,9 @@ import useApi from "@zrm/motor-nx-core/composables/http/api";
 
 export default () => ({
   api: useApi(),
-  index(params: any, categoryTree?: string, cached: boolean = true) {
+  index(params: any, categoryTree?: string) {
       return this.api.get(
-      'category_trees/' + categoryTree + '/categories', cached, params
+      'category_trees/' + categoryTree + '/categories', params
     )
   },
 

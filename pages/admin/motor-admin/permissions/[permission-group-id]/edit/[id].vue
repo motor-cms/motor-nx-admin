@@ -11,8 +11,9 @@
           name="itemName"
           id="itemName"
           :label="$t('motor-admin.permissions.name')"
-          v-model="itemName"
-        ></FormsInputField>
+          v-model="model.name">
+<!--          v-model="itemName"-->
+        </FormsInputField>
       </div>
       <div class="col-md-6">
         <FormsInputField
@@ -53,24 +54,25 @@ const router = useRouter()
 const route = useRoute()
 
 // Load form
-const {model, onSubmit} = form()
+const {model, onSubmit, getData} = form()
 
 const prefix = ref('')
 
-model.value.permission_group_id = route.params.permissiongroupid
 
-usePermissionGroupAPI().get(model.value.permission_group_id).then((response) => {
-  prefix.value = response.data.value.data.name + '.';
-})
-
-watch(itemName, (itemNameValue) => {
-  if(model.value.name.indexOf('.') > -1 && !itemName.value){
-    itemName.value = model.value.name.slice(model.value.name.indexOf('.') + 1, model.value.name.length)
-  }
-  model.value.name = prefix.value + itemName.value
-})
+// TODO: Loic was passiert hier?
+// watch(itemName, (itemNameValue) => {
+//   if(model.value.name.indexOf('.') > -1 && !itemName.value){
+//     itemName.value = model.value.name.slice(model.value.name.indexOf('.') + 1, model.value.name.length)
+//   }
+//   model.value.name = prefix.value + itemName.value
+// })
 
 // Set default action title
 const title = ref(t('motor-admin.permissions.edit'))
+await getData()
+model.value.permission_group_id = +route.params.permissiongroupid
+// const {data: permission} = await usePermissionGroupAPI().get(model.value.permission_group_id)
+// prefix.value = permission.value.data.name + '.';
+
 
 </script>

@@ -5,6 +5,7 @@ import modelRepository from '../api/emailTemplate'
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
 import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
 import {InferType, number, object, string} from "yup";
+import {useForm} from "vee-validate";
 
 export default function emailTemplateForm() {
   // Load i18n module
@@ -58,24 +59,11 @@ export default function emailTemplateForm() {
     sanitizer
   )
 
-  const { getRelevantFormData } = useCoreFormData();
-  const { clients, languages, loadLanguages, loadClients } = useFormData()
-
-  onMounted(async () => {
-    await getRelevantFormData(getData,[
-      loadClients, loadLanguages
-    ],[
-      loadClients, loadLanguages
-    ]);
-  })
-
-
   return {
     getData,
     onSubmit,
     model,
-    clients,
-    languages,
-    form
+    form,
+    ...useFormData()
   }
 }

@@ -3,7 +3,7 @@ import { AsyncData } from "nuxt/app";
 
 export default () => ({
   api: useApi(),
-  index(params: any) {
+  index(params: Record<string, any>) {
     return this.api.get('category_trees', params)
   },
 

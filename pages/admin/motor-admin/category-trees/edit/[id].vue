@@ -35,8 +35,10 @@ import form from '@zrm/motor-nx-admin/forms/categoryTreeForm'
 const { t } = useI18n()
 
 // Load form
-const { model, onSubmit } = form()
+const { model, onSubmit, getData } = form()
 
 // Set default action title
 const title = ref(t('motor-admin.category_trees.edit'))
+
+await getData();
 </script>

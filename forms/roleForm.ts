@@ -43,37 +43,10 @@ export default function roleForm() {
     sanitizer
   )
 
-  const permissions = ref<Array<Record<string, any>>>([])
-  const appStore = useAppStore();
-
-  const { getRelevantFormData } = useCoreFormData();
-  const { clients, roles, loadRoles, loadClients } = useFormData()
-
-  const getPermissions = async (cached: boolean) => {
-    const permissionRepo: Repository = permissionRepository()
-    const {data: response} = await permissionRepo.index({ per_page: 500 }, cached);
-    const options = []
-    for (let i = 0; i < response.value.data.length; i++) {
-      options.push({
-        name: response.value.data[i].name,
-        value: response.value.data[i].id,
-      })
-    }
-    permissions.value = options
-  }
-
-  onMounted(async () => {
-    await getRelevantFormData(getData,[
-      getPermissions
-    ],[
-      getPermissions
-    ]);
-  })
-
   return {
     getData,
     onSubmit,
     model,
-    permissions,
+    ...useFormData()
   }
 }

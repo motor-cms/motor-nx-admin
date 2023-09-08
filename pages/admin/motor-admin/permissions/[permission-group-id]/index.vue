@@ -64,7 +64,6 @@ const filters = ref([{name: 'SearchFilter', options: {}}])
 const createRoute = computed(() => 'admin.motor-admin.permissions.' + route.params.permissiongroupid + '.create');
 const backRoute = computed(() => 'admin.motor-admin.permissions');
 
-onMounted(async () => {
-  await refreshRecords();
-})
+await refreshRecords();
+
 </script>

@@ -47,7 +47,7 @@ const route = useRoute()
 const name = ref(null)
 
 // Load form
-const { model, getData, onSubmit, form } = permissionForm()
+const { model, onSubmit, form, getData } = permissionForm()
 
 const prefix = ref('')
 
@@ -67,5 +67,7 @@ watch(model, (value) => {
 
 // Set default action title
 const title = ref(t('motor-admin.permissions.create'))
+
+await getData();
 
 </script>
