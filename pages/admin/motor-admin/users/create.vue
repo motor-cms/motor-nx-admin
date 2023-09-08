@@ -60,7 +60,7 @@ import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import userForm from '@zrm/motor-nx-admin/forms/userForm'
 import {storeToRefs} from "pinia";
-import {useUserStore} from "~/packages/motor-nx-core/store/user";
+
 
 // Load i18n module
 const { t } = useI18n()

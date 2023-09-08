@@ -122,7 +122,7 @@
 import { useI18n } from 'vue-i18n'
 import emailTemplateForm from '@zrm/motor-nx-admin/forms/emailTemplateForm'
 import {storeToRefs} from "pinia";
-import {useUserStore} from "~/packages/motor-nx-core/store/user";
+
 
 // Load i18n module
 const { t } = useI18n()

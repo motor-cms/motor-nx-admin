@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/role'
 import Repository from '@zrm/motor-nx-core/types/repository'
 import permissionRepository from '../api/permission'
-import {useAppStore} from "@zrm/motor-nx-core/store/app";
+
 import {array, InferType, number, object, string} from "yup";
 import {useCoreFormData} from "~/packages/motor-nx-core/composables/form/formData";
 import {useFormData} from "~/packages/motor-nx-admin/composables/formData";

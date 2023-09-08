@@ -53,7 +53,7 @@ export function useFormData() {
   const categoryTreeID: string = router.currentRoute.value.params.categorytreeid as string
   const categoryID: string = router.currentRoute.value.params.categoryid as string
 
-  const getCategoryData = async (cached: boolean) => {
+  const getCategoryData = async () => {
     const responseCurrentCategory = await categoryRepository().index({}, categoryTreeID);
     const responseCurrentTree = await categoryTreeRepository().get(categoryTreeID);
 
