@@ -9,7 +9,7 @@
     :filters="filters"
     resource="categories"
     :loadComponents="loadComponents"
-    @submit="refreshRecords"
+    @submit="refreshGridData"
     @submit-cell="handleCellEvent"
   ></AdminCommonGrid>
 </template>
@@ -63,6 +63,13 @@ const loadComponents = <any>[
 ]
 
 const createRoute = computed(() => 'admin.motor-admin.category-trees.' + route.params.categorytreeid + '.categories.create');
+
+const refreshGridData = async () => {
+  const appStore = useAppStore();
+  appStore.updateInBackground(true);
+  await refreshRecords()
+  appStore.updateInBackground(false);
+}
 
 await refreshRecords();
 

@@ -11,7 +11,7 @@
     :filters="filters"
     resource="categories"
     :loadComponents="loadComponents"
-    @submit="refreshRecords"
+    @submit="refreshGridData"
     @submit-cell="handleCellEvent"
   ></AdminCommonGrid>
 </template>
@@ -63,6 +63,13 @@ const filters = ref([{name: 'SearchFilter', options: {}}])
 
 const createRoute = computed(() => 'admin.motor-admin.permissions.' + route.params.permissiongroupid + '.create');
 const backRoute = computed(() => 'admin.motor-admin.permissions');
+
+const refreshGridData = async () => {
+  const appStore = useAppStore();
+  appStore.updateInBackground(true);
+  await refreshRecords()
+  appStore.updateInBackground(false);
+}
 
 await refreshRecords();
 

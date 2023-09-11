@@ -9,7 +9,7 @@
     :filters="filters"
     resource="languages"
     :loadComponents="loadComponents"
-    @submit="refreshRecords"
+    @submit="refreshGridData"
     @submit-cell="handleCellEvent"
   ></AdminCommonGrid>
 </template>
@@ -60,6 +60,15 @@ const loadComponents = <any>[]
 
 // WE START THE OUTSOURCED CODE HERE
 const { rows, meta, refreshRecords, handleCellEvent } = grid()
+
+
+const refreshGridData = async () => {
+  const appStore = useAppStore();
+  appStore.updateInBackground(true);
+  await refreshRecords()
+  appStore.updateInBackground(false);
+}
+
 await refreshRecords();
 
 </script>

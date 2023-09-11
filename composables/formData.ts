@@ -1,15 +1,13 @@
-import { ref } from "vue";
-import Repository from "@zrm/motor-nx-core/types/repository";
+import {ref} from "vue";
 import languageRepository from "@zrm/motor-nx-admin/api/language";
 import clientRepository from "@zrm/motor-nx-admin/api/client";
 import roleRepository from "@zrm/motor-nx-admin/api/role";
 import permissionRepository from "@zrm/motor-nx-admin/api/permission";
 import categoryRepository from "@zrm/motor-nx-admin/api/category";
 import categoryTreeRepository from "@zrm/motor-nx-admin/api/categoryTree";
-import { countries } from "countries-list";
-import { useI18n } from "vue-i18n";
+import {countries} from "countries-list";
+import {useI18n} from "vue-i18n";
 import DraggableContent from "packages/motor-nx-core/types/draggable-content";
-import {CategoryScopes} from "~/packages/motor-nx-admin/types/categories.enums";
 
 export function useFormData() {
   const router = useRouter()
@@ -78,20 +76,7 @@ export function useFormData() {
 
   const getCategoryDataByScope = async (scope: string) => {
     const responseCurrentTree = await categoryTreeRepository().byScope(scope);
-
-    const tree: DraggableContent = responseCurrentTree.data.value.data;
-    tree.children = treeChildren;
-
-    if (categoryID === undefined && tree.children && !tree.children.some(e => e.id === 0)) {
-      tree.children.push({
-        id: 0,
-        name: 'New Category',
-        children: [],
-      })
-    }
-
-    console.log("Result Tree", tree);
-    treeData.value = tree;
+    treeData.value = responseCurrentTree.data.value.data;
   }
 
   async function loadDataAndCreateOptions(
