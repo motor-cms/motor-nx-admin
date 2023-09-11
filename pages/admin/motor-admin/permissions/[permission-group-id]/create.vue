@@ -1,4 +1,5 @@
 <template>
+  {{model}}
   <AdminCommonForm
     :back-route="'admin.motor-admin.permissions.' + route.params.permissiongroupid"
     :title="title"
@@ -11,7 +12,7 @@
           name="itemName"
           id="itemName"
           :label="$t('motor-admin.permissions.name')"
-          v-model="model.itemName"
+          v-model="model.name"
         ></FormsInputField>
       </div>
       <div class="col-md-6">
@@ -51,23 +52,10 @@ const { model, onSubmit, form, getData } = permissionForm()
 
 const prefix = ref('')
 
-usePermissionGroupAPI().get(route.params.permissiongroupid).then((response) => {
-  prefix.value = response.data.value.data.name + '.';
-})
-
-model.value.permission_group_id = route.params.permissiongroupid
-
-watch(model, (value) => {
-  if(value.itemName === ""){
-    model.value.name = ""
-  } else {
-    model.value.name = prefix.value + value.itemName
-  }
-}, {deep: true, immediate: true}) // Deep because we watch a reactive object
-
 // Set default action title
 const title = ref(t('motor-admin.permissions.create'))
 
 await getData();
+model.value.permission_group_id = route.params.permissiongroupid
 
 </script>

@@ -61,4 +61,5 @@ const categoryTreeId = router.currentRoute.value.params.categorytreeid;
 const backRoute: string = "admin.motor-admin.category-trees." + categoryTreeId + ".categories" as string;
 
 await getData();
+await getCategoryData();
 </script>

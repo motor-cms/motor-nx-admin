@@ -9,6 +9,7 @@ import categoryTreeRepository from "@zrm/motor-nx-admin/api/categoryTree";
 import { countries } from "countries-list";
 import { useI18n } from "vue-i18n";
 import DraggableContent from "packages/motor-nx-core/types/draggable-content";
+import {CategoryScopes} from "~/packages/motor-nx-admin/types/categories.enums";
 
 export function useFormData() {
   const router = useRouter()
@@ -60,6 +61,24 @@ export function useFormData() {
     const responseCurrentTree = await categoryTreeRepository().get(categoryTreeID);
 
     const treeChildren: DraggableContent[] = responseCurrentCategory.data.value.data;
+    const tree: DraggableContent = responseCurrentTree.data.value.data;
+    tree.children = treeChildren;
+
+    if (categoryID === undefined && tree.children && !tree.children.some(e => e.id === 0)) {
+      tree.children.push({
+        id: 0,
+        name: 'New Category',
+        children: [],
+      })
+    }
+
+    console.log("Result Tree", tree);
+    treeData.value = tree;
+  }
+
+  const getCategoryDataByScope = async (scope: string) => {
+    const responseCurrentTree = await categoryTreeRepository().byScope(scope);
+
     const tree: DraggableContent = responseCurrentTree.data.value.data;
     tree.children = treeChildren;
 
@@ -131,10 +150,11 @@ export function useFormData() {
     treeData,
     categories,
     getCategoryData,
+    getCategoryDataByScope,
     countryOptions,
     salutationOptions,
     genderOptions,
     permissions,
-    loadPermissions,
+
   }
 }

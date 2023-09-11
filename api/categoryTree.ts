@@ -22,4 +22,8 @@ export default () => ({
   delete(id: number) {
     return this.api.destroy(`category_trees/${id}`)
   },
+
+  byScope(scope: string) {
+    return this.api.get(`category_trees/scope/${scope}`)
+  }
 })
