@@ -43,6 +43,7 @@ export default function categoryTreeForm() {
     getData,
     onSubmit,
     model,
-    schema
+    schema,
+    ...useFormData()
   }
 }

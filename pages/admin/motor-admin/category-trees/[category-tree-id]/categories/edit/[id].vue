@@ -1,4 +1,5 @@
 <template>
+  {{model}}
   <AdminCommonForm
     :back-route=backRoute
     :title="title"
@@ -38,7 +39,7 @@ const {t} = useI18n()
 // Load router
 const route = useRouter()
 // Load form
-const {model, onSubmit, treeData, replaceCategoryName} = form()
+const {model, onSubmit, treeData, replaceCategoryName, getData, getCategoryData} = form()
 
 // Set default action title
 const title = ref(t('motor-admin.categories.edit'))
@@ -50,5 +51,8 @@ const backRoute: string = "admin.motor-admin.category-trees." + categoryTreeId +
 const changed = (value: any) => {
   replaceCategoryName(value)
 }
+
+await getData();
+await getCategoryData();
 
 </script>

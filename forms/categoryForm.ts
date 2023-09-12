@@ -2,7 +2,6 @@ import baseForm from '@zrm/motor-nx-core/forms/baseForm'
 import { ref } from 'vue'
 import modelRepository from '../api/category'
 import { useRouter } from 'vue-router'
-import { useCoreFormData } from "@zrm/motor-nx-core/composables/form/formData";
 import { useFormData } from "@zrm/motor-nx-admin/composables/formData";
 import { InferType, number, object, string } from "yup";
 import { useI18n } from "vue-i18n";
@@ -84,7 +83,6 @@ export default function categoryForm() {
 
   // Sanitize dates
   const sanitizer = (formData: any) => {
-    console.log("formdata CatForm", JSON.parse(JSON.stringify(formData)));
     const foundYou = search(
       formData,
       treeData.value,

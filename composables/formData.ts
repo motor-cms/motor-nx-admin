@@ -55,12 +55,9 @@ export function useFormData() {
   const categoryID: string = router.currentRoute.value.params.categoryid as string
 
   const getCategoryData = async () => {
-    const responseCurrentCategory = await categoryRepository().index({}, categoryTreeID);
+    // const responseCurrentCategory = await categoryRepository().index({}, categoryTreeID);
     const responseCurrentTree = await categoryTreeRepository().get(categoryTreeID);
-
-    const treeChildren: DraggableContent[] = responseCurrentCategory.data.value.data;
-    const tree: DraggableContent = responseCurrentTree.data.value.data;
-    tree.children = treeChildren;
+    const tree = responseCurrentTree.data.value.data;
 
     if (categoryID === undefined && tree.children && !tree.children.some(e => e.id === 0)) {
       tree.children.push({
