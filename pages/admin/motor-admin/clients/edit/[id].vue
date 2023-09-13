@@ -20,7 +20,9 @@
       <div class="col-md-4">
         <FormsStaticField
           :label="$t('motor-admin.clients.slug')"
-          v-model="model.slug"
+          name="slug"
+          id="slug"
+          :value="model.slug"
           :empty-value="$t('no_slug_yet')"
         ></FormsStaticField>
       </div>
@@ -138,4 +140,11 @@ const { model, onSubmit, countryOptions, getData } = form()
 const title = ref(t('motor-admin.clients.edit'))
 
 await getData();
+
+watch(() => model.value.name , () => {
+  model.value.slug = model.value.name
+    .toLowerCase()
+    .replace(/ /g, '-')
+    .replace(/[^\w-]+/g, '');
+}, { immediate: true })
 </script>

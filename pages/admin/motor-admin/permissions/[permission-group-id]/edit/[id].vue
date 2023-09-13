@@ -8,11 +8,10 @@
       <div class="col-md-6">
         <FormsInputField
           type="text"
-          name="itemName"
-          id="itemName"
+          name="name"
+          id="name"
           :label="$t('motor-admin.permissions.name')"
           v-model="model.name">
-<!--          v-model="itemName"-->
         </FormsInputField>
       </div>
       <div class="col-md-6">
@@ -24,16 +23,6 @@
           v-model="model.guard_name"
         ></FormsInputField>
       </div>
-      <FormsHiddenInputField
-        name="permission_group_id"
-        id="permission_group_id"
-        v-model="model.permission_group_id"
-      ></FormsHiddenInputField>
-      <FormsHiddenInputField
-        name="name"
-        id="name"
-        v-model="model.name"
-      ></FormsHiddenInputField>
     </div>
   </AdminCommonForm>
 </template>

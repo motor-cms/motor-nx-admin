@@ -6,33 +6,19 @@ import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
 import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
 import {InferType, number, object, string} from "yup";
 import {useForm} from "vee-validate";
-
+import {storeToRefs} from "pinia";
 export default function emailTemplateForm() {
   // Load i18n module
   const { t, tm } = useI18n()
 
-  // Validation schema
-  const schema = object({
-    id: number().min(1).nullable(),
-    client_id: number().label(t('motor-admin.clients.client')),
-    language_id: number().min(1).required().label(t('motor-admin.languages.language')),
-    name: string().min(3).required().label(t('motor-admin.email_templates.name')),
-    subject: string().min(3).required().label(t('motor-admin.email_templates.subject')),
-    body_text: string().min(3).nullable(),
-    body_html: string().min(3).nullable(),
-    default_sender_name: string().min(3).nullable(),
-    default_sender_email: string().min(3).nullable(),
-    default_recipient_name: string().min(3).nullable(),
-    default_recipient_email: string().min(3).nullable(),
-    default_cc_email: string().min(3).nullable(),
-    default_bcc_email: string().min(3).nullable(),
-  })
-
   type EmailTemplateForm = InferType<typeof schema>;
 
   // Record
-  const model = ref<EmailTemplateForm>({
+  const initialModelData = {
     id: null,
+  }
+
+  const initialFormData = {
     client_id: 0,
     language_id: 0,
     name: '',
@@ -45,7 +31,25 @@ export default function emailTemplateForm() {
     default_recipient_email: '',
     default_cc_email: '',
     default_bcc_email: '',
-  })
+  }
+
+  const formStore = useFormStore();
+  const {model, formSchema} = storeToRefs(formStore);
+  formStore.init(initialModelData, initialFormData);
+  formSchema.value = {
+    client_id: number().label(t('motor-admin.clients.client')),
+    language_id: number().min(1).required().label(t('motor-admin.languages.language')),
+    name: string().min(3).required().label(t('motor-admin.email_templates.name')),
+    subject: string().min(3).required().label(t('motor-admin.email_templates.subject')),
+    body_text: string().min(3).nullable(),
+    body_html: string().min(3).nullable(),
+    default_sender_name: string().min(3).nullable(),
+    default_sender_email: string().email().nullable(),
+    default_recipient_name: string().min(3).nullable(),
+    default_recipient_email: string().email().nullable(),
+    default_cc_email: string().email().nullable(),
+    default_bcc_email: string().email().nullable(),
+  }
 
   // Sanitize dates
   const sanitizer = () => {}
@@ -54,8 +58,6 @@ export default function emailTemplateForm() {
     'motor-admin.email_templates',
     'admin.motor-admin.email-templates',
     modelRepository(),
-    model,
-    schema,
     sanitizer
   )
 

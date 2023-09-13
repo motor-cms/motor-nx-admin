@@ -5,26 +5,29 @@ import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/permissionGroup'
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
 import {InferType, number, object, string} from "yup";
-
+import { storeToRefs } from "pinia";
 export default function permissionGroupForm() {
   // Load i18n module
   const { t, tm } = useI18n()
 
-  // Validation schema
-  const schema = object({
+  // Record
+  const initialModelData ={
+    id: null,
+  }
+
+  const initialFormData = {
+    name: '',
+    sort_position: null,
+  }
+
+  const formStore = useFormStore();
+  const {model, formSchema} = storeToRefs(formStore);
+  formStore.init(initialModelData, initialFormData);
+  formSchema.value = {
     id: number().min(1).nullable(),
     name: string().min(3),
     sort_position: number().nullable(),
-  })
-
-  type PermissionGroupForm = InferType<typeof schema>;
-
-  // Record
-  const model = ref<PermissionGroupForm>({
-    id: null,
-    name: '',
-    sort_position: null,
-  })
+  };
 
   // Sanitize dates
   const sanitizer = () => {}
@@ -33,8 +36,6 @@ export default function permissionGroupForm() {
     'motor-admin.permission',
     'admin.motor-admin.permissions',
     modelRepository(),
-    model,
-    schema,
     sanitizer
   )
 

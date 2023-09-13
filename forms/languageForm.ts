@@ -6,28 +6,29 @@ import {languages} from 'countries-list'
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
 import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
 import {InferType, number, object, string} from "yup";
-
+import {storeToRefs} from "pinia";
 export default function languageForm() {
   // Load i18n module
   const {t, tm} = useI18n()
 
-  // Validation schema
-  const schema = object({
-    id: number().min(1).nullable(),
-    native_name: string().min(3).required().label(t('motor-admin.languages.native_name')),
-    english_name: string().min(3).required().label(t('motor-admin.languages.english_name')),
-    iso_639_1: string().required().label(t('motor-admin.languages.iso_639_1')),
-  })
-
-  type LanguageForm = InferType<typeof schema>;
-
   // Record
-  const model = ref<LanguageForm>({
+  const initialModelData = {
     id: null,
+  }
+  const initialFormData = {
     native_name: '',
     english_name: '',
     iso_639_1: '',
-  })
+  }
+
+  const formStore = useFormStore();
+  const {model, formSchema} = storeToRefs(formStore);
+  formStore.init(initialModelData, initialFormData);
+  formSchema.value = {
+    native_name: string().min(3).required().label(t('motor-admin.languages.native_name')),
+    english_name: string().min(3).required().label(t('motor-admin.languages.english_name')),
+    iso_639_1: string().required().label(t('motor-admin.languages.iso_639_1')),
+  }
 
   // Sanitize dates
   const sanitizer = () => {
@@ -42,8 +43,6 @@ export default function languageForm() {
     'motor-admin.languages',
     'admin.motor-admin.languages',
     modelRepository(),
-    model,
-    schema,
     sanitizer,
   )
 

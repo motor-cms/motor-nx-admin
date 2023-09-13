@@ -124,6 +124,7 @@ export function useFormData() {
   return {
     loadLanguages,
     loadClients,
+    loadPermissions,
     loadRoles,
     loadCategories,
     languages,

@@ -6,56 +6,58 @@ import useApi from "@zrm/motor-nx-core/composables/http/api";
 import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
 import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
 import {array, InferType, number, object, string} from "yup";
+import { storeToRefs } from "pinia";
 
 export default function userForm() {
   // Load i18n module
   const {t, tm} = useI18n()
 
   // Validation schema post
-  const postSchema = object({
-    id: number().min(1).nullable(),
+  const postSchema = {
     client_id: number().label(t('motor-admin.clients.client')),
     name: string().min(3).required().label(t('motor-admin.users.name')),
     email: string().email().min(3).required().label(t('motor-admin.users.email')),
-    password: string().required().label(t('motor-admin.users.password')),
+    password: string().min(8).required().label(t('motor-admin.users.password')),
     roles: array().nullable(),
     //permissions: array().nullable(),
     avatar: object().nullable(),
-  })
+  }
 
   // Validation schema patch
-  const patchSchema = object({
-    id: number().min(1).nullable(),
+  const patchSchema = {
     client_id: number().nullable().label(t('motor-admin.clients.client')),
     name: string().min(3).required().label(t('motor-admin.users.name')),
     email: string().email().min(3).required().label(t('motor-admin.users.email')),
-    password: string().label(t('motor-admin.users.password')),
+    password: string().min(8).required().label(t('motor-admin.users.password')),
     roles: array().nullable(),
     //permissions: array().nullable(),
     avatar: object().nullable(),
-  })
+  }
 
   const route = useRoute();
-  const schema = computed(() => {
-    if (route.params.id) {
-      return patchSchema;
-    }
-    return postSchema;
-  })
 
-  type UserForm = InferType<typeof schema>;
-
-  // Record
-  const model = ref<UserForm>({
+  const initialModelData ={
     id: null,
+  }
+
+  const initialFormData ={
     client_id: 0,
-    name: '',
+    name: 'Test',
     email: '',
     password: '',
     roles: [],
-    //permissions: [],
     avatar: {}
-  })
+  }
+
+  const formStore = useFormStore();
+  const {model, formSchema} = storeToRefs(formStore);
+  formStore.init(initialModelData, initialFormData);
+
+  if (route.params.id) {
+    formSchema.value = patchSchema;
+  } else {
+    formSchema.value = postSchema;
+  }
 
   // Sanitize data url
   const sanitizer = async (formData: any) => {
@@ -87,8 +89,6 @@ export default function userForm() {
     'motor-admin.users',
     'admin.motor-admin.users',
     modelRepository(),
-    model,
-    schema,
     sanitizer,
     afterSubmit
   )

@@ -19,8 +19,10 @@
       </div>
       <div class="col-md-4">
         <FormsStaticField
+          name="slug"
+          id="slug"
           :label="$t('motor-admin.clients.slug')"
-          v-model="model.slug"
+          :value="model.slug"
           :empty-value="$t('no_slug_yet')"
         ></FormsStaticField>
       </div>
@@ -126,7 +128,7 @@
   </AdminCommonForm>
 </template>
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
+import {useI18n} from 'vue-i18n'
 import form from '@zrm/motor-nx-admin/forms/clientForm'
 // Load i18n module
 const { t } = useI18n()
@@ -136,4 +138,11 @@ const { model, onSubmit, countryOptions } = form()
 
 // Set default action title
 const title = ref(t('motor-admin.clients.create'))
+
+watch(() => model.value.name , () => {
+  model.value.slug = model.value.name
+    .toLowerCase()
+    .replace(/ /g, '-')
+    .replace(/[^\w-]+/g, '');
+}, { immediate: true })
 </script>

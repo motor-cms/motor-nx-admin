@@ -1,5 +1,4 @@
 <template>
-  {{model}}
   <AdminCommonForm
     :back-route="'admin.motor-admin.permissions.' + route.params.permissiongroupid"
     :title="title"
@@ -9,8 +8,8 @@
       <div class="col-md-6">
         <FormsInputField
           type="text"
-          name="itemName"
-          id="itemName"
+          name="name"
+          id="name"
           :label="$t('motor-admin.permissions.name')"
           v-model="model.name"
         ></FormsInputField>
