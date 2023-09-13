@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router'
 import { useFormData } from "@zrm/motor-nx-admin/composables/formData";
 import { InferType, number, object, string } from "yup";
 import { useI18n } from "vue-i18n";
-import DraggableContent from 'packages/motor-nx-core/types/draggable-content';
+import DraggableContent from '~/packages/motor-nx-core/types/draggable-content';
 
 export default function categoryForm() {
   const router = useRouter()
@@ -14,6 +14,8 @@ export default function categoryForm() {
   const routeCategoryTree = 'admin.motor-admin.category-trees.' + categoryTreeId + '.categories';
   const categoryTree: string = categoryTreeId as string
   const { t, tm } = useI18n()
+  const formData = useFormData();
+  const { treeData } = formData;
 
   // Validation schema
   const schema = object({
@@ -21,8 +23,7 @@ export default function categoryForm() {
     name: string().min(3).required().label(t('motor-admin.categories.name')),
     previous_sibling_id: number().min(1).nullable(),
     next_sibling_id: number().min(1).nullable(),
-    // parent_id: number().min(1).required(),
-    parent_id: number().required(),
+    parent_id: number().min(1).required(),
   })
 
   type CategoryForm = InferType<typeof schema>;
@@ -115,13 +116,12 @@ export default function categoryForm() {
     }
   }
 
-
   return {
     form,
     getData,
     onSubmit,
     model,
     replaceCategoryName,
-    ...useFormData(),
+    ...formData
   }
 }

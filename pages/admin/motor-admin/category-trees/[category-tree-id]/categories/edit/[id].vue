@@ -1,5 +1,4 @@
 <template>
-  {{model}}
   <AdminCommonForm
     :back-route=backRoute
     :title="title"
@@ -24,11 +23,6 @@
       </div>
     </div>
   </AdminCommonForm>
-  <!-- Model ID: {{ model.id }} <br/>
-  Model Name: {{ model.name }} <br/>
-  Model nextID: {{ model.next_sibling_id }} <br/>
-  Model PevID: {{ model.previous_sibling_id }} <br/>
-  Model ParentID: {{ model.parent_id }} <br/> -->
 </template>
 <script setup lang="ts">
 import {useI18n} from 'vue-i18n'
@@ -39,7 +33,7 @@ const {t} = useI18n()
 // Load router
 const route = useRouter()
 // Load form
-const {model, onSubmit, treeData, replaceCategoryName, getData, getCategoryData} = form()
+const {model, onSubmit, treeData, replaceCategoryName, getData, getCategoryTreeData, getCategoryTreeRootData} = form()
 
 // Set default action title
 const title = ref(t('motor-admin.categories.edit'))
@@ -52,7 +46,8 @@ const changed = (value: any) => {
   replaceCategoryName(value)
 }
 
+await getCategoryTreeData();
+await getCategoryTreeRootData();
 await getData();
-await getCategoryData();
 
 </script>
