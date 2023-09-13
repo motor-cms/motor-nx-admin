@@ -23,17 +23,14 @@
       </div>
     </div>
   </AdminCommonForm>
-  <!-- Form Errors: {{ form.errors }} <br/>
-  Model ID: {{ model.id }} <br/>
-  Model Name: {{ model.name }} <br/>
-  Model nextID: {{ model.next_sibling_id }} <br/>
-  Model PevID: {{ model.previous_sibling_id }} <br/>
-  Model ParentID: {{ model.parent_id }} <br/> -->
-
+  {{ model }}
+  {{ form.errors }}
+  {{ treeData }}
 </template>
 <script setup lang="ts">
 import {useI18n} from 'vue-i18n'
 import categoryForm from '@zrm/motor-nx-admin/forms/categoryForm'
+import DraggableContent from '~/packages/motor-nx-core/types/draggable-content';
 
 // Load i18n module
 const {t: $t} = useI18n()
@@ -42,7 +39,7 @@ const {t: $t} = useI18n()
 const router = useRouter()
 
 // Load form
-const {model, treeData, onSubmit, replaceCategoryName, form, getCategoryData, getData} = categoryForm()
+const {model, treeData, onSubmit, replaceCategoryName, form, getCategoryTreeData, getCategoryTreeRootData, getData} = categoryForm()
 
 const categoryTreeID: string = router.currentRoute.value.params.categorytreeid as string;
 
@@ -53,12 +50,36 @@ model.value.parent_id = parseInt(categoryTreeID);
 const title = ref($t('motor-admin.categories.create'))
 
 const changed = (value: any) => {
-  replaceCategoryName(value)
+  if (typeof value !== 'object') {
+    replaceCategoryName(value);
+    model.value.name = value;
+  }
 }
 
 const categoryTreeId = router.currentRoute.value.params.categorytreeid;
 
 const backRoute: string = "admin.motor-admin.category-trees." + categoryTreeId + ".categories" as string;
 
-await getCategoryData();
+await getCategoryTreeData();
+await getCategoryTreeRootData();
+
+function addNewNodeToTree(treeRef: Ref<DraggableContent | null>){
+
+  const tree = treeRef.value;
+
+  if (!tree || !tree.children){
+    return;
+  }
+
+  tree.children?.push({
+    id: 0,
+    name: 'New Category',
+    children: [],
+  })
+
+  treeRef.value = tree;
+}
+
+addNewNodeToTree(treeData);
+
 </script>

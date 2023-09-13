@@ -7,6 +7,7 @@ import { InferType, number, object, string } from "yup";
 import { useI18n } from "vue-i18n";
 import DraggableContent from 'packages/motor-nx-core/types/draggable-content';
 import { storeToRefs } from "pinia";
+
 export default function categoryForm() {
   const router = useRouter()
   const id: string = router.currentRoute.value.params.categoryid as string
@@ -14,6 +15,8 @@ export default function categoryForm() {
   const routeCategoryTree = 'admin.motor-admin.category-trees.' + categoryTreeId + '.categories';
   const categoryTree: string = categoryTreeId as string
   const { t, tm } = useI18n()
+  const formData = useFormData();
+  const { treeData } = formData;
 
   // Record
   const initialModelData ={
@@ -115,13 +118,12 @@ export default function categoryForm() {
     }
   }
 
-
   return {
     form,
     getData,
     onSubmit,
     model,
     replaceCategoryName,
-    ...useFormData(),
+    ...formData
   }
 }

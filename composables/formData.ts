@@ -1,13 +1,13 @@
-import {ref} from "vue";
+import { ref } from "vue";
 import languageRepository from "@zrm/motor-nx-admin/api/language";
 import clientRepository from "@zrm/motor-nx-admin/api/client";
 import roleRepository from "@zrm/motor-nx-admin/api/role";
 import permissionRepository from "@zrm/motor-nx-admin/api/permission";
 import categoryRepository from "@zrm/motor-nx-admin/api/category";
 import categoryTreeRepository from "@zrm/motor-nx-admin/api/categoryTree";
-import {countries} from "countries-list";
-import {useI18n} from "vue-i18n";
-import DraggableContent from "packages/motor-nx-core/types/draggable-content";
+import { countries } from "countries-list";
+import { useI18n } from "vue-i18n";
+import DraggableContent from "~/packages/motor-nx-core/types/draggable-content";
 
 export function useFormData() {
   const router = useRouter()
@@ -19,6 +19,9 @@ export function useFormData() {
   const treeData: Ref<DraggableContent | null> = ref(null)
   const categories: Ref<GenericOptionPair[]> = ref([])
   const countryOptions: Ref<GenericOptionPair[]> = ref([]);
+
+  const remoteTreeRootData: Ref<DraggableContent | null> = ref(null)
+  const remoteTreeData: Ref<DraggableContent[]> = ref([])
 
   const salutationsPerLanguage: SalutationsPerLanguage = {
     de: ['Herr', 'Frau'],
@@ -51,25 +54,54 @@ export function useFormData() {
     return salutationsPerLanguage[valideLocale];
   })
 
-  const categoryTreeID: string = router.currentRoute.value.params.categorytreeid as string
-  const categoryID: string = router.currentRoute.value.params.categoryid as string
+  const currentCategoryTreeID: string = router.currentRoute.value.params.categorytreeid as string
 
-  const getCategoryData = async () => {
-    // const responseCurrentCategory = await categoryRepository().index({}, categoryTreeID);
-    const responseCurrentTree = await categoryTreeRepository().get(categoryTreeID);
-    const tree = responseCurrentTree.data.value.data;
+  const getCategoryTreeData = async () => {
+    const responseCurrentCategory = await categoryRepository().index({}, currentCategoryTreeID);
 
-    if (categoryID === undefined && tree.children && !tree.children.some(e => e.id === 0)) {
-      tree.children.push({
-        id: 0,
-        name: 'New Category',
-        children: [],
-      })
+    if (!responseCurrentCategory.data.value) {
+      return;
     }
 
-    console.log("Result Tree", tree);
-    treeData.value = tree;
+    const treeChildren: DraggableContent[] = responseCurrentCategory.data.value.data;
+    // console.log("Result getCategoryTreeData", treeChildren);
+    remoteTreeData.value = treeChildren;
   }
+
+  const getCategoryTreeRootData = async () => {
+    const responseCurrentTree = await categoryTreeRepository().get(currentCategoryTreeID);
+
+    if (!responseCurrentTree.data.value) {
+      return;
+    }
+
+    const tree: DraggableContent = responseCurrentTree.data.value.data;
+    // console.log("Result getCategoryTreeRootData", tree);
+    remoteTreeRootData.value = tree;
+  }
+
+  watch(remoteTreeRootData, (initiallyLoadedTreeRoot) => {
+    const tree = initiallyLoadedTreeRoot;
+
+    if (tree && remoteTreeData.value.length) {
+      tree.children = remoteTreeData.value;
+    }
+
+    treeData.value = tree;
+  }, { immediate: true });
+
+  watch(remoteTreeData, (initiallyLoadedTree) => {
+    const tree = remoteTreeRootData.value;
+
+    if (!tree) {
+      return;
+    }
+
+    tree.children = initiallyLoadedTree
+
+    treeData.value = tree;
+  }, { immediate: true });
+
 
   const getCategoryDataByScope = async (scope: string) => {
     const responseCurrentTree = await categoryTreeRepository().byScope(scope);
@@ -103,7 +135,7 @@ export function useFormData() {
   }
 
   const loadPermissions = async () => {
-    const { data: repositoryResponse } = await permissionRepository().all({per_page: 500});
+    const { data: repositoryResponse } = await permissionRepository().all({ per_page: 500 });
     await loadDataAndCreateOptions(repositoryResponse, permissions, 'name', 'id');
   }
 
@@ -132,7 +164,8 @@ export function useFormData() {
     roles,
     treeData,
     categories,
-    getCategoryData,
+    getCategoryTreeData,
+    getCategoryTreeRootData,
     getCategoryDataByScope,
     countryOptions,
     salutationOptions,
