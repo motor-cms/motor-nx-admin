@@ -59,16 +59,15 @@ const title = ref(t('motor-admin.roles.create'))
 await loadPermissions();
 await getData();
 
-onMounted(() => {
-  const checkAgainst = Object.entries(model.value.permissions)
+const checkAgainst = Object.entries(model.value.permissions)
 
-  const options = []
-  for (const object of checkAgainst) {
-    const checkObject: any = object
-    if (checkObject[1]) {
-      options.push(checkObject[1]['id'])
-    }
+const options = []
+for (const object of checkAgainst) {
+  const checkObject: any = object
+  if (checkObject[1]) {
+    options.push(checkObject[1]['id'])
   }
-  model.value.permissions = options
-})
+}
+
+model.value.permissions = options
 </script>
