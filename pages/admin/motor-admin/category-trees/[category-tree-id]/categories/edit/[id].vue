@@ -16,6 +16,7 @@
           :label="$t('motor-admin.categories.name')"
           :value="model.name"
           @change="changed"
+          @initialized="setInitialValue"
         ></FormsInputField>
       </div>
       <div class="col-md-4">
@@ -33,7 +34,7 @@ const {t} = useI18n()
 // Load router
 const route = useRouter()
 // Load form
-const {model, onSubmit, treeData, replaceCategoryName, getData, getCategoryTreeData, getCategoryTreeRootData} = form()
+const {model, onSubmit, treeData, replaceCategoryName, getData, getCategoryTreeData, getCategoryTreeRootData, search} = form()
 
 // Set default action title
 const title = ref(t('motor-admin.categories.edit'))
@@ -49,5 +50,11 @@ const changed = (value: any) => {
 await getCategoryTreeData();
 await getCategoryTreeRootData();
 await getData();
+
+const setInitialValue = () => {
+  const name = model.value.name;
+  model.value.name = '';
+  model.value.name = name;
+}
 
 </script>

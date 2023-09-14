@@ -5,41 +5,39 @@ import { useRouter } from 'vue-router'
 import { useFormData } from "@zrm/motor-nx-admin/composables/formData";
 import { InferType, number, object, string } from "yup";
 import { useI18n } from "vue-i18n";
-import DraggableContent from 'packages/motor-nx-core/types/draggable-content';
+import DraggableContent from '@zrm/motor-nx-core/types/draggable-content';
 import { storeToRefs } from "pinia";
+import { useFormStore } from '@zrm/motor-nx-core/stores/form';
 
 export default function categoryForm() {
   const router = useRouter()
   const id: string = router.currentRoute.value.params.categoryid as string
   const categoryTreeId = router.currentRoute.value.params.categorytreeid;
   const routeCategoryTree = 'admin.motor-admin.category-trees.' + categoryTreeId + '.categories';
-  const categoryTree: string = categoryTreeId as string
+  const categoryTree: string = categoryTreeId as string;
   const { t, tm } = useI18n()
   const formData = useFormData();
   const { treeData } = formData;
 
   // Record
-  const initialModelData ={
+  const initialModelData = {
     id: null,
     previous_sibling_id: null,
     next_sibling_id: null,
     parent_id: 0,
   }
-  const initialFormData ={
+
+  const initialFormData = {
     name: '',
   }
 
   const formStore = useFormStore();
-  const {model, formSchema} = storeToRefs(formStore);
+  const { model, formSchema } = storeToRefs(formStore);
   formStore.init(initialModelData, initialFormData);
+
   formSchema.value = {
     name: string().min(3).required().label(t('motor-admin.categories.name')),
-    previous_sibling_id: number().min(1).nullable(),
-    next_sibling_id: number().min(1).nullable(),
-    // parent_id: number().min(1).required(),
-    parent_id: number().required(),
   }
-
 
   const search = (
     formData: any,
@@ -124,6 +122,7 @@ export default function categoryForm() {
     onSubmit,
     model,
     replaceCategoryName,
+    search,
     ...formData
   }
 }
