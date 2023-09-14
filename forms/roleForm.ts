@@ -15,8 +15,6 @@ export default function roleForm() {
   // Record
   const initialModelData = {
     id: null,
-    selected: true,
-    test: true
   }
 
   const initialFormData ={
@@ -50,7 +48,7 @@ export default function roleForm() {
   return {
     getData,
     onSubmit,
-    model: formData,
+    model,
     ...useFormData()
   }
 }
