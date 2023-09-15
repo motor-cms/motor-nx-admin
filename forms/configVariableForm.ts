@@ -3,7 +3,7 @@ import baseForm from '@zrm/motor-nx-core/forms/baseForm'
 import {onMounted, ref} from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/configVariable'
-import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
+
 import {InferType, object, string, number} from "yup";
 import { storeToRefs } from "pinia";
 export default function configVariableForm() {

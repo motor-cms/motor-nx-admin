@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import { useI18n } from 'vue-i18n'
 import { ref } from 'vue'
-import {useGridData} from "@zrm/motor-nx-core/composables/grid/gridData";
+
 
 export default function categoryGrid() {
   const repository = modelRepository()

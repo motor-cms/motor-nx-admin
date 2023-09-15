@@ -6,7 +6,7 @@ import Repository from '@zrm/motor-nx-core/types/repository'
 import permissionRepository from '../api/permission'
 import { storeToRefs } from "pinia";
 import {array, InferType, number, object, string} from "yup";
-import {useCoreFormData} from "~/packages/motor-nx-core/composables/form/formData";
+
 import {useFormData} from "~/packages/motor-nx-admin/composables/formData";
 
 export default function roleForm() {

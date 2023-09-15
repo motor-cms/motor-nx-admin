@@ -3,7 +3,7 @@ import {onMounted, ref} from 'vue'
 import {useI18n} from 'vue-i18n'
 import modelRepository from '../api/language'
 import {languages} from 'countries-list'
-import {useCoreFormData} from "@zrm/motor-nx-core/composables/form/formData";
+
 import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
 import {InferType, number, object, string} from "yup";
 import {storeToRefs} from "pinia";
