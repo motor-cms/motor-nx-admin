@@ -58,6 +58,9 @@ export function useFormData() {
 
   const getCategoryTreeData = async () => {
     const responseCurrentTree = await categoryTreeRepository().get(currentCategoryTreeID);
+    if (responseCurrentTree.error.value) {
+      throw createError(responseCurrentTree.error.value)
+    }
     if (!responseCurrentTree.data.value) {
       return;
     }
@@ -80,7 +83,12 @@ export function useFormData() {
 
   const getCategoryDataByScope = async (scope: string) => {
     const responseCurrentTree = await categoryTreeRepository().byScope(scope);
-    treeData.value = responseCurrentTree.data.value.data;
+    if (responseCurrentTree.error.value) {
+      throw createError(responseCurrentTree.error.value)
+    }
+    if (responseCurrentTree.data.value) {
+      treeData.value = responseCurrentTree.data.value.data;
+    }
   }
 
   async function loadDataAndCreateOptions(
@@ -100,27 +108,42 @@ export function useFormData() {
   }
 
   const loadCategories = async (cached: boolean) => {
-    const { data: repositoryResponse } = await categoryTreeRepository().index({}, cached);
+    const { data: repositoryResponse, error } = await categoryTreeRepository().index({});
+    if (error.value) {
+      throw createError(error.value)
+    }
     await loadDataAndCreateOptions(repositoryResponse, categories, 'name', 'id');
   }
 
   const loadRoles = async () => {
-    const { data: repositoryResponse } = await roleRepository().index({});
+    const { data: repositoryResponse, error } = await roleRepository().index({});
+    if (error.value) {
+      throw createError(error.value)
+    }
     await loadDataAndCreateOptions(repositoryResponse, roles, 'name', 'id');
   }
 
   const loadPermissions = async () => {
-    const { data: repositoryResponse } = await permissionRepository().all({ per_page: 500 });
+    const { data: repositoryResponse, error } = await permissionRepository().all({ per_page: 500 });
+    if (error.value) {
+      throw createError(error.value)
+    }
     await loadDataAndCreateOptions(repositoryResponse, permissions, 'name', 'id');
   }
 
   const loadLanguages = async () => {
-    const { data: repositoryResponse } = await languageRepository().index({});
+    const { data: repositoryResponse, error } = await languageRepository().index({});
+    if (error.value) {
+      throw createError(error.value)
+    }
     await loadDataAndCreateOptions(repositoryResponse, languages, 'english_name', 'id');
   }
 
   const loadClients = async () => {
-    const { data: repositoryResponse } = await clientRepository().index({});
+    const { data: repositoryResponse,error } = await clientRepository().index({});
+    if (error.value) {
+      throw createError(error.value)
+    }
     await loadDataAndCreateOptions(repositoryResponse, clients, 'name', 'id');
   }
 
