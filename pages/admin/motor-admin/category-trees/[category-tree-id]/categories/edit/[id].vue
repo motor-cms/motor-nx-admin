@@ -34,7 +34,7 @@ const {t} = useI18n()
 // Load router
 const route = useRouter()
 // Load form
-const {model, onSubmit, treeData, replaceCategoryName, getData, getCategoryTreeData, getCategoryTreeRootData, search} = form()
+const {model, onSubmit, treeData, replaceCategoryName, getData, getCategoryTreeData, search} = form()
 
 // Set default action title
 const title = ref(t('motor-admin.categories.edit'))
@@ -48,7 +48,6 @@ const changed = (value: any) => {
 }
 
 await getCategoryTreeData();
-await getCategoryTreeRootData();
 await getData();
 
 const setInitialValue = () => {

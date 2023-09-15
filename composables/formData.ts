@@ -57,26 +57,13 @@ export function useFormData() {
   const currentCategoryTreeID: string = router.currentRoute.value.params.categorytreeid as string
 
   const getCategoryTreeData = async () => {
-    const responseCurrentCategory = await categoryRepository().index({}, currentCategoryTreeID);
-
-    if (!responseCurrentCategory.data.value) {
-      return;
-    }
-
-    const treeChildren: DraggableContent[] = responseCurrentCategory.data.value.data;
-    // console.log("Result getCategoryTreeData", treeChildren);
-    remoteTreeData.value = treeChildren;
-  }
-
-  const getCategoryTreeRootData = async () => {
     const responseCurrentTree = await categoryTreeRepository().get(currentCategoryTreeID);
-
     if (!responseCurrentTree.data.value) {
       return;
     }
 
     const tree: DraggableContent = responseCurrentTree.data.value.data;
-    // console.log("Result getCategoryTreeRootData", tree);
+    // console.log("Result getCategoryTreeData", tree);
     remoteTreeRootData.value = tree;
   }
 
@@ -86,18 +73,6 @@ export function useFormData() {
     if (tree && remoteTreeData.value.length) {
       tree.children = remoteTreeData.value;
     }
-
-    treeData.value = tree;
-  }, { immediate: true });
-
-  watch(remoteTreeData, (initiallyLoadedTree) => {
-    const tree = remoteTreeRootData.value;
-
-    if (!tree) {
-      return;
-    }
-
-    tree.children = initiallyLoadedTree
 
     treeData.value = tree;
   }, { immediate: true });
@@ -165,7 +140,6 @@ export function useFormData() {
     treeData,
     categories,
     getCategoryTreeData,
-    getCategoryTreeRootData,
     getCategoryDataByScope,
     countryOptions,
     salutationOptions,

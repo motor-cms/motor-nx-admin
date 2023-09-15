@@ -36,7 +36,7 @@ const {t: $t} = useI18n()
 const router = useRouter()
 
 // Load form
-const {model, treeData, onSubmit, replaceCategoryName, form, getCategoryTreeData, getCategoryTreeRootData, getData} = categoryForm()
+const {model, treeData, onSubmit, replaceCategoryName, form, getCategoryTreeData, getData} = categoryForm()
 
 const categoryTreeID: string = router.currentRoute.value.params.categorytreeid as string;
 
@@ -58,7 +58,6 @@ const categoryTreeId = router.currentRoute.value.params.categorytreeid;
 const backRoute: string = "admin.motor-admin.category-trees." + categoryTreeId + ".categories" as string;
 
 await getCategoryTreeData();
-await getCategoryTreeRootData();
 
 function addNewNodeToTree(treeRef: Ref<DraggableContent | null>){
 
