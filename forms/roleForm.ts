@@ -19,7 +19,7 @@ export default function roleForm() {
 
   const initialFormData ={
     name: '',
-    guard_name: '',
+    guard_name: 'web',
     permissions: <any>[],
   }
 
