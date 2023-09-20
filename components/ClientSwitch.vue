@@ -3,7 +3,7 @@
   </SelectField>
 </template>
 <script setup lang="ts">
-import SelectField from "~/packages/motor-nx-core/components/admin/partials/SelectField.vue";
+import SelectField from "@zrm/motor-nx-core/components/admin/partials/SelectField.vue";
 import {storeToRefs} from "pinia";
 
 

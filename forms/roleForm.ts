@@ -7,7 +7,7 @@ import permissionRepository from '../api/permission'
 import { storeToRefs } from "pinia";
 import {array, InferType, number, object, string} from "yup";
 
-import {useFormData} from "~/packages/motor-nx-admin/composables/formData";
+import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
 
 export default function roleForm() {
   // Load i18n module
