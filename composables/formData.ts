@@ -5,7 +5,8 @@ import roleRepository from "@zrm/motor-nx-admin/api/role";
 import permissionRepository from "@zrm/motor-nx-admin/api/permission";
 import categoryRepository from "@zrm/motor-nx-admin/api/category";
 import categoryTreeRepository from "@zrm/motor-nx-admin/api/categoryTree";
-import { countries } from "countries-list";
+import * as countrylist from 'countries-list'
+const {countries} = countrylist;
 import { useI18n } from "vue-i18n";
 import DraggableContent from "@zrm/motor-nx-core/types/draggable-content";
 

@@ -1,7 +1,7 @@
 
 import modelRepository from '../api/permissionGroup'
 import { useRouter } from 'vue-router'
-import { useToast } from 'vue-toastification'
+
 import { useI18n } from 'vue-i18n'
 import { ref } from 'vue'
 
@@ -12,7 +12,7 @@ export default function categoryGrid() {
 
   const router = useRouter()
 
-  const toast = useToast()
+  const { $toast } = useNuxtApp()
 
   const { t } = useI18n()
 
@@ -27,7 +27,7 @@ export default function categoryGrid() {
       case 'DeleteButton':
         // Delete the record
         await repository.delete(params.componentParams.record)
-        toast.success(t('motor-admin.permissions.deleted'))
+        $toast.success(t('motor-admin.permissions.deleted'))
         await refreshRecords(params.filterValues)
         break
       default:
