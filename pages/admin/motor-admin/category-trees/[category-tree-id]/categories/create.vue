@@ -69,7 +69,7 @@ function addNewNodeToTree(treeRef: Ref<DraggableContent | null>){
 
   tree.children?.push({
     id: 0,
-    name: 'New Category',
+    name: $t('motor-admin.categories.new_category'),
     children: [],
   })
 
