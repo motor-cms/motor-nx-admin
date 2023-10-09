@@ -1,0 +1,15 @@
+{
+  "domains": "Domaines",
+  "domain": "Domaine",
+  "client": "Client",
+  "create": "Créer un domaine",
+  "edit": "Modifier le domaine",
+  "is_active": "Actif",
+  "name": "Nom",
+  "protocol": "Protocole",
+  "host": "Hôte",
+  "port": "Port",
+  "path": "Chemin",
+  "target": "Cible",
+  "parameters": "Paramètres"
+}

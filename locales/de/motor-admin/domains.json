@@ -1,0 +1,15 @@
+{
+  "domains": "Domains",
+  "domain": "Domain",
+  "client": "Mandant",
+  "create": "Domain erstellen",
+  "edit": "Domain bearbeiten",
+  "is_active": "Aktiv",
+  "name": "Name",
+  "protocol": "Protokoll",
+  "host": "Host",
+  "port": "Port",
+  "path": "Pfad",
+  "target": "Target",
+  "parameters": "Parameter"
+}
