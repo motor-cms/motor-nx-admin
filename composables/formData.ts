@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import languageRepository from "@zrm/motor-nx-admin/api/language";
+import domainRepository from "@zrm/motor-nx-admin/api/domains";
 import clientRepository from "@zrm/motor-nx-admin/api/client";
 import roleRepository from "@zrm/motor-nx-admin/api/role";
 import permissionRepository from "@zrm/motor-nx-admin/api/permission";
@@ -13,6 +14,7 @@ import DraggableContent from "@zrm/motor-nx-core/types/draggable-content";
 export function useFormData() {
   const router = useRouter()
   const { locale } = useI18n();
+  const domains: Ref<GenericOptionPair[]> = ref([])
   const languages: Ref<GenericOptionPair[]> = ref([])
   const clients: Ref<GenericOptionPair[]> = ref([])
   const roles: Ref<GenericOptionPair[]> = ref([])
@@ -140,6 +142,14 @@ export function useFormData() {
     await loadDataAndCreateOptions(repositoryResponse, languages, 'english_name', 'id');
   }
 
+  const loadDomains = async () => {
+    const { data: repositoryResponse, error } = await domainRepository().index({});
+    if (error.value) {
+      throw createError(error.value)
+    }
+    await loadDataAndCreateOptions(repositoryResponse, domains, 'host', 'id');
+  }
+
   const loadClients = async () => {
     const { data: repositoryResponse,error } = await clientRepository().index({});
     if (error.value) {
@@ -158,11 +168,13 @@ export function useFormData() {
     loadPermissions,
     loadRoles,
     loadCategories,
+    loadDomains,
     languages,
     clients,
     roles,
     treeData,
     categories,
+    domains,
     getCategoryTreeData,
     getCategoryDataByScope,
     countryOptions,
