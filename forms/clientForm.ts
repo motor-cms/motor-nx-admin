@@ -40,12 +40,12 @@ export default function clientForm() {
     zip: string().min(5).nullable().label(t('motor-admin.clients.zip')),
     city: string().min(3).nullable().label(t('motor-admin.clients.city')),
     country_iso_3166_1: string().min(2).max(2).nullable().label(t('motor-admin.clients.country_iso_3116_1')),
-    website: string().url().nullable(),
-    description: string().nullable(),
-    is_active: boolean().nullable(),
-    contact_name: string().nullable(),
-    contact_email: string().email(),
-    contact_phone: string().nullable(),
+    website: string().url().nullable().label(t('motor-admin.clients.city')),
+    description: string().nullable().label(t('motor-admin.clients.description')),
+    is_active: boolean().nullable().label(t('motor-admin.clients.is_active')),
+    contact_name: string().nullable().label(t('motor-admin.clients.contact_name')),
+    contact_email: string().email().label(t('motor-admin.clients.contact_email')),
+    contact_phone: string().nullable().label(t('motor-admin.clients.contact_phone')),
   }
 
   const countryOptions = []
