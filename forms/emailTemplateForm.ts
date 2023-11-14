@@ -41,14 +41,14 @@ export default function emailTemplateForm() {
     language_id: number().min(1).required().label(t('motor-admin.languages.language')),
     name: string().min(3).required().label(t('motor-admin.email_templates.name')),
     subject: string().min(3).required().label(t('motor-admin.email_templates.subject')),
-    body_text: string().min(3).nullable(),
-    body_html: string().min(3).nullable(),
-    default_sender_name: string().min(3).nullable(),
-    default_sender_email: string().email().nullable(),
-    default_recipient_name: string().min(3).nullable(),
-    default_recipient_email: string().email().nullable(),
-    default_cc_email: string().email().nullable(),
-    default_bcc_email: string().email().nullable(),
+    body_text: string().min(3).nullable().label(t('motor-admin.email_templates.body_text')),
+    body_html: string().min(3).nullable().label(t('motor-admin.email_templates.body_html')),
+    default_sender_name: string().min(3).nullable().label(t('motor-admin.email_templates.default_sender_name')),
+    default_sender_email: string().email().nullable().label(t('motor-admin.email_templates.default_sender_email')),
+    default_recipient_name: string().min(3).nullable().label(t('motor-admin.email_templates.default_recipient_name')),
+    default_recipient_email: string().email().nullable().label(t('motor-admin.email_templates.default_recipient_email')),
+    default_cc_email: string().email().nullable().label(t('motor-admin.email_templates.default_cc_email')),
+    default_bcc_email: string().email().nullable().label(t('motor-admin.email_templates.default_bcc_email')),
   }
 
   // Sanitize dates

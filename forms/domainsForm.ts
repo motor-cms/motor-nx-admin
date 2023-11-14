@@ -29,7 +29,7 @@ export default function languageForm() {
   const {model, formSchema} = storeToRefs(formStore);
   formStore.init(initialModelData, initialFormData);
   formSchema.value = {
-    is_active: boolean(),
+    is_active: boolean().label(t('motor-admin.domains.is_active')),
     name: string().min(3).required().label(t('motor-admin.domains.name')),
     protocol: string().min(3).required().label(t('motor-admin.domains.protocol')),
     host: string().min(3).required().label(t('motor-admin.domains.host')),

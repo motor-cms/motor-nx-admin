@@ -29,9 +29,9 @@ export default function userForm() {
     name: string().min(3).required().label(t('motor-admin.users.name')),
     email: string().email().min(3).required().label(t('motor-admin.users.email')),
     password: string().min(8).required().label(t('motor-admin.users.password')),
-    roles: array().nullable(),
+    roles: array().nullable().label(t('motor-admin.users.roles')),
     //permissions: array().nullable(),
-    avatar: object().nullable(),
+    avatar: object().nullable().label(t('motor-admin.users.avatar')),
   }
 
   const route = useRoute();
