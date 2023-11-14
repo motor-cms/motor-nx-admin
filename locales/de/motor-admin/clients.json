@@ -19,5 +19,8 @@
   "zip": "Postleitzahl",
   "email": "E-Mail",
   "phone": "Telefon",
-  "website": "Webseite"
+  "website": "Webseite",
+  "contact_name": "Kontaktname",
+  "contact_email": "Kontakt E-Mail",
+  "contact_phone": "Kontakt Telefon"
 }

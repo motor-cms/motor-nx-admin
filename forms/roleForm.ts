@@ -31,7 +31,7 @@ export default function roleForm() {
   formSchema.value = {
     name: string().min(3).required().label(t('motor-admin.roles.name')),
     guard_name: string().min(3).required().label(t('motor-admin.roles.guard_name')),
-    permissions: array().nullable(),
+    permissions: array().nullable().label(t('motor-admin.roles.permissions')),
   }
 
 

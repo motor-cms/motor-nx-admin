@@ -24,9 +24,9 @@ export default function permissionGroupForm() {
   const {model, formSchema} = storeToRefs(formStore);
   formStore.init(initialModelData, initialFormData);
   formSchema.value = {
-    id: number().min(1).nullable(),
-    name: string().min(3),
-    sort_position: number().nullable(),
+    id: number().min(1).nullable().label(t('motor-admin.permission_groups.id')),
+    name: string().min(3).label(t('motor-admin.permission_groups.name')),
+    sort_position: number().nullable().label(t('motor-admin.permission_groups.sort_position')),
   };
 
   // Sanitize dates

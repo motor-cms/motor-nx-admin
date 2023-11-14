@@ -8,5 +8,6 @@
   "updated": "Rolle aktualisiert",
   "deleted": "Rolle gelöscht",
   "name": "Name",
-  "guard_name": "Zone"
+  "guard_name": "Zone",
+  "permissions": "Berechtigungen"
 }
