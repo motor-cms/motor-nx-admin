@@ -44,7 +44,7 @@ export default function clientForm() {
     description: string().nullable(),
     is_active: boolean().nullable(),
     contact_name: string().nullable(),
-    contact_email: string().email(),
+    contact_email: string().email().label(t('motor-admin.clients.email')),
     contact_phone: string().nullable(),
   }
 

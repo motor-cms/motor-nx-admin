@@ -15,5 +15,9 @@
   "address_info": "Informationen zur Adresse",
   "contact_info": "Kontaktinformationen",
   "additional_info": "Zusätzliche Informationen",
-  "all": "Alle Kunden"
+  "all": "Alle Kunden",
+  "zip": "Postleitzahl",
+  "email": "E-Mail",
+  "phone": "Telefon",
+  "website": "Webseite"
 }
