@@ -17,6 +17,7 @@
 <script setup lang="ts">
 import {useI18n} from 'vue-i18n'
 import grid from '@zrm/motor-nx-admin/grids/emailTemplateGrid'
+const route = useRoute();
 
 // Load i18n module
 const {t} = useI18n()
@@ -62,14 +63,14 @@ const loadComponents = <any>[]
 const {rows, meta, refreshRecords, handleCellEvent} = grid()
 
 
-const refreshGridData = async () => {
+const refreshGridData = async (params = {}) => {
   const appStore = useAppStore();
   appStore.updateInBackground(true);
-  await refreshRecords()
+  await refreshRecords(params)
   appStore.updateInBackground(false);
 }
 
-await refreshRecords();
+await refreshRecords(route.query);
 
 
 </script>

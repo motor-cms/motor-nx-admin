@@ -64,13 +64,13 @@ const filters = ref([{name: 'SearchFilter', options: {}}])
 const createRoute = computed(() => 'admin.motor-admin.permissions.' + route.params.permissiongroupid + '.create');
 const backRoute = computed(() => 'admin.motor-admin.permissions');
 
-const refreshGridData = async () => {
+const refreshGridData = async (params = {}) => {
   const appStore = useAppStore();
   appStore.updateInBackground(true);
-  await refreshRecords()
+  await refreshRecords(params)
   appStore.updateInBackground(false);
 }
 
-await refreshRecords();
+await refreshRecords(route.query);
 
 </script>

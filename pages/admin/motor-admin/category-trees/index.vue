@@ -18,6 +18,7 @@
 import {useI18n} from 'vue-i18n'
 import grid from '@zrm/motor-nx-admin/grids/categoryTreeGrid'
 import Button from '@zrm/motor-nx-core/components/admin/cell/Button.vue'
+const route = useRoute();
 
 // Load i18n module
 const {t} = useI18n()
@@ -67,13 +68,13 @@ const loadComponents = <any>[
 // WE START THE OUTSOURCED CODE HERE
 const {rows, meta, refreshRecords, handleCellEvent} = grid()
 
-const refreshGridData = async () => {
+const refreshGridData = async (params = {}) => {
   const appStore = useAppStore();
   appStore.updateInBackground(true);
-  await refreshRecords()
+  await refreshRecords(params)
   appStore.updateInBackground(false);
 }
 
-await refreshRecords();
+await refreshRecords(route.query);
 
 </script>

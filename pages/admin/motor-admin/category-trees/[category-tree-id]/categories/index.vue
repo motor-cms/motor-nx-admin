@@ -64,13 +64,13 @@ const loadComponents = <any>[
 
 const createRoute = computed(() => 'admin.motor-admin.category-trees.' + route.params.categorytreeid + '.categories.create');
 
-const refreshGridData = async () => {
+const refreshGridData = async (params = {}) => {
   const appStore = useAppStore();
   appStore.updateInBackground(true);
-  await refreshRecords()
+  await refreshRecords(params)
   appStore.updateInBackground(false);
 }
 
-await refreshRecords();
+await refreshRecords(route.query);
 
 </script>
