@@ -36,7 +36,7 @@ export default function languageForm() {
 
   const languageOptions = []
   for (const [key, value] of Object.entries(languages)) {
-    languageOptions.push({label: value.name, value: key})
+    languageOptions.push({label: value.native + ' ('+value.name+')', value: key})
   }
 
   const {getData, onSubmit} = baseForm(

@@ -5,7 +5,7 @@
     @submit="onSubmit"
   >
     <h6 class="text-uppercase text-body text-xs font-weight-bolder">
-      Basic information
+      {{ $t('motor-admin.global.basic_information')}}
     </h6>
     <div class="row">
       <div class="col-md-6">
@@ -23,7 +23,7 @@
           id="slug"
           :label="$t('motor-admin.clients.slug')"
           :value="model.slug"
-          :empty-value="$t('no_slug_yet')"
+          :empty-value="$t('motor-admin.clients.no_slug_yet')"
         ></FormsStaticField>
       </div>
       <div class="col-md-2">
@@ -84,7 +84,7 @@
         </div>
       </div>
       <h6 class="text-uppercase text-body text-xs font-weight-bolder">
-        Contact information
+        {{ $t('motor-admin.clients.contact_information')}}
       </h6>
       <div class="row">
         <div class="col-md-6">

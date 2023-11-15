@@ -5,7 +5,7 @@
     @submit="onSubmit"
   >
     <h6 class="text-uppercase text-body text-xs font-weight-bolder">
-      Basic information
+      {{ $t('motor-admin.global.basic_information')}}
     </h6>
     <div class="row">
       <div class="col-md-4">
@@ -13,7 +13,7 @@
           type="text"
           name="package"
           id="package"
-          :label="$t('motor-admin.config_variables.package')"
+          :label="$t('motor-admin.config_variables.config_package')"
           v-model="model.package"
         ></FormsInputField>
       </div>

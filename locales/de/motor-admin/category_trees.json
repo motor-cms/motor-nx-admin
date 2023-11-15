@@ -1,5 +1,5 @@
 {
-  "category_trees": "Kategorie Bäume",
+  "category_trees": "Kategoriebäume",
   "category_tree": "Kategoriebaum",
   "create": "Kategoriebaum erstellen",
   "edit": "Kategoriebaum bearbeiten",
@@ -8,6 +8,6 @@
   "updated": "Kategoriebaum aktualisiert",
   "deleted": "Kategoriebaum gelöscht",
   "scope": "Bereich",
-  "show_nodes": "Show categories",
+  "show_nodes": "Kategorien anzeigen",
   "name": "Name"
 }

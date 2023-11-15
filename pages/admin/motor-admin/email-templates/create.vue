@@ -5,9 +5,8 @@
     @submit="onSubmit"
   >
     <h6 class="text-uppercase text-body text-xs font-weight-bolder">
-      Basic information
+      {{ $t('motor-admin.global.basic_information')}}
     </h6>
-    {{form.errors}}
     <div class="row">
       <div class="col-md-6">
         <FormsSelectField
@@ -92,12 +91,13 @@
         ></FormsInputField>
       </div>
       <div class="col-md-12">
-        <FormsTextAreaField
-          name="subject"
-          id="subject"
-          :label="$t('motor-admin.email_templates.subject')"
-          v-model="model.subject"
-        ></FormsTextAreaField>
+        <FormsInputField
+            type="text"
+            name="subject"
+            id="subject"
+            :label="$t('motor-admin.email_templates.subject')"
+            v-model="model.subject"
+        ></FormsInputField>
       </div>
       <div class="col-md-12">
         <FormsTextAreaField

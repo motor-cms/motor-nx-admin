@@ -18,9 +18,8 @@ export default function userForm() {
     name: string().min(3).required().label(t('motor-admin.users.name')),
     email: string().email().min(3).required().label(t('motor-admin.users.email')),
     password: string().min(8).required().label(t('motor-admin.users.password')),
-    roles: array().nullable(),
-    //permissions: array().nullable(),
-    avatar: object().nullable(),
+    roles: array().nullable().label(t('motor-admin.users.roles')),
+    avatar: object().nullable().label(t('motor-admin.users.avatar')),
   }
 
   // Validation schema patch
@@ -29,7 +28,6 @@ export default function userForm() {
     name: string().min(3).required().label(t('motor-admin.users.name')),
     email: string().email().min(3).required().label(t('motor-admin.users.email')),
     roles: array().nullable().label(t('motor-admin.users.roles')),
-    //permissions: array().nullable(),
     avatar: object().nullable().label(t('motor-admin.users.avatar')),
   }
 

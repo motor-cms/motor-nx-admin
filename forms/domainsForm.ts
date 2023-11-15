@@ -12,9 +12,9 @@ export default function languageForm() {
   // Record
   const initialModelData = {
     id: null,
-    client_id: null,
   }
   const initialFormData = {
+    client_id: 0,
     is_active: true,
     name: '',
     protocol: 'https',
@@ -29,6 +29,7 @@ export default function languageForm() {
   const {model, formSchema} = storeToRefs(formStore);
   formStore.init(initialModelData, initialFormData);
   formSchema.value = {
+    client_id: number().required().label(t('motor-admin.clients.client')),
     is_active: boolean().label(t('motor-admin.domains.is_active')),
     name: string().min(3).required().label(t('motor-admin.domains.name')),
     protocol: string().min(3).required().label(t('motor-admin.domains.protocol')),
@@ -55,5 +56,6 @@ export default function languageForm() {
     getData,
     onSubmit,
     model,
+    ...useFormData()
   }
 }

@@ -26,7 +26,7 @@ const { t } = useI18n()
 const columns = ref([
   {
     name: t('motor-admin.domains.client'),
-    prop: 'client_id',
+    prop: 'client.name',
   },
   {
     name: t('motor-admin.domains.name'),
@@ -39,6 +39,7 @@ const columns = ref([
   {
     name: t('motor-admin.domains.is_active'),
     prop: 'is_active',
+    renderer: {type: 'boolean'}
   },
   {
     name: '',

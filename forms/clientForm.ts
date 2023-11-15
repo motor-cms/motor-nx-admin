@@ -50,7 +50,7 @@ export default function clientForm() {
 
   const countryOptions = []
   for (const [key, value] of Object.entries(countries)) {
-    countryOptions.push({ label: value.emoji + ' ' + value.name, value: key })
+    countryOptions.push({ label: value.emoji + ' ' + value.native + ' ('+value.name+')', value: key })
   }
 
   // Sanitize dates

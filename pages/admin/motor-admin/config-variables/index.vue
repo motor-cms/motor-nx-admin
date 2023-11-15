@@ -25,7 +25,7 @@ const {t} = useI18n()
 // Define columns for grid
 const columns = ref([
   {
-    name: t('motor-admin.config_variables.package'),
+    name: t('motor-admin.config_variables.config_package'),
     prop: 'package',
   },
   {

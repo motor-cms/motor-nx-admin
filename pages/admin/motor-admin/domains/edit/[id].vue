@@ -4,10 +4,18 @@
     :title="title"
     @submit="onSubmit"
   >    <h6 class="text-uppercase text-body text-xs font-weight-bolder">
-    Basic information
+    {{ $t('motor-admin.global.basic_information')}}
   </h6>
     <div class="row">
       <div class="col-12">
+        <FormsSelectField
+            v-show="!userHasClient"
+            name="client_id"
+            id="client_id"
+            :label="$t('motor-admin.clients.client')"
+            :options="clients"
+            v-model="model.client_id"
+        ></FormsSelectField>
         <FormsInputField
             type="text"
             name="name"
@@ -89,9 +97,10 @@ import form from '@zrm/motor-nx-admin/forms/domainsForm'
 import {storeToRefs} from "pinia";
 // Load i18n module
 const { t } = useI18n()
+const { userHasClient } = storeToRefs(useUserStore());
 
 // Load form
-const { model, onSubmit, getData} = form()
+const { model, onSubmit, clients, getData, loadClients} = form()
 
 const {user} = storeToRefs(useUserStore());
 
@@ -110,4 +119,5 @@ const protocolOptions = ref([
 const title = ref(t('motor-admin.domains.edit'))
 
 await getData();
+await loadClients();
 </script>

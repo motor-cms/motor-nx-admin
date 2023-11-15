@@ -7,7 +7,7 @@
   "created": "Konfigurationsvariable erstellt",
   "updated": "Konfigurationsvariable aktualisiert",
   "deleted": "Konfigurationsvariable gelöscht",
-  "package": "Paket",
+  "config_package": "Paket",
   "group": "Gruppe",
   "name": "Name",
   "value": "Wert"

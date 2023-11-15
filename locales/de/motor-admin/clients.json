@@ -12,9 +12,7 @@
   "is_active": "Aktiv",
   "description": "Beschreibung",
   "contact": "Kontakt",
-  "address_info": "Informationen zur Adresse",
-  "contact_info": "Kontaktinformationen",
-  "additional_info": "Zusätzliche Informationen",
+  "contact_information": "Kontaktinformationen",
   "all": "Alle Mandanten",
   "zip": "Postleitzahl",
   "email": "E-Mail",
@@ -22,5 +20,6 @@
   "website": "Webseite",
   "contact_name": "Kontaktname",
   "contact_email": "Kontakt E-Mail",
-  "contact_phone": "Kontakt Telefon"
+  "contact_phone": "Kontakt Telefon",
+  "no_slug_yet": "Wird beim Speichern erstellt"
 }
