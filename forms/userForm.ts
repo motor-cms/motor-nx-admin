@@ -28,7 +28,6 @@ export default function userForm() {
     client_id: number().nullable().label(t('motor-admin.clients.client')),
     name: string().min(3).required().label(t('motor-admin.users.name')),
     email: string().email().min(3).required().label(t('motor-admin.users.email')),
-    password: string().min(8).required().label(t('motor-admin.users.password')),
     roles: array().nullable().label(t('motor-admin.users.roles')),
     //permissions: array().nullable(),
     avatar: object().nullable().label(t('motor-admin.users.avatar')),
@@ -92,6 +91,18 @@ export default function userForm() {
     sanitizer,
     afterSubmit
   )
+
+  // When editing a user, only add password validation when a password is entered
+  if (route.params.id) {
+      watch(model, () => {
+        if (model.value.password && model.value.password.length > 0) {
+            formSchema.value.password = string().min(8).label(t('motor-admin.users.password'));
+        } else if (!model.value.password) {
+            delete(formSchema.value.password);
+        }
+    }, { deep: true })
+  }
+
 
   return {
     getData,
