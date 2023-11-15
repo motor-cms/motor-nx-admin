@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router'
 import { useFormData } from "@zrm/motor-nx-admin/composables/formData";
 import { InferType, number, object, string } from "yup";
 import { useI18n } from "vue-i18n";
-import DraggableContent from '@zrm/motor-nx-core/types/draggable-content';
+import type DraggableContent from "@zrm/motor-nx-core/types/draggable-content";
 import { storeToRefs } from "pinia";
 import { useFormStore } from '@zrm/motor-nx-core/stores/form';
 

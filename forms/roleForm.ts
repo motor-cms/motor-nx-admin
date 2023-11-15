@@ -1,11 +1,8 @@
 import baseForm from '@zrm/motor-nx-core/forms/baseForm'
-import {onMounted, ref} from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/role'
-import Repository from '@zrm/motor-nx-core/types/repository'
-import permissionRepository from '../api/permission'
 import { storeToRefs } from "pinia";
-import {array, InferType, number, object, string} from "yup";
+import {array, string} from "yup";
 
 import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
 

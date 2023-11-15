@@ -9,7 +9,7 @@ import categoryTreeRepository from "@zrm/motor-nx-admin/api/categoryTree";
 import * as countrylist from 'countries-list'
 const {countries} = countrylist;
 import { useI18n } from "vue-i18n";
-import DraggableContent from "@zrm/motor-nx-core/types/draggable-content";
+import type DraggableContent from "@zrm/motor-nx-core/types/draggable-content";
 
 export function useFormData() {
   const router = useRouter()
@@ -181,6 +181,5 @@ export function useFormData() {
     salutationOptions,
     genderOptions,
     permissions,
-
   }
 }

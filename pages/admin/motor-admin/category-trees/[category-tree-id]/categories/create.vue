@@ -27,7 +27,7 @@
 <script setup lang="ts">
 import {useI18n} from 'vue-i18n'
 import categoryForm from '@zrm/motor-nx-admin/forms/categoryForm'
-import DraggableContent from '@zrm/motor-nx-core/types/draggable-content';
+import type DraggableContent from "@zrm/motor-nx-core/types/draggable-content";
 
 // Load i18n module
 const {t: $t} = useI18n()
