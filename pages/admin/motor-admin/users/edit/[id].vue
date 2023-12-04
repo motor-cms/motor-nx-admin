@@ -10,11 +10,10 @@
       <div class="row">
         <div class="col-md-12">
           <FormsSelectField
-            v-show="!userHasClient"
             name="client_id"
             id="client_id"
             :label="$t('motor-admin.clients.client')"
-            :options="clients"
+            :options="[{label: 'Alle Mandanten', value: null}].concat(clients)"
             v-model="model.client_id"
           ></FormsSelectField>
           <FormsInputField
