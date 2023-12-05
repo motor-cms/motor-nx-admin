@@ -9,7 +9,6 @@
     <div class="row">
       <div class="col-12">
         <FormsSelectField
-            v-show="!userHasClient"
             name="client_id"
             id="client_id"
             :label="$t('motor-admin.clients.client')"
