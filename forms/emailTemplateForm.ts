@@ -22,6 +22,7 @@ export default function emailTemplateForm() {
     client_id: 0,
     language_id: 0,
     name: '',
+    slug: '',
     subject: '',
     body_text: '',
     body_html: '',
@@ -31,6 +32,8 @@ export default function emailTemplateForm() {
     default_recipient_email: '',
     default_cc_email: '',
     default_bcc_email: '',
+    default_replyto_name: '',
+    default_replyto_email: ''
   }
 
   const formStore = useFormStore();
@@ -40,6 +43,7 @@ export default function emailTemplateForm() {
     client_id: number().label(t('motor-admin.clients.client')),
     language_id: number().min(1).required().label(t('motor-admin.languages.language')),
     name: string().min(3).required().label(t('motor-admin.email_templates.name')),
+    slug: string().nullable().label(t('motor-admin.email_templates.name')),
     subject: string().min(3).required().label(t('motor-admin.email_templates.subject')),
     body_text: string().min(3).nullable().label(t('motor-admin.email_templates.body_text')),
     body_html: string().min(3).nullable().label(t('motor-admin.email_templates.body_html')),
@@ -49,6 +53,8 @@ export default function emailTemplateForm() {
     default_recipient_email: string().email().label(t('motor-admin.email_templates.default_recipient_email')),
     default_cc_email: string().email().nullable().label(t('motor-admin.email_templates.default_cc_email')),
     default_bcc_email: string().email().nullable().label(t('motor-admin.email_templates.default_bcc_email')),
+    default_replyto_name: string().nullable().label(t('motor-admin.email_templates.default_replyto_name')),
+    default_replyto_email: string().email().nullable().label(t('motor-admin.email_templates.default_replyto_email')),
   }
 
   // Sanitize dates

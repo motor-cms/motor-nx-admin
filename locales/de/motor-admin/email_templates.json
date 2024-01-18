@@ -17,5 +17,8 @@
   "default_bcc_email": "Standard bcc E-Mail-Adressen (durch ; getrennt)",
   "body_text": "Body (text)",
   "body_html": "Body (html)",
-  "name": "Name"
+  "name": "Name",
+  "slug": "Kürzel",
+  "default_replyto_name": "Standard Antwortname (replyto)",
+  "default_replyto_email": "Standard Antwortadresse (replyto)"
 }

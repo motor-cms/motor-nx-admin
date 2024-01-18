@@ -26,13 +26,22 @@
           v-model="model.language_id"
         ></FormsSelectField>
       </div>
-      <div class="col-md-12">
+      <div class="col-md-6">
         <FormsInputField
           type="text"
           name="name"
           id="name"
           :label="$t('motor-admin.global.name')"
           v-model="model.name"
+        ></FormsInputField>
+      </div>
+      <div class="col-md-6">
+        <FormsInputField
+          type="text"
+          name="slug"
+          id="slug"
+          :label="$t('motor-admin.email_templates.slug')"
+          v-model="model.slug"
         ></FormsInputField>
       </div>
       <div class="col-md-6">
@@ -89,6 +98,24 @@
           v-model="model.default_bcc_email"
         ></FormsInputField>
       </div>
+      <div class="col-md-6">
+        <FormsInputField
+          type="text"
+          name="default_replyto_name"
+          id="default_replyto_name"
+          :label="$t('motor-admin.email_templates.default_replyto_name')"
+          v-model="model.default_replyto_name"
+        ></FormsInputField>
+      </div>
+      <div class="col-md-6">
+        <FormsInputField
+          type="text"
+          name="default_replyto_email"
+          id="default_replyto_email"
+          :label="$t('motor-admin.email_templates.default_replyto_email')"
+          v-model="model.default_replyto_email"
+        ></FormsInputField>
+      </div>
       <div class="col-md-12">
         <FormsInputField
           type="text"
@@ -117,6 +144,7 @@
     </div>
   </AdminCommonForm>
 </template>
+
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import {storeToRefs} from "pinia";
