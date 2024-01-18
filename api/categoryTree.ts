@@ -1,5 +1,4 @@
 import useApi from "@zrm/motor-nx-core/composables/http/api";
-import { AsyncData } from "nuxt/app";
 
 export default () => ({
   api: useApi(),

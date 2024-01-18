@@ -1,11 +1,9 @@
 import baseForm from '@zrm/motor-nx-core/forms/baseForm'
-import {onMounted, ref} from 'vue'
 import {useI18n} from 'vue-i18n'
 import modelRepository from '../api/language'
 import * as countrylist from 'countries-list'
 const {languages} = countrylist;
-import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
-import {InferType, number, object, string} from "yup";
+import { string} from "yup";
 import {storeToRefs} from "pinia";
 export default function languageForm() {
   // Load i18n module

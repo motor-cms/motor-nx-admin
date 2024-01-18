@@ -4,7 +4,6 @@ import domainRepository from "@zrm/motor-nx-admin/api/domains";
 import clientRepository from "@zrm/motor-nx-admin/api/client";
 import roleRepository from "@zrm/motor-nx-admin/api/role";
 import permissionRepository from "@zrm/motor-nx-admin/api/permission";
-import categoryRepository from "@zrm/motor-nx-admin/api/category";
 import categoryTreeRepository from "@zrm/motor-nx-admin/api/categoryTree";
 import * as countrylist from 'countries-list'
 const {countries} = countrylist;
