@@ -17,6 +17,7 @@
   "default_bcc_email": "Standard bcc E-Mail-Adressen (durch ; getrennt)",
   "body_text": "Body (text)",
   "body_html": "Body (html)",
+  "body_html_hint": "Es können Felder aus Inhaltstyp 'Formular' verwendet werden. Diese sind als Variablen zu benutzen und verwenden den Namen des Feldes ohne Leerzeichen, großgeschrieben und in geschweiften Klammern. Beispiel: Das Feld mit dem Namen 'Datum Ende' kann mit {`DATUMENDE} genutzt werden.",
   "name": "Name",
   "slug": "Kürzel",
   "default_replyto_name": "Standard Antwortname (replyto)",

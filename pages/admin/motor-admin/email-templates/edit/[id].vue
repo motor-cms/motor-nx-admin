@@ -5,7 +5,7 @@
     @submit="onSubmit"
   >
     <h6 class="text-uppercase text-body text-xs font-weight-bolder">
-      {{ $t('motor-admin.global.basic_information')}}
+      {{ $t("motor-admin.global.basic_information") }}
     </h6>
     <div class="row">
       <div class="col-md-6">
@@ -137,6 +137,7 @@
         <FormsTextAreaField
           name="body_html"
           id="body_html"
+          :description="$t('motor-admin.email_templates.body_html_hint')"
           :label="$t('motor-admin.email_templates.body_html')"
           v-model="model.body_html"
         ></FormsTextAreaField>
@@ -146,23 +147,30 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-import {storeToRefs} from "pinia";
+import { useI18n } from "vue-i18n";
+import { storeToRefs } from "pinia";
 import emailTemplateForm from "@zrm/motor-nx-admin/forms/emailTemplateForm";
 
-
 // Load i18n module
-const { t } = useI18n()
+const { t } = useI18n();
 const { userHasClient } = storeToRefs(useUserStore());
 
 // Load form
-const { model, onSubmit, languages, clients, form, loadLanguages, loadClients, getData } = emailTemplateForm()
+const {
+  model,
+  onSubmit,
+  languages,
+  clients,
+  form,
+  loadLanguages,
+  loadClients,
+  getData,
+} = emailTemplateForm();
 
 // Set default action title
-const title = ref(t('motor-admin.email_templates.edit'))
+const title = ref(t("motor-admin.email_templates.edit"));
 
 await getData();
 await loadClients();
 await loadLanguages();
-
 </script>
