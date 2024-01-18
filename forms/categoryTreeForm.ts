@@ -1,11 +1,10 @@
 
 import baseForm from '@zrm/motor-nx-core/forms/baseForm'
-import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/categoryTree'
 
 import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
-import {InferType, number, object, string} from "yup";
+import {string} from "yup";
 import { storeToRefs } from "pinia";
 export default function categoryTreeForm() {
   // Load i18n module

@@ -1,11 +1,10 @@
 
 import baseForm from '@zrm/motor-nx-core/forms/baseForm'
-import { ref} from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/client'
 import * as countrylist from 'countries-list'
 const {countries} = countrylist;
-import {boolean, InferType, number, object, string} from "yup";
+import {boolean, string} from "yup";
 import { storeToRefs } from "pinia";
 export default function clientForm() {
   // Load i18n module

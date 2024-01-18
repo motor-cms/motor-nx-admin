@@ -1,9 +1,8 @@
 import baseForm from '@zrm/motor-nx-core/forms/baseForm'
-import { ref } from 'vue'
 import modelRepository from '../api/category'
 import { useRouter } from 'vue-router'
 import { useFormData } from "@zrm/motor-nx-admin/composables/formData";
-import { InferType, number, object, string } from "yup";
+import { string } from "yup";
 import { useI18n } from "vue-i18n";
 import type DraggableContent from "@zrm/motor-nx-core/types/draggable-content";
 import { storeToRefs } from "pinia";

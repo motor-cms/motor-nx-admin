@@ -1,11 +1,9 @@
 import baseForm from '@zrm/motor-nx-core/forms/baseForm'
-import {onMounted, ref} from 'vue'
 import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/emailTemplate'
 
 import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
-import {InferType, number, object, string} from "yup";
-import {useForm} from "vee-validate";
+import {InferType, number, string} from "yup";
 import {storeToRefs} from "pinia";
 export default function emailTemplateForm() {
   // Load i18n module
