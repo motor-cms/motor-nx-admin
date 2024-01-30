@@ -4,7 +4,7 @@ import modelRepository from '../api/domains'
 import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
 import {boolean, number, string} from "yup";
 import {storeToRefs} from "pinia";
-export default function languageForm() {
+export default function domainsForm() {
   // Load i18n module
   const {t} = useI18n()
 

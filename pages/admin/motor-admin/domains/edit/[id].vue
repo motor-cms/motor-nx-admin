@@ -103,11 +103,11 @@ const { model, onSubmit, clients, getData, loadClients} = form()
 
 const {user} = storeToRefs(useUserStore());
 
-watchEffect(() => {
-  if (user.value && user.value.client_id) {
-    model.value.client_id = user.value.client_id;
-  }
-})
+// watchEffect(() => {
+//   if (user.value && user.value.client_id) {
+//     model.value.client_id = user.value.client_id;
+//   }
+// })
 
 const protocolOptions = ref([
   {value: 'http', label: 'http'},
