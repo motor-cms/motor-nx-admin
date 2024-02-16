@@ -137,7 +137,6 @@
         <FormsTextAreaField
           name="body_html"
           id="body_html"
-          :description="$t('motor-admin.email_templates.body_html_hint')"
           :label="$t('motor-admin.email_templates.body_html')"
           v-model="model.body_html"
         ></FormsTextAreaField>
