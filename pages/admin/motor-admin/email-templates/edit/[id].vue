@@ -134,7 +134,16 @@
         ></FormsTextAreaField>
       </div>
       <div class="col-md-12">
+        <FormsCheckboxField
+          name="has_body_html"
+          id="has_body_html"
+          :label="$t('motor-admin.email_templates.has_body_html')"
+          v-model="model.has_body_html"
+        ></FormsCheckboxField>
+      </div>
+      <div class="col-md-12">
         <FormsTextAreaField
+          v-if="model.has_body_html"
           name="body_html"
           id="body_html"
           :label="$t('motor-admin.email_templates.body_html')"
