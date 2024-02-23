@@ -3,7 +3,7 @@ import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/emailTemplate'
 
 import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
-import {boolean, InferType, number, string} from "yup";
+import {boolean, InferType, number, string, addMethod, transform} from "yup";
 import {storeToRefs} from "pinia";
 export default function emailTemplateForm() {
   // Load i18n module
@@ -51,8 +51,8 @@ export default function emailTemplateForm() {
     default_sender_email: string().email().label(t('motor-admin.email_templates.default_sender_email')),
     default_recipient_name: string().nullable().label(t('motor-admin.email_templates.default_recipient_name')),
     default_recipient_email: string().email().nullable().label(t('motor-admin.email_templates.default_recipient_email')),
-    default_cc_email: string().email().nullable().label(t('motor-admin.email_templates.default_cc_email')),
-    default_bcc_email: string().email().nullable().label(t('motor-admin.email_templates.default_bcc_email')),
+    default_cc_email: string().nullable().label(t('motor-admin.email_templates.default_cc_email')),
+    default_bcc_email: string().nullable().label(t('motor-admin.email_templates.default_bcc_email')),
     default_replyto_name: string().nullable().label(t('motor-admin.email_templates.default_replyto_name')),
     default_replyto_email: string().email().nullable().label(t('motor-admin.email_templates.default_replyto_email')),
   }
