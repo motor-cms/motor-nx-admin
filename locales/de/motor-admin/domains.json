@@ -11,5 +11,6 @@
   "port": "Port",
   "path": "Pfad",
   "target": "Target",
-  "parameters": "Parameter"
+  "parameters": "Parameter",
+  "target_http_status_code": "HTTP Status Code"
 }

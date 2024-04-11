@@ -5,16 +5,16 @@
     @submit="onSubmit"
   >
     <h6 class="text-uppercase text-body text-xs font-weight-bolder">
-      {{ $t('motor-admin.global.basic_information')}}
+      {{ $t('motor-admin.global.basic_information') }}
     </h6>
     <div class="row">
       <div class="col-12">
         <FormsSelectField
-            name="client_id"
-            id="client_id"
-            :label="$t('motor-admin.clients.client')"
-            :options="clients"
-            v-model="model.client_id"
+          name="client_id"
+          id="client_id"
+          :label="$t('motor-admin.clients.client')"
+          :options="clients"
+          v-model="model.client_id"
         ></FormsSelectField>
         <FormsInputField
           type="text"
@@ -55,20 +55,29 @@
       </div>
       <div class="col-12">
         <FormsInputField
-            type="text"
-            name="path"
-            id="path"
-            :label="$t('motor-admin.domains.path')"
-            v-model="model.path"
+          type="text"
+          name="path"
+          id="path"
+          :label="$t('motor-admin.domains.path')"
+          v-model="model.path"
         ></FormsInputField>
       </div>
-      <div class="col-12">
+      <div :class="{'col-12': !(model.target && model.target.length >= 3), 'col-6': (model.target && model.target.length >= 3)}">
         <FormsInputField
-            type="text"
-            name="target"
-            id="target"
-            :label="$t('motor-admin.domains.target')"
-            v-model="model.target"
+          type="text"
+          name="target"
+          id="target"
+          :label="$t('motor-admin.domains.target')"
+          v-model="model.target"
+        ></FormsInputField>
+      </div>
+      <div v-if="model.target && model.target.length >= 3" class="col-6">
+        <FormsInputField
+          type="number"
+          name="target_http_status_code"
+          id="target_http_status_code"
+          :label="$t('motor-admin.domains.target_http_status_code')"
+          v-model="model.target_http_status_code"
         ></FormsInputField>
       </div>
       <div class="col-12">
@@ -97,7 +106,7 @@ import form from '@zrm/motor-nx-admin/forms/domainsForm'
 import {storeToRefs} from "pinia";
 // Load i18n module
 const {t} = useI18n()
-const { userHasClient } = storeToRefs(useUserStore());
+const {userHasClient} = storeToRefs(useUserStore());
 
 // Load form
 const {model, onSubmit, clients, getData, loadClients} = form()
@@ -107,6 +116,17 @@ const {user} = storeToRefs(useUserStore());
 watchEffect(() => {
   if (user.value && user.value.client_id) {
     model.value.client_id = user.value.client_id;
+  }
+})
+
+//Watch model.target to set up the target_http_status_code value to 301 when target is set
+watchEffect(() => {
+  if (model.value.target && model.value.target.length >= 3) {
+    if (!model.value.target_http_status_code) {
+      model.value.target_http_status_code = 301;
+    }
+  } else {
+    model.value.target_http_status_code = null;
   }
 })
 

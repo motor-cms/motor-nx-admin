@@ -11,5 +11,6 @@
   "port": "Port",
   "path": "Chemin",
   "target": "Cible",
-  "parameters": "Paramètres"
+  "parameters": "Paramètres",
+  "target_http_status_code": "Code HTTP de la cible"
 }

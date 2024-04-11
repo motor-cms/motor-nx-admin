@@ -21,6 +21,7 @@ export default function domainsForm() {
     port: 443,
     path: '',
     target: '',
+    target_http_status_code: null,
     parameters: '',
   }
 
@@ -35,9 +36,18 @@ export default function domainsForm() {
     host: string().min(3).required().label(t('motor-admin.domains.host')),
     port: number().required().label(t('motor-admin.domains.port')),
     path: string().min(1).required().label(t('motor-admin.domains.path')),
-    target: string().nullable().label(t('motor-admin.domains.target')),
+    target: string().min(3).nullable().label(t('motor-admin.domains.target')),
+    target_http_status_code: number().nullable().label(t('motor-admin.domains.target_http_status_code')),
     parameters: string().nullable().label(t('motor-admin.domains.parameters')),
   }
+
+  watchEffect(() => {
+    if (model.value.target && model.value.target.length > 3) {
+      formSchema.value.target_http_status_code = number().required().label(t('motor-admin.domains.target_http_status_code'));
+    } else {
+      formSchema.value.target_http_status_code = number().nullable().label(t('motor-admin.domains.target_http_status_code'));
+    }
+  })
 
   // Sanitize dates
   const sanitizer = () => {
