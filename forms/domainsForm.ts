@@ -36,10 +36,19 @@ export default function domainsForm() {
     host: string().min(3).required().label(t('motor-admin.domains.host')),
     port: number().required().label(t('motor-admin.domains.port')),
     path: string().min(1).required().label(t('motor-admin.domains.path')),
-    target: string().min(3).nullable().label(t('motor-admin.domains.target')),
+    target: string().nullable().label(t('motor-admin.domains.target')),
     target_http_status_code: number().nullable().label(t('motor-admin.domains.target_http_status_code')),
     parameters: string().nullable().label(t('motor-admin.domains.parameters')),
   }
+
+  //Fixed validation rules to accept target as empty string OR a string with a minimum length of 3, but nothing in between
+  watchEffect(() => {
+    if (model.value.target && model.value.target.length > 0) {
+      formSchema.value.target = string().required().min(3).label(t('motor-admin.domains.target'));
+    } else {
+      formSchema.value.target = string().nullable().label(t('motor-admin.domains.target'));
+    }
+  })
 
   watchEffect(() => {
     if (model.value.target && model.value.target.length > 3) {
