@@ -22,5 +22,6 @@
   "name": "Name",
   "slug": "Kürzel",
   "default_replyto_name": "Standard Antwortname (replyto)",
-  "default_replyto_email": "Standard Antwortadresse (replyto)"
+  "default_replyto_email": "Standard Antwortadresse (replyto)",
+  "all_variables_hint": "Geben Sie {ALLE_FORMULARFELDER} im Textfeld ein, um alle Variablen eines Formulars auszugeben, die dem Template übermittelt werden."
 }

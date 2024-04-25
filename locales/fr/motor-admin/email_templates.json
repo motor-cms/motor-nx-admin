@@ -17,5 +17,6 @@
   "default_bcc_email": "Emails en bcc par défaut (séparés par ;)",
   "body_text": "Corps du message (texte)",
   "body_html": "Corps du message (html)",
-  "name": "Nom"
+  "name": "Nom",
+  "all_variables_hint": "Geben Sie {ALLE_FORMULARFELDER} im Textfeld ein, um alle Variablen eines Formulars auszugeben, die dem Template übermittelt werden."
 }

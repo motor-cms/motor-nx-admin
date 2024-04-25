@@ -17,5 +17,6 @@
   "default_bcc_email": "Default bcc email addresses (separated by ;)",
   "body_text": "Body (text)",
   "body_html": "Body (html)",
-  "name": "Name"
+  "name": "Name",
+  "all_variables_hint": "Geben Sie {ALLE_FORMULARFELDER} im Textfeld ein, um alle Variablen eines Formulars auszugeben, die dem Template übermittelt werden."
 }
