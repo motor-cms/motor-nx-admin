@@ -15,8 +15,9 @@
 </template>
 
 <script setup lang="ts">
-import {useI18n} from 'vue-i18n'
-import grid from '@zrm/motor-nx-admin/grids/emailTemplateGrid'
+import clientRepository from "@zrm/motor-nx-admin/api/client";
+import {useI18n} from 'vue-i18n';
+import grid from '@zrm/motor-nx-admin/grids/emailTemplateGrid';
 const route = useRoute();
 
 // Load i18n module
@@ -55,7 +56,18 @@ const columns = ref([
 ])
 
 // Define filters for grid
-const filters = ref([{name: 'SearchFilter', options: {}}])
+const filters = ref([
+  {name: 'SearchFilter', options: {}},
+  {
+    name: 'SelectFilter',
+    options: {
+      parameter: 'client_id',
+      emptyOption:
+        t('global.filter') + ': ' + t('motor-admin.clients.client'),
+      options: <any>[],
+    },
+  }
+]);
 
 const loadComponents = <any>[]
 
@@ -71,6 +83,13 @@ const refreshGridData = async (params = {}) => {
 }
 
 await refreshRecords(route.query);
-
+clientRepository().index({}).then((response) => {
+  for (const client of response.data.value.data) {
+    filters.value[1].options.options.push({
+      value: client.id,
+      name: client.name,
+    });
+  }
+});
 
 </script>
