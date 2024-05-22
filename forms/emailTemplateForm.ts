@@ -17,8 +17,8 @@ export default function emailTemplateForm() {
   }
 
   const initialFormData = {
-    client_id: 0,
-    language_id: 0,
+    client_id: null,
+    language_id: null,
     name: '',
     slug: '',
     subject: '',
@@ -39,8 +39,8 @@ export default function emailTemplateForm() {
   const {model, formSchema} = storeToRefs(formStore);
   formStore.init(initialModelData, initialFormData);
   formSchema.value = {
-    client_id: number().label(t('motor-admin.clients.client')),
-    language_id: number().min(1).required().label(t('motor-admin.languages.language')),
+    client_id: number().required().label(t('motor-admin.clients.client')),
+    language_id: number().required().label(t('motor-admin.languages.language')),
     name: string().min(3).required().label(t('motor-admin.email_templates.name')),
     slug: string().nullable().label(t('motor-admin.email_templates.name')),
     subject: string().min(3).required().label(t('motor-admin.email_templates.subject')),

@@ -34,7 +34,7 @@ export default function domainsForm() {
     protocol: string().min(3).required().label(t('motor-admin.domains.protocol')),
     host: string().min(3).required().label(t('motor-admin.domains.host')),
     port: number().required().label(t('motor-admin.domains.port')),
-    path: string().min(1).required().label(t('motor-admin.domains.path')),
+    path: string().required().label(t('motor-admin.domains.path')),
     target: string().nullable().label(t('motor-admin.domains.target')),
     parameters: string().nullable().label(t('motor-admin.domains.parameters')),
   }
