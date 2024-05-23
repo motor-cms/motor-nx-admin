@@ -27,18 +27,22 @@ const columns = ref([
   {
     name: t('motor-admin.config_variables.config_package'),
     prop: 'package',
+    sortable: true,
   },
   {
     name: t('motor-admin.config_variables.group'),
     prop: 'group',
+    sortable: true,
   },
   {
     name: t('motor-admin.config_variables.name'),
     prop: 'name',
+    sortable: true,
   },
   {
     name: t('motor-admin.config_variables.value'),
     prop: 'value',
+    sortable: true,
   },
   {
     name: '',

@@ -28,14 +28,17 @@ const columns = ref([
   {
     name: t('motor-admin.clients.client'),
     prop: 'client.name',
+    sortable: true,
   },
   {
     name: t('motor-admin.languages.language'),
     prop: 'language.english_name',
+    sortable: true,
   },
   {
     name: t('motor-admin.global.name'),
     prop: 'name',
+    sortable: true,
   },
   {
     name: '',

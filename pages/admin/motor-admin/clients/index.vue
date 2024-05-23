@@ -27,14 +27,17 @@ const columns = ref([
   {
     name: t('motor-admin.clients.name'),
     prop: 'name',
+    sortable: true,
   },
   {
     name: t('motor-admin.clients.contact'),
     prop: 'contact_name',
+    sortable: true,
   },
   {
     name: t('motor-admin.clients.slug'),
     prop: 'slug',
+    sortable: true,
   },
   {
     name: '',

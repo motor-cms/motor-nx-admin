@@ -27,10 +27,12 @@ const columns = ref([
   {
     name: t('motor-admin.permissions.name'),
     prop: 'name',
+    sortable: true,
   },
   {
     name: t('motor-admin.permissions.sort_position'),
     prop: 'sort_position',
+    sortable: true,
   },
   {
     name: '',

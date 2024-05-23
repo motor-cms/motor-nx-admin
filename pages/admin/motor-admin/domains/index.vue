@@ -27,19 +27,23 @@ const columns = ref([
   {
     name: t('motor-admin.domains.client'),
     prop: 'client.name',
+    sortable: true,
   },
   {
     name: t('motor-admin.domains.name'),
     prop: 'name',
+    sortable: true,
   },
   {
     name: t('motor-admin.domains.host'),
     prop: 'host',
+    sortable: true,
   },
   {
     name: t('motor-admin.domains.is_active'),
     prop: 'is_active',
-    renderer: {type: 'boolean'}
+    renderer: {type: 'boolean'},
+    sortable: true,
   },
   {
     name: '',

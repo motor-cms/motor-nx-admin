@@ -33,6 +33,7 @@ const columns = ref([
     name: t('motor-admin.categories.name'),
     prop: 'name',
     components: [{name: 'CellTree'}],
+    sortable: true,
   },
   {
     name: '',

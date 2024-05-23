@@ -28,6 +28,7 @@ const columns = ref([
   {
     name: t('motor-admin.categories.name'),
     prop: 'name',
+    sortable: true,
   },
   {
     name: '',

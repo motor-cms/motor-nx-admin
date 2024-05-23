@@ -28,10 +28,12 @@ const columns = ref([
   {
     name: t('motor-admin.users.name'),
     prop: 'name',
+    sortable: true,
   },
   {
     name: t('motor-admin.clients.client'),
     prop: 'client.name',
+    sortable: true,
   },
   {
     name: t('motor-admin.roles.roles'),
