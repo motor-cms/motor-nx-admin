@@ -97,7 +97,7 @@ export default function categoryForm() {
   }
 
   const { onSubmit, getData, form, fillModel } = baseForm(
-    'motor-admin.category_trees',
+    'motor-admin.categories',
     routeCategoryTree,
     modelRepository(),
     sanitizer,

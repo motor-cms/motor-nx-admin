@@ -14,9 +14,8 @@
           name="name"
           id="name"
           :label="$t('motor-admin.categories.name')"
-          :value="model.name"
+          v-model="model.name"
           @change="changed"
-          @initialized="setInitialValue"
         ></FormsInputField>
       </div>
       <div class="col-md-4">
@@ -50,10 +49,5 @@ const changed = (value: any) => {
 await getCategoryTreeData();
 await getData();
 
-const setInitialValue = () => {
-  const name = model.value.name;
-  model.value.name = '';
-  model.value.name = name;
-}
 
 </script>
