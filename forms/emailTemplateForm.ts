@@ -46,7 +46,7 @@ export default function emailTemplateForm() {
     subject: string().min(3).required().label(t('motor-admin.email_templates.subject')),
     body_text: string().min(3).nullable().label(t('motor-admin.email_templates.body_text')),
     has_body_html: boolean().label(t('motor-admin.email_templates.has_body_html')),
-    body_html: string().nullable().label(t('motor-admin.email_templates.body_html')),
+    body_html: string().when("has_body_html", {is: true, then: (s) => s.required()}).label(t('motor-admin.email_templates.body_html')),
     default_sender_name: string().min(3).label(t('motor-admin.email_templates.default_sender_name')),
     default_sender_email: string().email().label(t('motor-admin.email_templates.default_sender_email')),
     default_recipient_name: string().nullable().label(t('motor-admin.email_templates.default_recipient_name')),
