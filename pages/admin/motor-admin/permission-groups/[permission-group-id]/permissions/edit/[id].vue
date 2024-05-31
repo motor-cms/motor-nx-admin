@@ -1,6 +1,6 @@
 <template>
   <AdminCommonForm
-    :back-route="'admin.motor-admin.permissions.' + route.params.permissiongroupid"
+    :back-route="'admin.motor-admin.permission-groups.' + route.params.permissiongroupid + '.permissions'"
     :title="title"
     @submit="onSubmit"
   >
@@ -43,5 +43,5 @@ const {model, onSubmit, getData} = form()
 
 const title = ref(t('motor-admin.permissions.edit'))
 await getData()
-model.value.permission_group_id = +route.params.permissiongroupid
+//model.value.permission_group_id = +route.params.permissiongroupid
 </script>

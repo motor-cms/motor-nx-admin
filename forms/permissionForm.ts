@@ -16,6 +16,7 @@ export default function permissionForm() {
   }
 
   const initialFormData = {
+    id: null,
     name: '',
     guard_name: '',
   }
@@ -37,7 +38,7 @@ export default function permissionForm() {
 
   const {getData, onSubmit, form} = baseForm(
     'motor-admin.permissions',
-    'admin.motor-admin.permissions.' + route.params.permissiongroupid,
+    'admin.motor-admin.permission-groups.' + route.params.permissiongroupid + '.permissions',
     modelRepository(),
     sanitizer,
   )

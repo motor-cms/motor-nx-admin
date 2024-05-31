@@ -32,8 +32,8 @@ export default function permissionGroupForm() {
   const sanitizer = () => {}
 
   const { getData, onSubmit } = baseForm(
-    'motor-admin.permission',
-    'admin.motor-admin.permissions',
+    'motor-admin.permission_groups',
+    'admin.motor-admin.permission-groups',
     modelRepository(),
     sanitizer
   )

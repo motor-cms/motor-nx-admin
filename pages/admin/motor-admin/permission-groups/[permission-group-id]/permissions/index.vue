@@ -1,13 +1,15 @@
 <template>
   <AdminCommonGrid
-    :name="$t('motor-admin.permissions.permission_groups')"
-    create-route="admin.motor-admin.permissions.create"
+    :name="$t('motor-admin.permissions.permissions')"
+    :create-route="createRoute"
+    :has-back-button="true"
+    :back-route="backRoute"
     :create-label="$t('motor-admin.permissions.create')"
     :rows="rows"
     :columns="columns"
     :meta="meta"
     :filters="filters"
-    resource="roles"
+    resource="permissions"
     :loadComponents="loadComponents"
     @submit="refreshGridData"
     @submit-cell="handleCellEvent"
@@ -15,12 +17,16 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-import grid from '@zrm/motor-nx-admin/grids/permissionGroupGrid'
-const route = useRoute();
+import {useI18n} from 'vue-i18n'
+import grid from '@zrm/motor-nx-admin/grids/permissionGrid'
 
 // Load i18n module
-const { t } = useI18n()
+const {t} = useI18n();
+
+const route = useRoute();
+
+// WE START THE OUTSOURCED CODE HERE
+const {rows, meta, refreshRecords, handleCellEvent} = grid()
 
 // Define columns for grid
 const columns = ref([
@@ -30,8 +36,8 @@ const columns = ref([
     sortable: true,
   },
   {
-    name: t('motor-admin.permissions.sort_position'),
-    prop: 'sort_position',
+    name: t('motor-admin.permissions.guard'),
+    prop: 'guard_name',
     sortable: true,
   },
   {
@@ -41,32 +47,24 @@ const columns = ref([
     rowWrapperClass: 'justify-content-end',
     components: [
       {
-        name: 'Button',
-        options: {
-          route: 'admin.motor-admin.permissions',
-          name: t('motor-admin.permissions.permissions'),
-          property: ''
-        },
-      },
-      {
         name: 'EditButton',
         options: {
-          route: 'admin.motor-admin.permissions.edit',
+          route: 'admin.motor-admin.permission-groups.' + route.params.permissiongroupid + '.permissions.edit',
           name: t('global.edit'),
         },
       },
-      { name: 'DeleteButton', options: { name: t('global.delete') } },
+      {name: 'DeleteButton', options: {name: t('motor-admin.global.delete')}},
     ],
   },
 ])
 
-// Define filters for grid
-const filters = ref([{ name: 'SearchFilter', options: {} }])
-
 const loadComponents = <any>[]
 
-// WE START THE OUTSOURCED CODE HERE
-const { rows, meta, refreshRecords, handleCellEvent } = grid()
+// Define filters for grid
+const filters = ref([{name: 'SearchFilter', options: {}}])
+
+const createRoute = computed(() => 'admin.motor-admin.permission-groups.' + route.params.permissiongroupid + '.permissions.create');
+const backRoute = 'admin.motor-admin.permission-groups';
 
 const refreshGridData = async (params = {}) => {
   const appStore = useAppStore();
