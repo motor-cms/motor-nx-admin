@@ -33,10 +33,12 @@ const columns = ref([
   {
     name: t('motor-admin.permissions.name'),
     prop: 'name',
+    sortable: true,
   },
   {
     name: t('motor-admin.permissions.guard'),
     prop: 'guard_name',
+    sortable: true,
   },
   {
     name: '',
