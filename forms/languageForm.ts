@@ -23,9 +23,9 @@ export default function languageForm() {
   const {model, formSchema} = storeToRefs(formStore);
   formStore.init(initialModelData, initialFormData);
   formSchema.value = {
-    native_name: string().required().label(t('motor-admin.languages.native_name')),
-    english_name: string().required().label(t('motor-admin.languages.english_name')),
-    iso_639_1: string().required().label(t('motor-admin.languages.iso_639_1')),
+    native_name: string().trim().required().label(t('motor-admin.languages.native_name')),
+    english_name: string().trim().required().label(t('motor-admin.languages.english_name')),
+    iso_639_1: string().trim().required().label(t('motor-admin.languages.iso_639_1')),
   }
 
   // Sanitize dates

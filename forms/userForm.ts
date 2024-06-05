@@ -15,9 +15,9 @@ export default function userForm() {
   // Validation schema post
   const postSchema = {
     client_id: number().nullable().label(t('motor-admin.clients.client')),
-    name: string().min(3).required().label(t('motor-admin.users.name')),
+    name: string().trim().min(3).required().label(t('motor-admin.users.name')),
     email: string().email().min(3).required().label(t('motor-admin.users.email')),
-    password: string().min(8).required().label(t('motor-admin.users.password')),
+    password: string().trim().min(8).required().label(t('motor-admin.users.password')),
     roles: array().nullable().label(t('motor-admin.users.roles')),
     avatar: object().nullable().label(t('motor-admin.users.avatar')),
   }
@@ -25,7 +25,7 @@ export default function userForm() {
   // Validation schema patch
   const patchSchema = {
     client_id: number().nullable().label(t('motor-admin.clients.client')),
-    name: string().min(3).required().label(t('motor-admin.users.name')),
+    name: string().trim().min(3).required().label(t('motor-admin.users.name')),
     email: string().email().min(3).required().label(t('motor-admin.users.email')),
     roles: array().nullable().label(t('motor-admin.users.roles')),
     avatar: object().nullable().label(t('motor-admin.users.avatar')),
@@ -94,7 +94,7 @@ export default function userForm() {
   if (route.params.id) {
       watch(model, () => {
         if (model.value.password && model.value.password.length > 0) {
-            formSchema.value.password = string().min(8).label(t('motor-admin.users.password'));
+            formSchema.value.password = string().trim().min(8).label(t('motor-admin.users.password'));
         } else if (!model.value.password) {
             delete(formSchema.value.password);
         }

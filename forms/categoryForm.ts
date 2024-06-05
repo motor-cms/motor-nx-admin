@@ -35,7 +35,7 @@ export default function categoryForm() {
   formStore.init(initialModelData, initialFormData);
 
   formSchema.value = {
-    name: string().min(3).required().label(t('motor-admin.categories.name')),
+    name: string().trim().min(3).required().label(t('motor-admin.categories.name')),
   }
 
   const search = (

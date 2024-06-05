@@ -24,8 +24,8 @@ export default function permissionForm() {
   const {model, formSchema} = storeToRefs(formStore);
   formStore.init(initialModelData, initialFormData);
   formSchema.value = {
-    name: string().min(3).label(t('motor-admin.permissions.name')),
-    guard_name: string().min(2).nullable().label(t('motor-admin.permissions.guard_name')),
+    name: string().trim().min(3).label(t('motor-admin.permissions.name')),
+    guard_name: string().trim().min(2).nullable().label(t('motor-admin.permissions.guard_name')),
   }
 
   const sanitizer = async (formData: any) => {
