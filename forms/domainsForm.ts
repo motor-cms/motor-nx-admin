@@ -20,8 +20,6 @@ export default function domainsForm() {
     host: '',
     port: 443,
     path: '',
-    target: '',
-    parameters: '',
   }
 
   const formStore = useFormStore();
@@ -35,8 +33,6 @@ export default function domainsForm() {
     host: string().trim().min(3).required().label(t('motor-admin.domains.host')),
     port: number().required().label(t('motor-admin.domains.port')),
     path: string().trim().required().label(t('motor-admin.domains.path')),
-    target: string().nullable().label(t('motor-admin.domains.target')),
-    parameters: string().nullable().label(t('motor-admin.domains.parameters')),
   }
 
   // Sanitize dates
