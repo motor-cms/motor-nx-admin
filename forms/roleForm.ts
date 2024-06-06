@@ -26,8 +26,8 @@ export default function roleForm() {
 
   // Validation schema
   formSchema.value = {
-    name: string().min(3).required().label(t('motor-admin.roles.name')),
-    guard_name: string().min(3).required().label(t('motor-admin.roles.guard_name')),
+    name: string().trim().min(3).required().label(t('motor-admin.roles.name')),
+    guard_name: string().trim().min(3).required().label(t('motor-admin.roles.guard_name')),
     permissions: array().nullable().label(t('motor-admin.roles.permissions')),
   }
 

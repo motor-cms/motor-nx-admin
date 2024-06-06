@@ -62,24 +62,6 @@
         ></FormsInputField>
       </div>
       <div class="col-12">
-        <FormsInputField
-            type="text"
-            name="target"
-            id="target"
-            :label="$t('motor-admin.domains.target')"
-            v-model="model.target"
-        ></FormsInputField>
-      </div>
-      <div class="col-12">
-        <FormsInputField
-            type="text"
-            name="parameters"
-            id="parameters"
-            :label="$t('motor-admin.domains.parameters')"
-            v-model="model.parameters"
-        ></FormsInputField>
-      </div>
-      <div class="col-12">
         <FormsCheckboxField
             name="is_active"
             id="is_active"

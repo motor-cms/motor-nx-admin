@@ -3,6 +3,7 @@
   "domain": "Domain",
   "client": "Mandant",
   "create": "Domain erstellen",
+  "created": "Domain erstellt",
   "edit": "Domain bearbeiten",
   "is_active": "Aktiv",
   "name": "Name",
