@@ -1,6 +1,6 @@
 <template>
   <AdminCommonForm
-    back-route="admin.motor-admin.permissions"
+    back-route="admin.motor-admin.permission-groups"
     :title="title"
     @submit="onSubmit"
   >
@@ -17,8 +17,8 @@
       <div class="col-md-6">
         <FormsInputField
           type="text"
-          name="sort_position"
-          id="sort_position"
+          name="guard_name"
+          id="guard_name"
           :label="$t('motor-admin.permissions.sort_position')"
           v-model="model.sort_position"
         ></FormsInputField>
@@ -27,6 +27,7 @@
   </AdminCommonForm>
 </template>
 <script setup lang="ts">
+
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import form from '@zrm/motor-nx-admin/forms/permissionGroupForm'
@@ -38,10 +39,9 @@ const { t } = useI18n()
 const router = useRouter()
 
 // Load form
-const { model, onSubmit, getData } = form()
+const { model, getData, onSubmit } = form()
 
 // Set default action title
-const title = ref(t('motor-admin.permissions.edit'))
+const title = ref(t('motor-admin.permission_groups.create'))
 
-await getData();
 </script>
