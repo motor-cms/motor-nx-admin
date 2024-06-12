@@ -11,12 +11,12 @@ export default function permissionForm() {
 
   // Record
   const initialModelData = {
+    id: null,
     name: '',
     permission_group_id: 0,
   }
 
   const initialFormData = {
-    id: null,
     name: '',
     guard_name: '',
   }

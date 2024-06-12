@@ -15,13 +15,14 @@
         </FormsInputField>
       </div>
       <div class="col-md-6">
-        <FormsInputField
+        <FormsSelectField
           type="text"
           name="guard_name"
           id="guard_name"
           :label="$t('motor-admin.permissions.guard_name')"
+          :options="['api', 'web']"
           v-model="model.guard_name"
-        ></FormsInputField>
+        ></FormsSelectField>
       </div>
     </div>
   </AdminCommonForm>
