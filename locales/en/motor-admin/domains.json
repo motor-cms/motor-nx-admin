@@ -3,6 +3,7 @@
   "domain": "Domain",
   "client": "Client",
   "create": "Create domain",
+  "created": "Domain created",
   "edit": "Edit domain",
   "is_active": "Is Active",
   "name": "Name",

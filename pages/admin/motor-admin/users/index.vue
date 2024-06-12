@@ -32,8 +32,8 @@ const columns = ref([
   },
   {
     name: t('motor-admin.clients.client'),
-    prop: 'client.name',
-    sortable: true,
+    prop: 'clients',
+    renderer: {type: 'array'},
   },
   {
     name: t('motor-admin.roles.roles'),

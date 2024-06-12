@@ -20,8 +20,6 @@ export default function domainsForm() {
     host: '',
     port: 443,
     path: '',
-    target: '',
-    parameters: '',
   }
 
   const formStore = useFormStore();
@@ -30,13 +28,11 @@ export default function domainsForm() {
   formSchema.value = {
     client_id: number().required().label(t('motor-admin.clients.client')),
     is_active: boolean().label(t('motor-admin.domains.is_active')),
-    name: string().min(3).required().label(t('motor-admin.domains.name')),
-    protocol: string().min(3).required().label(t('motor-admin.domains.protocol')),
-    host: string().min(3).required().label(t('motor-admin.domains.host')),
+    name: string().trim().min(3).required().label(t('motor-admin.domains.name')),
+    protocol: string().trim().min(3).required().label(t('motor-admin.domains.protocol')),
+    host: string().trim().min(3).required().label(t('motor-admin.domains.host')),
     port: number().required().label(t('motor-admin.domains.port')),
-    path: string().min(1).required().label(t('motor-admin.domains.path')),
-    target: string().nullable().label(t('motor-admin.domains.target')),
-    parameters: string().nullable().label(t('motor-admin.domains.parameters')),
+    path: string().trim().required().label(t('motor-admin.domains.path')),
   }
 
   // Sanitize dates

@@ -9,13 +9,13 @@
       </h6>
       <div class="row">
         <div class="col-md-12">
-          <FormsSelectField
-            name="client_id"
-            id="client_id"
+          <FormsCheckboxArrayField
+            name="clients"
+            id="clients"
             :label="$t('motor-admin.clients.client')"
-            :options="[{label: 'Alle Mandanten', value: null}].concat(clients)"
-            v-model="model.client_id"
-          ></FormsSelectField>
+            :options="clients"
+            v-model="model.clients"
+          ></FormsCheckboxArrayField>
           <FormsInputField
             type="text"
             name="name"
@@ -84,6 +84,19 @@ watch(model, () => {
   }
 
   model.value.roles = options
+})
+watch(model, () => {
+  const checkAgainst = Object.entries(model.value.clients)
+
+  const options = []
+  for (const object of checkAgainst) {
+    const checkObject: any = object
+    if (checkObject[1]) {
+      options.push(checkObject[1]['id'])
+    }
+  }
+
+  model.value.clients = options
 })
 
 await getData();
