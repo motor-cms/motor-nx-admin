@@ -18,13 +18,14 @@
         ></FormsInputField>
       </div>
       <div class="col-md-6">
-        <FormsInputField
+        <FormsSelectField
           type="text"
           name="guard_name"
           id="guard_name"
           :label="$t('motor-admin.roles.guard_name')"
+          :options="['web', 'api']"
           v-model="model.guard_name"
-        ></FormsInputField>
+        ></FormsSelectField>
       </div>
     </div>
     <div class="row">
@@ -34,10 +35,11 @@
           id="permissions"
           :label="$t('motor-admin.permissions.permissions')"
           v-model="model.permissions"
-          :options="permissions"
+          :options="permissions.filter(p => p.guard_name == model.guard_name)"
         ></FormsCheckboxArrayField>
       </div>
     </div>
+    {{model}}
   </AdminCommonForm>
 </template>
 <script setup lang="ts">
@@ -56,18 +58,23 @@ const { model, getData, onSubmit, permissions, loadPermissions } = form()
 // Set default action title
 const title = ref(t('motor-admin.roles.create'))
 
+
+
+watch(model, () => {
+  const checkAgainst = Object.entries(model.value.permissions)
+
+  const options = []
+  for (const object of checkAgainst) {
+    const checkObject: any = object
+    if (checkObject[1]) {
+      options.push(checkObject[1]['id'])
+    }
+  }
+  model.value.permissions = options
+});
 await loadPermissions();
 await getData();
-
-const checkAgainst = Object.entries(model.value.permissions)
-
-const options = []
-for (const object of checkAgainst) {
-  const checkObject: any = object
-  if (checkObject[1]) {
-    options.push(checkObject[1]['id'])
-  }
-}
-
-model.value.permissions = options
+watch(() => model.value.guard_name, () => {
+  model.value.permissions = [];
+});
 </script>
