@@ -33,18 +33,18 @@ export default function clientForm() {
   const {model, formSchema} = storeToRefs(formStore);
   formStore.init(initialModelData, initialFormData);
   formSchema.value = {
-    name: string().min(3).required().label(t('motor-admin.clients.name')),
+    name: string().trim().min(3).required().label(t('motor-admin.clients.name')),
     slug: string().nullable(),
-    address: string().min(3).nullable().label(t('motor-admin.clients.address')),
-    zip: string().min(5).nullable().label(t('motor-admin.clients.zip')),
-    city: string().min(3).nullable().label(t('motor-admin.clients.city')),
-    country_iso_3166_1: string().min(2).max(2).nullable().label(t('motor-admin.clients.country_iso_3116_1')),
-    website: string().required().url().nullable().label(t('motor-admin.clients.city')),
+    address: string().trim().min(3).nullable().label(t('motor-admin.global.address.address_1')),
+    zip: string().trim().min(5).nullable().label(t('motor-admin.global.address.zip')),
+    city: string().trim().min(3).nullable().label(t('motor-admin.global.address.city')),
+    country_iso_3166_1: string().trim().min(2).max(2).label(t('motor-admin.global.address.country')),
+    website: string().trim().required().url().nullable().label(t('motor-admin.global.contact.website')),
     description: string().nullable().label(t('motor-admin.clients.description')),
     is_active: boolean().nullable().label(t('motor-admin.clients.is_active')),
-    contact_name: string().required().nullable().label(t('motor-admin.clients.contact_name')),
-    contact_email: string().required().email().label(t('motor-admin.clients.contact_email')),
-    contact_phone: string().required().nullable().label(t('motor-admin.clients.contact_phone')),
+    contact_name: string().trim().required().nullable().label(t('motor-admin.global.contact.contact')),
+    contact_email: string().trim().required().email().label(t('motor-admin.global.contact.email')),
+    contact_phone: string().trim().required().nullable().label(t('motor-admin.global.contact.phone')),
   }
 
   const countryOptions = []

@@ -35,7 +35,7 @@ export default function categoryForm() {
   formStore.init(initialModelData, initialFormData);
 
   formSchema.value = {
-    name: string().min(3).required().label(t('motor-admin.categories.name')),
+    name: string().trim().min(3).required().label(t('motor-admin.categories.name')),
   }
 
   const search = (
@@ -97,7 +97,7 @@ export default function categoryForm() {
   }
 
   const { onSubmit, getData, form, fillModel } = baseForm(
-    'motor-admin.category_trees',
+    'motor-admin.categories',
     routeCategoryTree,
     modelRepository(),
     sanitizer,
