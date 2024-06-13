@@ -6,7 +6,7 @@ import roleRepository from "@zrm/motor-nx-admin/api/role";
 import permissionRepository from "@zrm/motor-nx-admin/api/permission";
 import categoryTreeRepository from "@zrm/motor-nx-admin/api/categoryTree";
 import * as countrylist from 'countries-list'
-const {countries} = countrylist;
+const { countries } = countrylist;
 import { useI18n } from "vue-i18n";
 import type DraggableContent from "@zrm/motor-nx-core/types/draggable-content";
 
@@ -98,13 +98,21 @@ export function useFormData() {
     optionsRef: Ref<Record<string, any>[]>,
     labelKey: string,
     valueKey: string,
+    ...extraKeys: string[]
   ) {
     const resOptions = response.value.data;
 
-    const dataOptions = resOptions.map((item: Record<string, any>) => ({
-      label: item[labelKey],
-      value: item[valueKey],
-    }));
+    const dataOptions = resOptions.map((item: Record<string, any>) => {
+      let extras: any = {};
+      for (const argument of extraKeys) {
+        extras[argument] = item[argument];
+      }
+      return {
+        label: item[labelKey],
+        value: item[valueKey],
+        ...extras
+      }
+    });
 
     optionsRef.value = dataOptions;
   }
@@ -130,7 +138,7 @@ export function useFormData() {
     if (error.value) {
       throw createError(error.value)
     }
-    await loadDataAndCreateOptions(repositoryResponse, permissions, 'name', 'id');
+    await loadDataAndCreateOptions(repositoryResponse, permissions, 'name', 'id', 'guard_name');
   }
 
   const loadLanguages = async () => {
@@ -150,7 +158,7 @@ export function useFormData() {
   }
 
   const loadClients = async () => {
-    const { data: repositoryResponse,error } = await clientRepository().index({});
+    const { data: repositoryResponse, error } = await clientRepository().index({});
     if (error.value) {
       throw createError(error.value)
     }

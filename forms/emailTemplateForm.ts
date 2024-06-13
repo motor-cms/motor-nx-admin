@@ -17,8 +17,8 @@ export default function emailTemplateForm() {
   }
 
   const initialFormData = {
-    client_id: 0,
-    language_id: 0,
+    client_id: null,
+    language_id: null,
     name: '',
     slug: '',
     subject: '',
@@ -39,15 +39,15 @@ export default function emailTemplateForm() {
   const {model, formSchema} = storeToRefs(formStore);
   formStore.init(initialModelData, initialFormData);
   formSchema.value = {
-    client_id: number().label(t('motor-admin.clients.client')),
-    language_id: number().min(1).required().label(t('motor-admin.languages.language')),
-    name: string().min(3).required().label(t('motor-admin.email_templates.name')),
+    client_id: number().required().label(t('motor-admin.clients.client')),
+    language_id: number().required().label(t('motor-admin.languages.language')),
+    name: string().trim().min(3).required().label(t('motor-admin.email_templates.name')),
     slug: string().nullable().label(t('motor-admin.email_templates.name')),
-    subject: string().min(3).required().label(t('motor-admin.email_templates.subject')),
-    body_text: string().min(3).nullable().label(t('motor-admin.email_templates.body_text')),
+    subject: string().trim().min(3).required().label(t('motor-admin.email_templates.subject')),
+    body_text: string().trim().min(3).nullable().label(t('motor-admin.email_templates.body_text')),
     has_body_html: boolean().label(t('motor-admin.email_templates.has_body_html')),
-    body_html: string().nullable().label(t('motor-admin.email_templates.body_html')),
-    default_sender_name: string().min(3).label(t('motor-admin.email_templates.default_sender_name')),
+    body_html: string().trim().when("has_body_html", {is: true, then: (s) => s.required()}).label(t('motor-admin.email_templates.body_html')),
+    default_sender_name: string().trim().min(3).label(t('motor-admin.email_templates.default_sender_name')),
     default_sender_email: string().email().label(t('motor-admin.email_templates.default_sender_email')),
     default_recipient_name: string().nullable().label(t('motor-admin.email_templates.default_recipient_name')),
     default_recipient_email: string().email().nullable().label(t('motor-admin.email_templates.default_recipient_email')),

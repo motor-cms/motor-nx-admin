@@ -23,8 +23,8 @@ export default function categoryTreeForm() {
   const {model, formSchema} = storeToRefs(formStore);
   formStore.init(initialModelData, initialFormData);
   formSchema.value = {
-    name: string().min(3).required().label(t('motor-admin.category_trees.name')),
-    scope: string().min(5).required().label(t('motor-admin.category_trees.scope'))
+    name: string().trim().min(3).required().label(t('motor-admin.category_trees.name')),
+    scope: string().trim().min(5).required().label(t('motor-admin.category_trees.scope'))
   }
 
   // Sanitize dates
