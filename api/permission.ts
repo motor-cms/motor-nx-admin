@@ -3,7 +3,7 @@ import useApi from "@zrm/motor-nx-core/composables/http/api";
 export default () => ({
   api: useApi(),
   index(params: Record<string, any>, id: string) {
-    return this.api.get('permissions_items/' + id, params)
+    return this.api.get(`permissions_items/${id}`, params)
   },
 
   all(params: Record<string, any>) {
