@@ -1,5 +1,11 @@
 {
   "id": "ID",
   "name": "Name",
-  "sort_position": "Sortierungsposition"
+  "edit": "Berechtigungsgruppe bearbeiten",
+  "updated": "Berechtigungsgruppe bearbeitet",
+  "deleted": "Berechtigungsgruppe gelöscht",
+  "sort_position": "Sortierungsposition",
+  "create": "Berechtigungsgruppe erstellen",
+  "created": "Berechtigungsgruppe erstellt",
+  "permission_groups": "Berechtigungsgruppen"
 }
