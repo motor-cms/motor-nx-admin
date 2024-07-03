@@ -27,6 +27,9 @@ const columns = ref([
   {
     name: t('motor-admin.domains.client'),
     prop: 'client.name',
+    label: 'client.name',
+    id: 'client_id',
+    renderer: {type: 'linkLabelId', route: '/admin/motor-admin/clients/edit/{id}'},
     sortable: true,
   },
   {
