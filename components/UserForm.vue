@@ -59,6 +59,7 @@ import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import userForm from '@zrm/motor-nx-admin/forms/userForm'
 import {storeToRefs} from "pinia";
+const {t} = useI18n()
 
 const props = defineProps({
   edit: Boolean,
@@ -66,7 +67,6 @@ const props = defineProps({
 
 const title = props.edit? t('motor-admin.users.edit') : t('motor-admin.users.create')
 // Load i18n module
-const { t } = useI18n()
 const { userHasClient } = storeToRefs(useUserStore());
 
 // Load form
