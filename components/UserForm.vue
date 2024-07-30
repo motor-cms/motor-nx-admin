@@ -64,9 +64,9 @@ const props = defineProps({
   edit: Boolean,
 });
 
-const title = props.edit? t('motor-admin.users.edit') : t('motor-admin.users.create')
 // Load i18n module
 const { t } = useI18n()
+const title = props.edit? t('motor-admin.users.edit') : t('motor-admin.users.create')
 const { userHasClient } = storeToRefs(useUserStore());
 
 // Load form
