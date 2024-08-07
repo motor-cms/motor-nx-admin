@@ -59,6 +59,7 @@ import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import userForm from '@zrm/motor-nx-admin/forms/userForm'
 import {storeToRefs} from "pinia";
+const {t} = useI18n()
 
 const props = defineProps({
   edit: Boolean,
