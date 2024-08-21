@@ -66,8 +66,21 @@ const columns = ref([
   },
 ])
 
+const { clients, loadClients } = useFormData();
+await loadClients();
+
 // Define filters for grid
-const filters = ref([{ name: 'SearchFilter', options: {} }])
+const filters = ref([
+  { name: 'SearchFilter', options: {} },
+  {
+    name: 'SelectFilter',
+    options: {
+      parameter: 'client_id',
+      emptyOption: t('global.filter') + ': ' + t('motor-admin.clients.client'),
+      options: clients,
+    },
+  }
+]);
 
 const loadComponents = <any>[]
 
