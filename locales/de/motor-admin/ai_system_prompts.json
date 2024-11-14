@@ -1,0 +1,10 @@
+{
+  "system-prompts": "Systemprompts",
+  "ai_system_prompts": "Systemprompts",
+  "prompt": "Prompt",
+  "create": "Systemprompt erstellen",
+  "created": "Systemprompt erstellt",
+  "edit": "Systemprompt bearbeiten",
+  "deleted": "Systemprompt gelöscht",
+  "updated": "Systemprompt bearbeitet"
+}

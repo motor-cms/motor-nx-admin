@@ -1,0 +1,10 @@
+{
+  "system-prompts": "system prompts",
+  "ai_system_prompts": "system prompts",
+  "prompt": "prompt",
+  "create": "create system prompt",
+  "created": "system prompt created",
+  "deleted": "system prompt deleted",
+  "edit": "edit system prompt",
+  "updated": "system prompt edited"
+}

@@ -1,0 +1,4 @@
+<template>
+  <AISystemPromptForm edit />
+</template>
+
