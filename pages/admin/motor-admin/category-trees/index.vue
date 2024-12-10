@@ -8,10 +8,10 @@
     :meta="meta"
     :filters="filters"
     resource="categoryTrees"
-    :loadComponents="loadComponents"
+    :load-components="loadComponents"
     @submit="refreshGridData"
     @submit-cell="handleCellEvent"
-  ></AdminCommonGrid>
+  />
 </template>
 
 <script setup lang="ts">
@@ -51,7 +51,11 @@ const columns = ref([
           name: t('global.edit'),
         },
       },
-      {name: 'DeleteButton', options: {name: t('motor-admin.global.delete')}},
+      {
+        name: 'DeleteButton',
+        options: {name: t('motor-admin.global.delete')},
+        visible: (category) => !['media', 'pages', 'components', 'scoring'].includes(category.scope),
+      },
     ],
   },
 ])
@@ -59,7 +63,7 @@ const columns = ref([
 // Define filters for grid
 const filters = ref([{name: 'SearchFilter', options: {}}])
 
-const loadComponents = <any>[
+const loadComponents = [
   {
     name: 'Button',
     object: Button,

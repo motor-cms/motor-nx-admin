@@ -120,7 +120,8 @@ export function useFormData() {
   const loadCategories = async (cached: boolean) => {
     const { data: repositoryResponse, error } = await categoryTreeRepository().index({});
     if (error.value) {
-      throw createError(error.value)
+      return; //don't throw because domains might not be necessary to display page
+      //throw createError(error.value)
     }
     await loadDataAndCreateOptions(repositoryResponse, categories, 'name', 'id');
   }
@@ -152,7 +153,8 @@ export function useFormData() {
   const loadDomains = async () => {
     const { data: repositoryResponse, error } = await domainRepository().index({});
     if (error.value) {
-      throw createError(error.value)
+      return; //don't throw because domains might not be necessary to display page
+      //throw createError(error.value)
     }
     await loadDataAndCreateOptions(repositoryResponse, domains, 'host', 'id');
   }
@@ -160,7 +162,8 @@ export function useFormData() {
   const loadClients = async () => {
     const { data: repositoryResponse, error } = await clientRepository().index({});
     if (error.value) {
-      throw createError(error.value)
+      return; //don't throw because clients might not be necessary to display page
+      //throw createError(error.value)
     }
     await loadDataAndCreateOptions(repositoryResponse, clients, 'name', 'id');
   }
