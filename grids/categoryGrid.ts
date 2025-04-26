@@ -31,7 +31,7 @@ export default function categoryGrid() {
         await refreshRecords(params.filterValues)
         break
       default:
-        console.log('UNHANDLED EVENT', params.componentParams)
+        console.log('[categoryGrid] UNHANDLED EVENT', params.componentParams)
     }
   }
 

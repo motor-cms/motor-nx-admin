@@ -7,7 +7,6 @@ export default () => ({
     },
 
     async create(payload: object) {
-         console.log("posting", payload);
          return this.api.post(`clients`, payload)
     },
 
