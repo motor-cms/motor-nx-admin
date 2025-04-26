@@ -3,7 +3,8 @@ import { useI18n } from 'vue-i18n'
 import modelRepository from '../api/emailTemplate'
 
 import {useFormData} from "@zrm/motor-nx-admin/composables/formData";
-import {boolean, InferType, number, string, addMethod, transform} from "yup";
+import {boolean, number, string} from "yup";
+import type { InferType } from "yup"
 import {storeToRefs} from "pinia";
 export default function emailTemplateForm() {
   // Load i18n module
