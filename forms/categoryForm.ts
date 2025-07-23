@@ -58,7 +58,6 @@ export default function categoryForm() {
         // Get previous sibling
         if (index > 0) {
           formData.previous_sibling_id = parent.children[index - 1].id
-          // console.log('found previous_sibling', parent.children[index - 1])
         }
         // Get next sibling
         if (index < parent.children.length - 1) {
@@ -93,7 +92,6 @@ export default function categoryForm() {
       0,
       true
     )
-    console.log('found the thing CatForm', foundYou)
   }
 
   const { onSubmit, getData, form, fillModel } = baseForm(
