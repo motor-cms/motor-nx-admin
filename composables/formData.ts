@@ -68,7 +68,6 @@ export function useFormData() {
     }
 
     const tree: DraggableContent = responseCurrentTree.data.value.data;
-    // console.log("Result getCategoryTreeData", tree);
     remoteTreeRootData.value = tree;
   }
 
