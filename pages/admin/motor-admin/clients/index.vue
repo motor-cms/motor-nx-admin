@@ -1,4 +1,5 @@
 <template>
+  TEST Adminpanel
   <AdminCommonGrid
     :name="$t('motor-admin.clients.clients')"
     create-route="admin.motor-admin.clients.create"
