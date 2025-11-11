@@ -9,8 +9,10 @@
     :filters="filters"
     resource="emailTemplates"
     :loadComponents="loadComponents"
+    :grid-actions="gridActions"
     @submit="refreshGridData"
     @submit-cell="handleCellEvent"
+    @grid-action-processed="refreshGridData"
   ></AdminCommonGrid>
 </template>
 
@@ -74,6 +76,15 @@ const filters = ref([
     },
   }
 ]);
+
+const {duplicateEmailTemplates: duplicate} = useAdminGridActions();
+
+const gridActions = computed(() => {
+  return [
+    duplicate
+  ]
+})
+
 
 const loadComponents = <any>[]
 

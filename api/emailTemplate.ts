@@ -1,4 +1,5 @@
 import useApi from "@zrm/motor-nx-core/composables/http/api";
+import type {GridActionPayload} from "~/packages/motor-nx-core/types/grid-action-payload";
 
 export default () => ({
     api: useApi(),
@@ -21,4 +22,10 @@ export default () => ({
     delete(id: number) {
         return this.api.destroy(`email_templates/${id}`)
     },
+    async duplicate(payload: GridActionPayload) {
+      //Remove selected items from store after duplication (to avoid duplication of already duplicated items)
+      const gridStore = useGridStore();
+      gridStore.selectedItems = [];
+      return this.api.post(`email_templates/duplicate`, payload);
+    }
 })
