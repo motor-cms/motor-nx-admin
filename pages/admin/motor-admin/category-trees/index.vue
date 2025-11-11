@@ -53,7 +53,7 @@ const columns = ref([
       },
       {
         name: 'DeleteButton',
-        options: {name: t('motor-admin.global.delete')},
+        options: {name: 'motor-admin.global.do_delete'},
         visible: (category) => !['media', 'pages', 'components', 'scoring'].includes(category.scope),
       },
     ],
