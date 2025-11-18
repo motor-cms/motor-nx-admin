@@ -1,5 +1,5 @@
 import useApi from "@zrm/motor-nx-core/composables/http/api";
-import type {GridActionPayload} from "~/packages/motor-nx-core/types/grid-action-payload";
+import type {GridActionPayload} from "@zrm/motor-nx-core/types/grid-action-payload";
 
 export default () => ({
     api: useApi(),
