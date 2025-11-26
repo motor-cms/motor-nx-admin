@@ -45,7 +45,7 @@ const columns = ref([
         }
       },
       {
-        name: 'DeleteButton', options: { name: t('global.delete') }
+        name: 'DeleteButton', options: { name: 'global.do_delete' }
       }
     ]
   }
