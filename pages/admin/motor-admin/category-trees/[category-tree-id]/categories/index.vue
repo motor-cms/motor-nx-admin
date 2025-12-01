@@ -48,7 +48,7 @@ const columns = ref([
           name: t('global.edit'),
         },
       },
-      {name: 'DeleteButton', options: {name: t('motor-admin.global.delete')}},
+      {name: 'DeleteButton', options: {name: 'motor-admin.global.do_delete'}},
     ],
   },
 ])
