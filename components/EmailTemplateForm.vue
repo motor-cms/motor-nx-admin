@@ -132,6 +132,9 @@
           id="body_text"
           :label="$t('motor-admin.email_templates.body_text')"
           description="Geben Sie {ALLE_FORMULARFELDER} im Textfeld ein, um alle Variablen eines Formulars auszugeben, die dem Template übermittelt werden."
+          :min-rows="3"
+          :max-rows="15"
+          :auto-resize="true"
           v-model="model.body_text"
         ></FormsTextAreaField>
       </div>
@@ -150,6 +153,9 @@
           id="body_html"
           :label="$t('motor-admin.email_templates.body_html')"
           description="Geben Sie {ALLE_FORMULARFELDER} im Textfeld ein, um alle Variablen eines Formulars auszugeben, die dem Template übermittelt werden."
+          :min-rows="3"
+          :max-rows="15"
+          :auto-resize="true"
           v-model="model.body_html"
         ></FormsTextAreaField>
       </div>
