@@ -102,7 +102,7 @@ export function useFormData() {
     const resOptions = response.value.data;
 
     const dataOptions = resOptions.map((item: Record<string, any>) => {
-      let extras: any = {};
+      const extras: any = {};
       for (const argument of extraKeys) {
         extras[argument] = item[argument];
       }
