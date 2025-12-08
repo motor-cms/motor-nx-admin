@@ -14,5 +14,5 @@ interface GendersPerLanguage {
 }
 
 interface SalutationsPerLanguage {
-    [key: string]: String[];
+    [key: string]: string[];
 }

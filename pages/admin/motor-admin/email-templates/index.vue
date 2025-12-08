@@ -8,7 +8,7 @@
     :meta="meta"
     :filters="filters"
     resource="emailTemplates"
-    :loadComponents="loadComponents"
+    :load-components="loadComponents"
     :grid-actions="gridActions"
     @submit="refreshGridData"
     @submit-cell="handleCellEvent"

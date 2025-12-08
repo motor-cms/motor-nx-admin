@@ -11,17 +11,17 @@
     <div class="row">
       <div class="col-md-6">
         <FormsInputField
+          id="name"
+          v-model="model.name"
           type="text"
           name="name"
-          id="name"
           :label="$t('motor-admin.clients.name')"
-          v-model="model.name"
         ></FormsInputField>
       </div>
       <div class="col-md-4">
         <FormsStaticField
-          name="slug"
           id="slug"
+          name="slug"
           :label="$t('motor-admin.clients.slug')"
           :value="model.slug"
           :empty-value="$t('motor-admin.clients.no_slug_yet')"
@@ -29,57 +29,57 @@
       </div>
       <div class="col-md-2">
         <FormsCheckboxField
-          name="is_active"
           id="is_active"
-          :label="$t('motor-admin.clients.is_active')"
           v-model="model.is_active"
+          name="is_active"
+          :label="$t('motor-admin.clients.is_active')"
         ></FormsCheckboxField>
       </div>
       <div class="row">
         <div class="col-md-12">
           <FormsTextAreaField
-            name="description"
             id="description"
-            :label="$t('motor-admin.clients.description')"
             v-model="model.description"
+            name="description"
+            :label="$t('motor-admin.clients.description')"
           ></FormsTextAreaField>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
           <FormsInputField
+            id="address"
+            v-model="model.address"
             type="text"
             name="address"
-            id="address"
             :label="$t('motor-admin.global.address.address_1')"
-            v-model="model.address"
           ></FormsInputField>
         </div>
         <div class="col-md-6">
           <FormsInputField
+            id="zip"
+            v-model="model.zip"
             type="text"
             name="zip"
-            id="zip"
             :label="$t('motor-admin.global.address.zip')"
-            v-model="model.zip"
           ></FormsInputField>
         </div>
         <div class="col-md-6">
           <FormsInputField
+            id="city"
+            v-model="model.city"
             type="text"
             name="city"
-            id="city"
             :label="$t('motor-admin.global.address.city')"
-            v-model="model.city"
           ></FormsInputField>
         </div>
         <div class="col-md-6">
           <FormsSelectField
+            id="country_iso_3166_1"
+            v-model="model.country_iso_3166_1"
             type="text"
             name="country_iso_3166_1"
-            id="country_iso_3166_1"
             :label="$t('motor-admin.global.address.country')"
-            v-model="model.country_iso_3166_1"
             :options="countryOptions"
           ></FormsSelectField>
         </div>
@@ -90,38 +90,38 @@
       <div class="row">
         <div class="col-md-6">
           <FormsInputField
+            id="contact_name"
+            v-model="model.contact_name"
             type="text"
             name="contact_name"
-            id="contact_name"
             :label="$t('motor-admin.clients.contact')"
-            v-model="model.contact_name"
           ></FormsInputField>
         </div>
         <div class="col-md-6">
           <FormsInputField
+            id="contact_phone"
+            v-model="model.contact_phone"
             type="text"
             name="contact_phone"
-            id="contact_phone"
             :label="$t('motor-admin.global.contact.phone')"
-            v-model="model.contact_phone"
           ></FormsInputField>
         </div>
         <div class="col-md-6">
           <FormsInputField
+            id="contact_email"
+            v-model="model.contact_email"
             type="text"
             name="contact_email"
-            id="contact_email"
             :label="$t('motor-admin.global.contact.email')"
-            v-model="model.contact_email"
           ></FormsInputField>
         </div>
         <div class="col-md-6">
           <FormsInputField
+            id="website"
+            v-model="model.website"
             type="text"
             name="website"
-            id="website"
             :label="$t('motor-admin.global.contact.website')"
-            v-model="model.website"
           ></FormsInputField>
         </div>
       </div>

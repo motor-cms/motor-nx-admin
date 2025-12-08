@@ -8,7 +8,7 @@
     :meta="meta"
     :filters="filters"
     resource="languages"
-    :loadComponents="loadComponents"
+    :load-components="loadComponents"
     @submit="refreshGridData"
     @submit-cell="handleCellEvent"
   ></AdminCommonGrid>

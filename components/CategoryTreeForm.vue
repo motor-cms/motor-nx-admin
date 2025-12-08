@@ -10,18 +10,18 @@
     <div class="row">
       <div class="col-md-12">
         <FormsInputField
+          id="name"
+          v-model="model.name"
           type="text"
           name="name"
-          id="name"
           :label="$t('motor-admin.categories.name')"
-          v-model="model.name"
         ></FormsInputField>
         <FormsInputField
+          id="scope"
+          v-model="model.scope"
           type="text"
           name="scope"
-          id="scope"
           :label="$t('motor-admin.category_trees.scope')"
-          v-model="model.scope"
         ></FormsInputField>
       </div>
     </div>

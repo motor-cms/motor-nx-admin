@@ -8,7 +8,7 @@
     :meta="meta"
     :filters="filters"
     resource="roles"
-    :loadComponents="loadComponents"
+    :load-components="loadComponents"
     @submit="refreshGridData"
     @submit-cell="handleCellEvent"
   ></AdminCommonGrid>

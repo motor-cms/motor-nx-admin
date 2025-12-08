@@ -6,31 +6,31 @@
     <div class="row">
       <div class="col-md-6">
         <FormsInputField
+          id="name"
+          v-model="model.name"
           type="text"
           name="name"
-          id="name"
           :label="$t('motor-admin.roles.name')"
-          v-model="model.name"
         ></FormsInputField>
       </div>
       <div class="col-md-6">
         <FormsSelectField
+          id="guard_name"
+          v-model="model.guard_name"
           type="text"
           name="guard_name"
-          id="guard_name"
           :label="$t('motor-admin.roles.guard_name')"
           :options="['web', 'api']"
-          v-model="model.guard_name"
         ></FormsSelectField>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
         <FormsCheckboxArrayField
-          name="permissions"
           id="permissions"
-          :label="$t('motor-admin.permissions.permissions')"
           v-model="model.permissions"
+          name="permissions"
+          :label="$t('motor-admin.permissions.permissions')"
           :options="permissions.filter((p) => p.guard_name == model.guard_name)"
         ></FormsCheckboxArrayField>
       </div>

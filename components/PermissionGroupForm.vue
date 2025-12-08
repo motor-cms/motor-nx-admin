@@ -7,20 +7,20 @@
     <div class="row">
       <div class="col-md-6">
         <FormsInputField
+          id="name"
+          v-model="model.name"
           type="text"
           name="name"
-          id="name"
           :label="$t('motor-admin.permissions.name')"
-          v-model="model.name"
         ></FormsInputField>
       </div>
       <div class="col-md-6">
         <FormsInputField
+          id="sort_position"
+          v-model="model.sort_position"
           type="text"
           name="sort_position"
-          id="sort_position"
           :label="$t('motor-admin.permissions.sort_position')"
-          v-model="model.sort_position"
         ></FormsInputField>
       </div>
     </div>
