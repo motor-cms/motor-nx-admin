@@ -10,38 +10,38 @@
     <div class="row">
       <div class="col-md-4">
         <FormsInputField
+          id="package"
+          v-model="model.package"
           type="text"
           name="package"
-          id="package"
           :label="$t('motor-admin.config_variables.config_package')"
-          v-model="model.package"
         ></FormsInputField>
       </div>
       <div class="col-md-4">
         <FormsInputField
+          id="group"
+          v-model="model.group"
           type="text"
           name="group"
-          id="group"
           :label="$t('motor-admin.config_variables.group')"
-          v-model="model.group"
         ></FormsInputField>
       </div>
       <div class="col-md-4">
         <FormsInputField
+          id="name"
+          v-model="model.name"
           type="text"
           name="name"
-          id="name"
           :label="$t('motor-admin.config_variables.name')"
-          v-model="model.name"
         ></FormsInputField>
       </div>
       <div class="col-md-12">
         <FormsTextAreaField
+          id="value"
+          v-model="model.value"
           type="text"
           name="value"
-          id="value"
           :label="$t('motor-admin.config_variables.value')"
-          v-model="model.value"
         ></FormsTextAreaField>
       </div>
     </div>

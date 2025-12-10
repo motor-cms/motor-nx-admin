@@ -10,28 +10,28 @@
     <div class="row">
       <div class="col-md-6">
         <FormsInputField
+          id="native_name"
+          v-model="model.native_name"
           type="text"
           name="native_name"
-          id="native_name"
           :label="$t('motor-admin.languages.native_name')"
-          v-model="model.native_name"
         ></FormsInputField>
       </div>
       <div class="col-md-6">
         <FormsInputField
+          id="english_name"
+          v-model="model.english_name"
           type="text"
           name="english_name"
-          id="english_name"
           :label="$t('motor-admin.languages.english_name')"
-          v-model="model.english_name"
         ></FormsInputField>
       </div>
       <div class="col-md-12">
         <FormsSelectField
-          name="iso_639_1"
           id="iso_639_1"
-          :label="$t('motor-admin.languages.iso_639_1')"
           v-model="model.iso_639_1"
+          name="iso_639_1"
+          :label="$t('motor-admin.languages.iso_639_1')"
           :options="languageOptions"
         ></FormsSelectField>
       </div>

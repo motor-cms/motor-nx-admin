@@ -10,11 +10,11 @@
     <div class="row">
       <div class="col-md-8">
         <FormsInputField
+          id="name"
+          v-model="model.name"
           type="text"
           name="name"
-          id="name"
           :label="$t('motor-admin.categories.name')"
-          v-model="model.name"
           @change="changed"
         ></FormsInputField>
       </div>

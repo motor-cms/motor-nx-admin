@@ -10,7 +10,7 @@
     :meta="meta"
     :filters="filters"
     resource="permissions"
-    :loadComponents="loadComponents"
+    :load-components="loadComponents"
     @submit="refreshGridData"
     @submit-cell="handleCellEvent"
   ></AdminCommonGrid>

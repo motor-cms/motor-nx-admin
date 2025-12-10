@@ -7,21 +7,21 @@
     <div class="row">
       <div class="col-md-6">
         <FormsInputField
+          id="name"
+          v-model="model.name"
           type="text"
           name="name"
-          id="name"
-          :label="$t('motor-admin.permissions.name')"
-          v-model="model.name">
+          :label="$t('motor-admin.permissions.name')">
         </FormsInputField>
       </div>
       <div class="col-md-6">
         <FormsSelectField
+          id="guard_name"
+          v-model="model.guard_name"
           type="text"
           name="guard_name"
-          id="guard_name"
           :label="$t('motor-admin.permissions.guard_name')"
           :options="['api', 'web']"
-          v-model="model.guard_name"
         ></FormsSelectField>
       </div>
     </div>
