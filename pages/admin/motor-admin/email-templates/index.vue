@@ -51,7 +51,7 @@ const findUsages = async (props: {record: object}) => {
     }
     
     if (formsModalRef.value) {
-      formsModalRef.value.setData(usage);
+      formsModalRef.value.setData(usage, props.record.name);
       // Catch any modal errors silently (e.g., when user closes the modal)
       try {
         await formsModalRef.value.open();
