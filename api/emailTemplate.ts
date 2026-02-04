@@ -27,5 +27,9 @@ export default () => ({
       const gridStore = useGridStore();
       gridStore.selectedItems = [];
       return this.api.post(`email_templates/duplicate`, payload);
+    },
+
+    async getUsage(id: number) {
+      return this.api.get(`email_templates/${id}/usage`);
     }
 })
