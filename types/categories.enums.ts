@@ -3,5 +3,6 @@ export enum CategoryScopes {
     SCORING = "scoring",
     PAGES = "pages",
     COMPONENTS = "components",
+    REDIRECTS = "redirects",
     DEFAULT = "default",
 }
